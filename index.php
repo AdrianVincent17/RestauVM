@@ -153,7 +153,11 @@
                             <p class="text-muted">Accede al panel de gestión de La Despensa</p>
                         </div>
 
+<<<<<<< HEAD
                         <form action="login.php" method="POST">
+=======
+                        <form action="tu-script-de-login.php" method="POST">
+>>>>>>> origin/HEAD
 
                             <div class="form-floating mb-3">
                                 <input type:="email" class="form-control" id="floatingInput" name="email"

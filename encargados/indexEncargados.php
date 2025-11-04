@@ -119,16 +119,27 @@
                 <button type="button" id="sidebarCollapse" class="btn btn-info d-md-none me-3">
                     <i class="fas fa-bars"></i> <span>Menu</span>
                 </button>
+<<<<<<< HEAD
                 <div class="col-auto  "><a class="navbar-brand text-dark" href="index.html"><img src="../img/LaDespensalogo.png" alt="LaDespensalogo" class="logo"></a></div>
+=======
+                <div class="col-auto  "><a class="navbar-brand text-dark" href="index.html"><img src="img/LaDespensalogo.png" alt="LaDespensalogo" class="logo"></a></div>
+>>>>>>> origin/HEAD
                 <div class="col"><h5>Restaurante La Despensa</h5></div>
                 
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
+<<<<<<< HEAD
                             <a class="nav-link" href="#">Bienvenido, <span><?php echo $email;?></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-danger ms-2" href="../logout.php">Cerrar Sesión</a>
+=======
+                            <a class="nav-link" href="#">Bienvenido, Usuario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-danger ms-2" href="login.html">Cerrar Sesión</a>
+>>>>>>> origin/HEAD
                         </li>
                     </ul>
                 </div>

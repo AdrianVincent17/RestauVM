@@ -142,7 +142,11 @@
                     <span>Menu</span>
                 </button>
                 <div class="col-auto"><a class="navbar-brand text-dark" href="index.html"><img
+<<<<<<< HEAD
                             src="../img/LaDespensalogo.png" alt="LaDespensalogo" class="logo"></a></div>
+=======
+                            src="img/LaDespensalogo.png" alt="LaDespensalogo" class="logo"></a></div>
+>>>>>>> origin/HEAD
                 <div class="col">
                     <h5>Restaurante La Despensa</h5>
                 </div>
@@ -153,7 +157,11 @@
                             <a class="nav-link" href="#">Bienvenido, [Usuario]</a>
                         </li>
                         <li class="nav-item">
+<<<<<<< HEAD
                             <a class="btn btn-outline-danger ms-2" href="../logout.php">Cerrar Sesión</a>
+=======
+                            <a class="btn btn-outline-danger ms-2" href="login.html">Cerrar Sesión</a>
+>>>>>>> origin/HEAD
                         </li>
                     </ul>
                 </div>
