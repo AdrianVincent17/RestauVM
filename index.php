@@ -8,8 +8,8 @@
     <title>La Despensa - Acceso Personal</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
 
     <style>
         /* * 1. Configuración de página completa (Sticky Footer) */
@@ -153,31 +153,24 @@
                             <p class="text-muted">Accede al panel de gestión de La Despensa</p>
                         </div>
 
-<<<<<<< HEAD
                         <form action="login.php" method="POST">
-=======
-                        <form action="tu-script-de-login.php" method="POST">
->>>>>>> origin/HEAD
 
                             <div class="form-floating mb-3">
-                                <input type:="email" class="form-control" id="floatingInput" name="email"
-                                    placeholder="nombre@ejemplo.com" required>
-                                <label for="floatingInput"><i class="bi bi-envelope me-2"></i>Email</label>
+                                <input type:="dni" class="form-control" id="dni" name="dni"
+                                    placeholder="12345678X" required>
+                                <label for="dni"><i class="bi bi-person-vcard"></i> DNI</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" name="password"
+                                <input type="password" class="form-control" id="password" name="password"
                                     placeholder="Contraseña" required>
-                                <label for="floatingPassword"><i class="bi bi-lock me-2"></i>Contraseña</label>
+                                <label for="password"><i class="bi bi-lock me-2"></i>Contraseña</label>
                             </div>
 
                             <button class="w-100 btn btn-lg btn-primary" type="submit">
                                 <i class="bi bi-box-arrow-in-right me-2"></i> Acceder
                             </button>
 
-                            <div class="text-center mt-4">
-                                <a href="#" class="small text-decoration-none text-muted">¿Olvidaste tu contraseña?</a>
-                            </div>
                         </form>
                     </div>
 
@@ -189,8 +182,7 @@
     <footer class="minimal-footer mt-auto">
         <div class="container text-center">
             <!-- Nombre del restaurante actualizado -->
-            <p class="text-muted small mb-0">&copy; 2025 Restaurante La Despensa. Algunos derechos nos quedan.
-            </p>
+             <p class="text-muted small mb-0">&copy; 2025 Gestión Restaurante. Todos los derechos estan reservados.</p>
         </div>
     </footer>
 

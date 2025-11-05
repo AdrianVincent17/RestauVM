@@ -7,8 +7,8 @@
     <title>Registro - Restaurante La Despensa</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
 
     <style>
         /* 1. Configuración de página completa (Sticky Footer) */
@@ -129,10 +129,10 @@
                     <a href="index.php" class="btn btn-sm btn-primary btn-elegant me-2">
                         <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión
                     </a>
-                    <a href="#" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
+                    <a href="quienessomos.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-info-circle me-1"></i> Quiénes Somos
                     </a>
-                    <a href="#" class="btn btn-sm btn-outline-secondary btn-elegant">
+                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant">
                         <i class="bi bi-geo-alt me-1"></i> Ubicación
                     </a>
                 </nav>
@@ -200,7 +200,7 @@
                             <div class="form-check mb-3">
                                 <input class="form-check-input" type="checkbox" value="" id="checkTerminos" required>
                                 <label class="form-check-label small text-muted" for="checkTerminos">
-                                    He leído y acepto los <a href="#">Términos de Uso</a> y la <a href="#">Política de Privacidad</a>.
+                                    He leído y acepto los <a href="terminos.php">Términos de Uso</a> y la <a href="privacidad.php">Política de Privacidad</a>.
                                 </label>
                             </div>
 
@@ -222,7 +222,7 @@
 
     <footer class="minimal-footer mt-auto">
         <div class="container text-center">
-            <p class="text-muted small mb-0">&copy; 2025 Gestión Restaurante. Todos los zurdos estan ocupados.</p>
+            <p class="text-muted small mb-0">&copy; 2025 Gestión Restaurante. Todos los derechos estan reservados.</p>
         </div>
     </footer>
 

@@ -8,5 +8,5 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 // Redirigir al usuario a la página de inicio
-header("Location: index.php");
+header("Location:index.php");
 exit();
