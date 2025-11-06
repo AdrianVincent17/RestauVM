@@ -1,20 +1,26 @@
+<?php
+include("../seguridad.php");
+proteger(2);
+include("../conexion.php");
+?>
+
 <!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <?php
+    include("../head.php");
+    ?>
     <title>Restaurante - Panel de Control</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="styles.css" type="text/css">
+
 </head>
 
 <body>
 
     <?php
-    include("nav.php");
+    include("../nav.php");
     ?>
 
     <div class="wrapper">
@@ -61,16 +67,10 @@
         </div>
     </div>
 
-    <footer class="footer-custom">
-        <div class="container">
-            <p class="text-muted small mb-0">&copy; 2025 Gestión Restaurante. Todos los derechos estan reservados.</p>
-        </div>
-    </footer>
+    <?php
+    include("../footer.php");
+    ?>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
     <script>
         // JavaScript para colapsar la barra lateral en móvil
         document.getElementById('sidebarCollapse').addEventListener('click', function() {

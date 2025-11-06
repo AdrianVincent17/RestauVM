@@ -20,6 +20,12 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
                Reservar Mesa
             </a>
         </li>
+         <li>
+            <a href="pedidos.php" 
+               class="nav-link <?= ($pagina_actual == 'pedidos.php') ? 'active' : '' ?>">
+                Pedidos
+            </a>
+        </li>
         <li>
             <a href="carta.php" 
                class="nav-link <?= ($pagina_actual == 'carta.php') ? 'active' : '' ?>">

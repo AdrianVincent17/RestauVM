@@ -3,7 +3,7 @@
 include("conexion.php");
 
 
-if (isset($_SERVER['REQUEST_METHOD']) === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $dni = $_POST['dni'];
     $nombre = $_POST['nombre'];
@@ -20,7 +20,7 @@ if (isset($_SERVER['REQUEST_METHOD']) === 'POST') {
         header("Location:registro.php");
         exit();
     } else {
-        $consulta = "INSERT INTO usuarios(dni,nombre,apellidos,rol,email,telefono,direccion,contraseña,estado) VALUES($dni,$nombre,$apellidos,$rol,$email,$telefono,$direccion,$pass,$estado";
+        $consulta = "INSERT INTO usuario(dni,nombre,apellidos,rol,email,telefono,direccion,contraseña,estado) VALUES('$dni','$nombre','$apellidos','$rol','$email','$telefono','$direccion','$pass','$estado')";
 
         mysqli_query($conn, $consulta);
         echo mysqli_error($conn);
@@ -29,3 +29,5 @@ if (isset($_SERVER['REQUEST_METHOD']) === 'POST') {
         exit();
     }
 }
+
+?>

@@ -1,22 +1,25 @@
+<?php
+include("../seguridad.php");
+proteger(2);
+include("../conexion.php");
+?>
+
 <!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <?php
+    include("../head.php");
+    ?>
     <title>Restaurante - Gestión de Usuarios</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="styles.css" type="text/css">
-
 </head>
 
 <body>
     <div class="d-flex flex-column w-100">
 
         <?php
-        include("nav.php");
+        include("../nav.php");
         ?>
 
         <div class="wrapper">
@@ -27,16 +30,16 @@
             <div id="content">
                 <div class="container-fluid">
                     <h1 class="page-heading">Gestión de Usuarios</h1>
-                    <p class="subheading">Administra los perfiles de tu equipo.</p>
+                    <p class="subheading">Administra diferentes perfiles.</p>
 
                     <div class="mb-2">
                         <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#usuario" aria-expanded="false" aria-controls="usuario">
                             Añadir nuevo usuario
                         </button>
                     </div>
-                    
+
                     <div style="min-height: 10px;">
-                        <div class="collapse collapse-horizontal" id="usuario">
+                        <div class="collapse" id="usuario">
                             <div class="card card-body">
                                 <div class="card mb-4">
                                     <div class="card-body">
@@ -76,57 +79,65 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header bg-secondary text-white">
-                            Lista de Usuarios Registrados
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">dni</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">email</th>
-                                            <th scope="col">telefono</th>
-                                            <th scope="col">Rol</th>
-                                            <th scope="col">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                    <div class="mb-2">
+                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#añadeusuario" aria-expanded="false" aria-controls="añadeusuario">
+                            listado de usuarios registrados
+                        </button>
+                    </div>
 
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Ana García</td>
-                                            <td>ana.g@restaurante.com</td>
-                                            <td>Encargado</td>
-                                            <td>
-                                                <input type="checkbox" class="btn-check" id="block" autocomplete="off">
-                                                <label class="btn btn-outline-warning" for="block">bloquear</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Carlos Ruíz</td>
-                                            <td>carlos.r@restaurante.com</td>
-                                            <td>Camarero</td>
-                                            <td>
-                                                <input type="checkbox" class="btn-check" id="block2" autocomplete="off">
-                                                <label class="btn btn-outline-warning" for="block2">bloquear</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Marta Soto</td>
-                                            <td>marta.s@restaurante.com</td>
-                                            <td>Camarero</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-outline-primary me-1">Editar</button>
-                                                <button class="btn btn-sm btn-outline-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <div style="min-height: 10px;">
+                        <div class="collapse" id="añadeusuario">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">dni</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">email</th>
+                                                <th scope="col">telefono</th>
+                                                <th scope="col">Rol</th>
+                                                <th scope="col">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Ana García</td>
+                                                <td>ana.g@restaurante.com</td>
+                                                <td>65487321</td>
+                                                <td>Encargado</td>
+                                                <td>
+                                                    <input type="checkbox" class="btn-check" id="bl1" autocomplete="off">
+                                                    <label class="btn btn-outline-warning" for="bl1">bloquear</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Carlos Ruíz</td>
+                                                <td>carlos.r@restaurante.com</td>
+                                                <td>65487321</td>
+                                                <td>Camarero</td>
+                                                <td>
+                                                    <input type="checkbox" class="btn-check" id="bl2" autocomplete="off">
+                                                    <label class="btn btn-outline-warning" for="bl2">bloquear</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Marta Soto</td>
+                                                <td>marta.s@restaurante.com</td>
+                                                <td>65487321</td>
+                                                <td>Camarero</td>
+                                                <td>
+                                                    <input type="checkbox" class="btn-check" id="bl3" autocomplete="off">
+                                                    <label class="btn btn-outline-warning" for="bl3">bloquear</label>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -134,15 +145,12 @@
             </div>
         </div>
 
-        <footer class="footer-custom">
-            <div class="container">
-                <p class="mb-0">&copy; 2025 Mi Restaurante - Gestión Interna.</p>
-            </div>
-        </footer>
+        <?php
+        include("../footer.php");
+        ?>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
 
     <script>
         document.getElementById('sidebarCollapse').addEventListener('click', function() {

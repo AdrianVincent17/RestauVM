@@ -1,34 +1,35 @@
+<?php
+include("../seguridad.php");
+proteger(0);
+include("../conexion.php");
+?>
+
 <!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Restaurante - Gestión de Usuarios</title>
+    <?php
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="styles.css" type="text/css">
-
+        include("../head.php");
+    ?>
+<title>Restaurante - Gestión de Usuarios</title>
 </head>
 
 <body>
-    <div class="d-flex flex-column w-100">
 
-        <?php
-        include("nav.php");
-        ?>
+    <?php
+    include("../nav.php");
+    ?>
 
-        <div class="wrapper">
-            
+    <div class="wrapper">
         <?php
         include("navbar.php");
         ?>
 
-            <div id="content">
+        <div id="content">
             <div class="container-fluid">
                 <h1 class="page-heading">Bienvenido al Panel de Control</h1>
-                <p class="subheading">Visión general y acceso rápido a tus herramientas.</p>
+                <p class="subheading">Visión general.</p>
 
                 <div class="row">
                     <div class="col-md-4">
@@ -62,22 +63,20 @@
 
             </div>
         </div>
-
-        <footer class="footer-custom">
-            <div class="container">
-                <p class="mb-0">&copy; 2025 Restaurante La Despensa - Todos los derechos reservados .</p>
-            </div>
-        </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
+    <?php
+    include("../footer.php");
+    ?>
+    </div>
     <script>
+        // JavaScript para colapsar la barra lateral en móvil
         document.getElementById('sidebarCollapse').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('active');
         });
     </script>
 </body>
+
+</html>
 
 </html>

@@ -2,14 +2,14 @@
 <html lang="es" class="h-100">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Título Actualizado -->
-    <title>La Despensa - Acceso Personal</title>
+    
+    <?php
+    include("head.php");
+    ?>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="styles.css" type="text/css">
+    <title>Restaurante La Despensa - Acceso Personal</title>
+
+    
 
     <style>
         /* * 1. Configuración de página completa (Sticky Footer) */
@@ -125,10 +125,10 @@
                     <a href="registro.php" class="btn btn-sm btn-primary btn-elegant me-2">
                         <i class="bi bi-person-plus-fill me-1"></i> Registrarse
                     </a>
-                    <a href="#" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
+                    <a href="quienessomos.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-info-circle me-1"></i> Quiénes Somos
                     </a>
-                    <a href="#" class="btn btn-sm btn-outline-secondary btn-elegant">
+                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant">
                         <i class="bi bi-geo-alt me-1"></i> Ubicación
                     </a>
                 </nav>
@@ -179,14 +179,11 @@
         </div>
     </main>
 
-    <footer class="minimal-footer mt-auto">
-        <div class="container text-center">
-            <!-- Nombre del restaurante actualizado -->
-             <p class="text-muted small mb-0">&copy; 2025 Restaurante La Despensa. Todos los derechos estan reservados.</p>
-        </div>
-    </footer>
+   <?php
+    include("footer.php");
+   ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
 </body>
 
 </html>
