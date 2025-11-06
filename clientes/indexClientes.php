@@ -20,28 +20,10 @@
         ?>
 
         <div class="wrapper">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Gestión Restaurante</h3>
-                </div>
-                <ul class="list-unstyled components sidebar-items">
-                    <li>
-                        <a href="indexClientes.php" class="nav-link active">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="mesas.php" class="nav-link active">Reservar Mesa</a>
-                    </li>
-                    <li>
-                        <a href="carta.php" class="nav-link">Carta Restaurante</a>
-                    </li>
-                    <li>
-                        <a href="modperfil.php" class="nav-link">Mi Perfil</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link">Reportes</a>
-                    </li>
-                </ul>
-            </nav>
+            
+        <?php
+        include("navbar.php");
+        ?>
 
             <div id="content">
             <div class="container-fluid">
@@ -83,7 +65,7 @@
 
         <footer class="footer-custom">
             <div class="container">
-                <p class="mb-0">&copy; 2025 Mi Restaurante - Gestión Interna.</p>
+                <p class="mb-0">&copy; 2025 Restaurante La Despensa - Todos los derechos reservados .</p>
             </div>
         </footer>
     </div>

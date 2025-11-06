@@ -63,21 +63,21 @@
         }
 
         /* 4. Estilo "Botones Elegantes" */
-       .btn-elegant {
+        .btn-elegant {
             border-radius: 50px;
             font-weight: 500;
         }
 
         /* 5. Icono de logo placeholder */
         .logo-icon {
-             height: 90px;
+            height: 90px;
             /* Ajusta este valor al tamaño que desees */
             width: 90px;
             padding: 0;
             margin: 0;
         }
 
-        .logo{
+        .logo {
             height: 60px;
             /* Ajusta este valor al tamaño que desees */
             width: auto;
@@ -88,11 +88,11 @@
             color: #212529;
         }
 
-         .fondo {
+        .fondo {
             background-image: url('img/restauLD.jpg');
             background-repeat: no-repeat;
             background-size: cover;
-          
+
 
         }
     </style>
@@ -155,55 +155,74 @@
                             <p class="text-muted">Únete para gestionar tus reservas y pedidos.</p>
                         </div>
 
-                        <form action="tu-script-de-registro.php" method="POST">
-
-                            <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="floatingdni" name="dni" placeholder="600123123">
-                                <label for="floatingdni"><i class="bi bi-wallet me-2"></i>DNI/NIF</label>
-                            </div>
-
+                        <form action="altas.php" method="POST">
                             <div class="row g-2 mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingNombre" name="nombre" placeholder="Nombre" required>
-                                        <label for="floatingNombre"><i class="bi bi-person me-2"></i>Nombre</label>
+                                        <input type="text" class="form-control" id="dni" name="dni" placeholder="600123123"required>
+                                        <label for="dni"><i class="bi bi-wallet me-2"></i>DNI/NIF</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingApellidos" name="apellidos" placeholder="Apellidos" required>
-                                        <label for="floatingApellidos">Apellidos</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="600123123">
+                                        <label for="telefono"><i class="bi bi-phone me-2"></i>Teléfono (Opcional)</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                                        <label for="nombre"><i class="bi bi-person me-2"></i>Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos">
+                                        <label for="apellidos"><i class="bi bi-person-add me-2"></i>Apellidos</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+                                        <label for="email"><i class="bi bi-envelope me-2"></i>Email</label>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="c/huertano,12">
+                                        <label for="direccion"><i class="bi bi-house me-2"></i>Direccion</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating ">
+                                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" required>
+                                        <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Repetir Contraseña" required>
+                                        <label for="pass2"><i class="bi bi-shield-check me-2"></i>Repetir Contraseña</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="terminos" required>
+                                        <label class="form-check-label small text-muted" for="terminos">
+                                            He leído y acepto los <a href="terminos.php">Términos de Uso</a> y la <a href="privacidad.php">Política de Privacidad</a>.
+                                        </label>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="nombre@ejemplo.com" required>
-                                <label for="floatingEmail"><i class="bi bi-envelope me-2"></i>Email</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="floatingTelefono" name="telefono" placeholder="600123123">
-                                <label for="floatingTelefono"><i class="bi bi-phone me-2"></i>Teléfono (Opcional)</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Contraseña" required>
-                                <label for="floatingPassword"><i class="bi bi-lock me-2"></i>Contraseña</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPasswordConfirm" name="password_confirm" placeholder="Repetir Contraseña" required>
-                                <label for="floatingPasswordConfirm"><i class="bi bi-shield-check me-2"></i>Repetir Contraseña</label>
-                            </div>
-
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" value="" id="checkTerminos" required>
-                                <label class="form-check-label small text-muted" for="checkTerminos">
-                                    He leído y acepto los <a href="terminos.php">Términos de Uso</a> y la <a href="privacidad.php">Política de Privacidad</a>.
-                                </label>
-                            </div>
-
                             <button class="w-100 btn btn-lg btn-primary" type="submit">
                                 <i class="bi bi-person-plus-fill me-2"></i> Crear Cuenta
                             </button>
@@ -222,7 +241,7 @@
 
     <footer class="minimal-footer mt-auto">
         <div class="container text-center">
-            <p class="text-muted small mb-0">&copy; 2025 Gestión Restaurante. Todos los derechos estan reservados.</p>
+            <p class="text-muted small mb-0">&copy; 2025 Restaurante La Despensa. Todos los derechos estan reservados.</p>
         </div>
     </footer>
 

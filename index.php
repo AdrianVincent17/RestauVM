@@ -158,13 +158,13 @@
                             <div class="form-floating mb-3">
                                 <input type:="dni" class="form-control" id="dni" name="dni"
                                     placeholder="12345678X" required>
-                                <label for="dni"><i class="bi bi-person-vcard"></i> DNI</label>
+                                <label for="dni"><i class="bi bi-person-vcard me-2"></i>DNI</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="password" name="password"
+                                <input type="password" class="form-control" id="pass" name="pass"
                                     placeholder="Contraseña" required>
-                                <label for="password"><i class="bi bi-lock me-2"></i>Contraseña</label>
+                                <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
                             </div>
 
                             <button class="w-100 btn btn-lg btn-primary" type="submit">
@@ -182,7 +182,7 @@
     <footer class="minimal-footer mt-auto">
         <div class="container text-center">
             <!-- Nombre del restaurante actualizado -->
-             <p class="text-muted small mb-0">&copy; 2025 Gestión Restaurante. Todos los derechos estan reservados.</p>
+             <p class="text-muted small mb-0">&copy; 2025 Restaurante La Despensa. Todos los derechos estan reservados.</p>
         </div>
     </footer>
 

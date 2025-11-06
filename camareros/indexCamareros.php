@@ -149,19 +149,13 @@
                         <a href="index.html" class="nav-link">Inicio</a>
                     </li>
                     <li>
-                        <a href="users.html" class="nav-link active">Usuarios (Camareros, Encargados)</a>
-                    </li>
-                    <li>
                         <a href="#" class="nav-link">Gestión de Mesas</a>
                     </li>
                     <li>
                         <a href="#" class="nav-link">Gestión de Pedidos</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">Menú del Día</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link">Reportes</a>
+                        <a href="carta.php" class="nav-link active">Carta Restaurante</a>
                     </li>
                 </ul>
             </nav>

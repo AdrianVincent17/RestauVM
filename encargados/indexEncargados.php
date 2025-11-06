@@ -18,26 +18,9 @@
     ?>
 
     <div class="wrapper">
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Gestión Restaurante</h3>
-            </div>
-            <ul class="list-unstyled components sidebar-items">
-                <li>
-                    <a href="indexEncargados.php" class="nav-link active">Inicio</a>
-                </li>
-                <li>
-                    <a href="modperfil.php" class="nav-link">Gestion de Personal</a>
-                </li>
-                <li>
-                    <a href="carta.php" class="nav-link">Carta</a>
-                </li>
-                <li>
-                    <a href="estadisticas.php" class="nav-link">Estadisticas</a>
-                </li>
-               
-            </ul>
-        </nav>
+        <?php
+        include("navbar.php");
+        ?>
 
         <div id="content">
             <div class="container-fluid">

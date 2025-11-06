@@ -45,48 +45,60 @@
 
             <div id="content">
                 <div class="container-fluid">
-                    <h1 class="page-heading">Gestión de Usuarios</h1>
-                    <p class="subheading">Administra los perfiles de tu equipo.</p>
+                    <h1 class="page-heading">Mi perfil</h1>
+                    <p class="subheading">Gestiona tu información.</p>
 
-                    <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">
-                            Añadir Nuevo Usuario
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="inputName" class="form-label">Nombre Completo</label>
-                                        <input type="text" class="form-control" id="inputName"
-                                            placeholder="Ej: Juan Pérez" required>
+                    <p>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                            Toggle con collapse
+                        </button>
+                    </p>
+                    <div style="min-height: 120px;">
+                        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                            <div class="card card-body" style="width: 300px;">
+                                <div class="card mb-4">
+                                    <div class="card-header bg-primary text-white">
+                                        Añadir Nuevo Usuario
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="inputEmail" class="form-label">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="inputEmail"
-                                            placeholder="ejemplo@restaurante.com" required>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="inputName" class="form-label">Nombre Completo</label>
+                                                    <input type="text" class="form-control" id="inputName"
+                                                        placeholder="Ej: Juan Pérez" required>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="inputEmail" class="form-label">Correo Electrónico</label>
+                                                    <input type="email" class="form-control" id="inputEmail"
+                                                        placeholder="ejemplo@restaurante.com" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="selectRole" class="form-label">**Rol en el Restaurante**</label>
+                                                    <select class="form-select" id="selectRole" required>
+                                                        <option selected disabled>Selecciona un rol</option>
+                                                        <option value="manager">Encargado/Administrador</option>
+                                                        <option value="waiter">Camarero</option>
+                                                        <option value="kitchen">Personal de Cocina</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="inputPassword" class="form-label">Contraseña</label>
+                                                    <input type="password" class="form-control" id="inputPassword" required>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-success">Registrar Nuevo Usuario</button>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="selectRole" class="form-label">**Rol en el Restaurante**</label>
-                                        <select class="form-select" id="selectRole" required>
-                                            <option selected disabled>Selecciona un rol</option>
-                                            <option value="manager">Encargado/Administrador</option>
-                                            <option value="waiter">Camarero</option>
-                                            <option value="kitchen">Personal de Cocina</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="inputPassword" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="inputPassword" required>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-success">Registrar Nuevo Usuario</button>
-                            </form>
+
+                            </div>
                         </div>
                     </div>
-
-                    <div class="card">
+                    
+                        <div class="card">
                         <div class="card-header bg-secondary text-white">
                             Lista de Usuarios Registrados
                         </div>
@@ -137,16 +149,16 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer class="footer-custom">
-            <div class="container">
-                <p class="mb-0">&copy; 2025 Mi Restaurante - Gestión Interna.</p>
-            </div>
-        </footer>
+    <footer class="footer-custom">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Mi Restaurante - Gestión Interna.</p>
+        </div>
+    </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
