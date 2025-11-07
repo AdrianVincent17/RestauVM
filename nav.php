@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Bienvenido, <span><?php echo $_SESSION['nombre'];?></span></a>
+                            <a class="nav-link" href="#">Bienvenido/a, <span><?php echo $_SESSION['nombre'];?></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-danger ms-2" href="../logout.php">Cerrar Sesión</a>

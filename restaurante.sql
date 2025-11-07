@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2025 a las 04:07:19
+-- Tiempo de generación: 07-11-2025 a las 19:17:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -144,11 +144,13 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`dni`, `nombre`, `apellidos`, `rol`, `email`, `telefono`, `direccion`, `pass`, `estado`) VALUES
-('12345678A', 'Adrian', 'Vicente', 0, 'adrianvincent17@gmail.com', '685247480', 'albeniz,26', '1234', 0),
-('12345678B', 'Lucia', 'Valderde Marin', 0, 'Lucy1994@gmail.com', '687658912', 'C/Gutierrez Mellado, 14', '1234', 0),
+('12345678A', 'Adrian', 'Vicente', 2, 'adrianvincent17@gmail.com', '685247480', 'albeniz,26', '1234', 0),
+('12345678B', 'Lucia', 'Valderde Marin', 0, 'Lucy1994@gmail.com', '687658912', 'C/Gutierrez Mellado, 14', '1234', 1),
 ('12345678C', 'Zaraida', 'Aviles Saez', 1, 'sarasaez1993@gmail.com', '689283151', 'C/Cabo Salou, 41', '1234', 0),
-('12345678D', 'Alvaro', 'López Martínez', 0, 'Alefesa@ladespensa.com', '684978521', 'C/California, 35', '1234', 1),
-('12345678E', 'Adrian', 'Vicente López', 2, 'adrianvincent17@gmail.com', '685247480', 'C/Albeniz, 26', '1234', 0);
+('12345678D', 'Alvaro', 'López Martínez', 0, 'Alefesa@ladespensa.com', '684978521', 'C/California, 35', '1234', 0),
+('12345678E', 'Adrian', 'Vicente López', 2, 'adrianvincent17@gmail.com', '685247480', 'C/Albeniz, 26', '1', 0),
+('12346578F', 'Adrian', 'Vicente', 0, 'av@ladespensa.com', '654789132', 'albeniz,26', '1234', 0),
+('12346578G', 'Adrian', 'Vicente', 2, 'adrianvincent17@gmail.com', '685247480', 'albeniz,26', '1', 0);
 
 --
 -- Índices para tablas volcadas

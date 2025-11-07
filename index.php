@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    ?>
+session_start();
+?>
 <!doctype html>
 <html lang="es" class="h-100">
 
@@ -159,7 +159,7 @@
                         <form action="login.php" method="POST">
 
                             <div class="form-floating mb-3">
-                                <input type:="text" class="form-control" id="dni" name="dni"
+                                <input type="text" class="form-control" id="dni" name="dni"
                                     placeholder="12345678X" required>
                                 <label for="dni"><i class="bi bi-person-vcard me-2"></i>DNI</label>
                             </div>
@@ -169,11 +169,12 @@
                                     placeholder="Contraseña" required>
                                 <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
 
+
+
                                 <?php
-                           
                                 if (isset($_SESSION['error_login'])) {
-                                    echo '<p class="text-danger mt-2">' . $_SESSION['error_login'] . '</p>';
-                                    unset($_SESSION['error_login']); // limpiar para que no quede
+                                    echo '<p style="color:red; margin-top:8px;">' . $_SESSION['error_login'] . '</p>';
+                                    unset($_SESSION['error_login']);
                                 }
                                 ?>
                             </div>
