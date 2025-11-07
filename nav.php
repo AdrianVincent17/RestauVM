@@ -4,7 +4,7 @@
                 <button type="button" id="sidebarCollapse" class="btn btn-info d-md-none me-3">
                     <i class="fa-thin fa-bars"></i> <span>Menu</span>
                 </button>
-                <div class="col-auto"><a class="navbar-brand text-dark" href="indexClientes.php"><img src="../img/LaDespensalogo.png" alt="LaDespensalogo" class="logo"></a></div>
+                <div class="col-auto"><a class="navbar-brand text-dark" href="quienessomos.php"><img src="../img/LaDespensalogo.png" alt="LaDespensalogo" class="logo"></a></div>
                 <div class="col">
                     <h5>Restaurante La Despensa</h5>
                 </div>

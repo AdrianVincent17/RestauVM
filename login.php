@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("conexion.php"); 
+include("conexion.php");
 
 // Si ya hay sesión, redirigir según rol
 if (isset($_SESSION['rol'])) {
@@ -26,15 +26,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Consulta simple: buscar usuario con dni y pass (texto plano)
-    $consulta = "SELECT dni, nombre, rol FROM usuario WHERE dni = '$dni' AND pass = '$pass' LIMIT 1";
+    $consulta = "SELECT * FROM usuario WHERE dni = '$dni' AND pass = '$pass' LIMIT 1";
     $result = mysqli_query($conn, $consulta);
 
     if ($result && mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_array($result);
+
+
+        //Comprobamos que el usuario no este bloqueado
+        if ($row['estado'] == 1) {
+              $_SESSION['error_login'] = "Tu cuenta está bloqueada. Contacta con un encargado.";
+            header("Location:index.php");
+            exit();
+        }
+    
         // Crear sesión
         $_SESSION['dni'] = $row['dni'];
-        $_SESSION['rol'] = $row['rol'];
         $_SESSION['nombre'] = $row['nombre'];
+        $_SESSION['rol'] = $row['rol'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['telefono'] = $row['telefono'];
+        $_SESSION['direccion'] = $row['direccion'];
+        $_SESSION['apellidos'] = $row['apellidos'];
+        $_SESSION['estado'] = $row['estado'];
+        $_SESSION['pass'] = $row['pass'];
+
+
 
         // Redirigir según rol
         switch ($row['rol']) {
@@ -60,14 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Rol no reconocido.";
                 exit();
         }
-    } else {
-        // Credenciales incorrectas
-        $error = "DNI o contraseña incorrectos.";
+    }else {
+        $_SESSION['error_login'] = "Usuario o contraseña incorrectos.";
+        header("Location: index.php");
+        exit();
     }
-}
 
-if (isset($error)) {
-    echo "<p style='color:red; text-align:center;'>$error</p>";
 }
-
 ?>

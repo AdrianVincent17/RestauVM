@@ -173,5 +173,52 @@
      margin-top: auto;
      /* asegura que se mantenga abajo */
  }
+  
+
+  /* 4. Estilo "Botones Elegantes" */
+        .btn-elegant {
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        /* 5. Icono de logo placeholder */
+        .logo-icon {
+            height: 90px;
+            /* Ajusta este valor al tamaño que desees */
+            width: 90px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo {
+            height: 60px;
+            /* Ajusta este valor al tamaño que desees */
+            width: auto;
+        }
+
+        /* 6. Estilo específico para el logo del navbar */
+        .navbar-logo-text {
+            color: #212529;
+        }
+
+        .fondo {
+            background-image: url('img/restauLD.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+        }
+
+        /* 3. Estilos de Header y Footer */
+        header.minimal-header {
+            background-color: #ffffffff;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
+            padding: 1rem 0;
+            /* z-index para estar sobre el contenido */
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-bloqueo { width: 120px; text-align: center; }
 
 

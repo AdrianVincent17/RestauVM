@@ -1,15 +1,18 @@
+<?php
+    session_start();
+    ?>
 <!doctype html>
 <html lang="es" class="h-100">
 
 <head>
-    
+
     <?php
     include("head.php");
     ?>
 
     <title>Restaurante La Despensa - Acceso Personal</title>
 
-    
+
 
     <style>
         /* * 1. Configuración de página completa (Sticky Footer) */
@@ -156,15 +159,23 @@
                         <form action="login.php" method="POST">
 
                             <div class="form-floating mb-3">
-                                <input type:="dni" class="form-control" id="dni" name="dni"
+                                <input type:="text" class="form-control" id="dni" name="dni"
                                     placeholder="12345678X" required>
                                 <label for="dni"><i class="bi bi-person-vcard me-2"></i>DNI</label>
                             </div>
 
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-4">
                                 <input type="password" class="form-control" id="pass" name="pass"
                                     placeholder="Contraseña" required>
                                 <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
+
+                                <?php
+                           
+                                if (isset($_SESSION['error_login'])) {
+                                    echo '<p class="text-danger mt-2">' . $_SESSION['error_login'] . '</p>';
+                                    unset($_SESSION['error_login']); // limpiar para que no quede
+                                }
+                                ?>
                             </div>
 
                             <button class="w-100 btn btn-lg btn-primary" type="submit">
@@ -179,11 +190,11 @@
         </div>
     </main>
 
-   <?php
+    <?php
     include("footer.php");
-   ?>
+    ?>
 
- 
+
 </body>
 
 </html>

@@ -22,6 +22,12 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
             </a>
         </li>
 
+         <li>
+            <a href="productos.php" 
+               class="nav-link <?= ($pagina_actual == 'productos.php') ? 'active' : '' ?>">
+               Productos
+            </a>
+        </li>
         <li>
             <a href="carta.php" 
                class="nav-link <?= ($pagina_actual == 'carta.php') ? 'active' : '' ?>">
