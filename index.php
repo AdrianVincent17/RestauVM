@@ -168,9 +168,6 @@ session_start();
                                 <input type="password" class="form-control" id="pass" name="pass"
                                     placeholder="Contraseña" required>
                                 <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
-
-
-
                                 <?php
                                 if (isset($_SESSION['error_login'])) {
                                     echo '<p style="color:red; margin-top:8px;">' . $_SESSION['error_login'] . '</p>';

@@ -13,7 +13,7 @@ if (isset($_POST['dni'])) {
 
     if ($fila) {
         $nuevo_estado = $fila['estado'] == 0 ? 1 : 0;
-        $update = "UPDATE usuario SET estado = $nuevo_estado WHERE dni = '$dni'";
+        $update = "UPDATE usuario SET estado = '$nuevo_estado' WHERE dni = '$dni'";
         mysqli_query($conn, $update);
     }
 }

@@ -4,122 +4,107 @@ proteger(2);
 include("../conexion.php");
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <?php
-
-    include("../head.php");
-    ?>
+    <?php include("../head.php"); ?>
     <title>Carta - Restaurante La Despensa</title>
+    <style>
+        .category h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
 
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
-    <?php
-
-    include("../nav.php");
-
-    ?>
-
+    <?php include("../nav.php"); ?>
 
     <div class="wrapper">
-
-        <?php
-        include("navbar.php");
-        ?>
-
-
+        <?php include("navbar.php"); ?>
 
         <main class="container my-5">
             <h1 class="mb-5">Carta - Restaurante La Despensa</h1>
 
-            <section class="category">
-                <h2>🥗 Entrantes</h2>
-                <div class="menu-item">
-                    <span>Ensalada murciana tradicional</span>
-                    <span class="price">8,50 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Pimientos asados con ventresca</span>
-                    <span class="price">9,00 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Zarangollo murciano (calabacín, huevo y cebolla)</span>
-                    <span class="price">7,50 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Tabla de embutidos de la huerta</span>
-                    <span class="price">11,00 €</span>
-                </div>
-            </section>
-            <section class="category">
-                <h2>🍅 Platos Principales</h2>
-                <div class="menu-item">
-                    <span>Arroz con conejo y caracoles al estilo murciano</span>
-                    <span class="price">13,50 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Chuletas de cordero segureño con guarnición</span>
-                    <span class="price">15,00 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Bacalao al ajo colorao</span>
-                    <span class="price">14,00 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Pisto de la huerta con huevo a baja temperatura</span>
-                    <span class="price">10,00 €</span>
-                </div>
-            </section>
-            <section class="category">
-                <h2>🍮 Postres Caseros</h2>
-                <div class="menu-item">
-                    <span>Paparajotes murcianos</span>
-                    <span class="price">5,00 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Arroz con leche de la abuela</span>
-                    <span class="price">4,50 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Natillas con canela</span>
-                    <span class="price">4,00 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Tarta de limón murciano</span>
-                    <span class="price">5,50 €</span>
-                </div>
-            </section>
-            <section class="category">
-                <h2>🍷 Bebidas</h2>
-                <div class="menu-item">
-                    <span>Vino tinto de Jumilla (copa)</span>
-                    <span class="price">3,00 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Cerveza artesanal murciana</span>
-                    <span class="price">3,50 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Agua mineral</span>
-                    <span class="price">1,50 €</span>
-                </div>
-                <div class="menu-item">
-                    <span>Refrescos variados</span>
-                    <span class="price">2,20 €</span>
-                </div>
-            </section>
+            <?php
+            // --- Obtener categorías ---
+            $categorias = mysqli_query($conn, "SELECT * FROM categoria");
+
+            if (mysqli_num_rows($categorias) > 0) {
+                while ($cat = mysqli_fetch_assoc($categorias)) {
+                    echo "<section class='category mb-4'>";
+
+                    // Contenedor flex para título + filtro
+                    echo "<div class='d-flex justify-content-between align-items-center mb-3'>";
+
+                    // Título con emoji según categoría
+                    if ($cat['nombre'] == 'Entrantes') echo "<h2>🍤 " . $cat['nombre'] . "</h2>";
+                    if ($cat['nombre'] == 'Platos principales') echo "<h2>🍽️ " . $cat['nombre'] . "</h2>";
+                    if ($cat['nombre'] == 'Postres') echo "<h2>🍰 " . $cat['nombre'] . "</h2>";
+                    if ($cat['nombre'] == 'Bebidas') echo "<h2>🍷 " . $cat['nombre'] . "</h2>";
+
+                    // Formulario filtro
+                    echo "<form method='POST'>
+                    <select name='filtro' class='form-select' onchange='this.form.submit()'>
+                    <option selected disabled>Filtrar por...</option>
+                    <option value='nombre'>Nombre</option>
+                    <option value='precio'>Precio</option>
+                    </select>
+                    </form>";
+
+                    echo "</div>"; // fin del contenedor flex
+
+                    // --- Obtener productos activos de esa categoría ---
+                    $productos = mysqli_query($conn, "SELECT * FROM producto WHERE categoria = " . $cat['idcat'] . " AND estado = 1");
+
+                    // Filtrado
+                    if (isset($_POST['filtro'])) {
+                        $filtro = $_POST['filtro'];
+                        switch ($filtro) {
+                            case 'nombre':
+                                $productos = mysqli_query($conn, "SELECT * FROM producto WHERE categoria = " . $cat['idcat'] . " AND estado = 1 ORDER BY nombre ASC;");
+                                break;
+                            case 'precio':
+                                $productos = mysqli_query($conn, "SELECT * FROM producto WHERE categoria = " . $cat['idcat'] . " AND estado = 1 ORDER BY precio ASC;");
+                                break;
+                        }
+                    }
+
+                    // Mostrar productos
+                    if (mysqli_num_rows($productos) > 0) {
+                        while ($prod = mysqli_fetch_assoc($productos)) {
+                            echo "<div class='menu-item'>";
+                            echo "<span>" . $prod['nombre'] . "</span>";
+                            echo "<span class='price'>" . $prod['precio'] . " €</span>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<p class='text-muted'>No hay productos disponibles en esta categoría.</p>";
+                    }
+
+                    echo "</section>";
+                }
+            } else {
+                echo "<p>No hay categorías registradas.</p>";
+            }
+            ?>
         </main>
     </div>
 
-    <?php
-
-    include("../footer.php");
-    ?>
+    <?php include("../footer.php"); ?>
 </body>
 
 </html>

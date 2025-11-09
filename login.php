@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = mysqli_fetch_array($result);
 
 
-        //Comprobamos que el usuario no este bloqueado
+        //Comprobamos que el usuario este bloqueado
         if ($row['estado'] == 1) {
               $_SESSION['error_login'] = "Tu cuenta está bloqueada. Contacta con un encargado.";
             header("Location:index.php");

@@ -1,4 +1,6 @@
+
 <?php
+
 session_start();
 include("conexion.php");
 
@@ -21,7 +23,7 @@ if ($resultado && mysqli_num_rows($resultado) > 0) {
     // Si el estado es 1, el usuario está bloqueado
     if ($fila['estado'] == 1) {
         // Cerrar sesión y bloquear acceso
-        session_unset();
+         session_unset();
         session_destroy();
         $_SESSION['error_login'] = "Tu cuenta está bloqueada. Contacta con un encargado.";
         exit();
@@ -33,4 +35,7 @@ if ($resultado && mysqli_num_rows($resultado) > 0) {
     header("Location:index.php");
     exit();
 }
+
 ?>
+
+

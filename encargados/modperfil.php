@@ -125,7 +125,9 @@ include("../conexion.php");
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            
                                             <?php
+
                                             $consulta = "SELECT dni, nombre, apellidos, email, telefono, rol, estado FROM usuario";
                                             $resultado = mysqli_query($conn, $consulta);
 
