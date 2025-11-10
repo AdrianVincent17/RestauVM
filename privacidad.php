@@ -39,7 +39,7 @@
 
 <body>
    <header class="minimal-header">
-        <!-- CAMBIO CLAVE: container-fluid para full-width y padding responsivo -->
+        <!-- container-fluid para full-width y padding responsivo -->
         <div class="container-fluid px-3 px-md-5">
 
             <!-- Título Centrado en Móvil (SM): Se muestra solo en SM y se oculta en MD y superiores -->
