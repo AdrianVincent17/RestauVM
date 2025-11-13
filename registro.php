@@ -2,38 +2,14 @@
 <html lang="es" class="h-100">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registro - Restaurante La Despensa</title>
+    <?php
+    include("head.php");
+    ?>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Registro - Restaurante La Despensa</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
 
     <style>
-        /* 1. Configuración de página completa (Sticky Footer) */
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            background-color: #f8f9fa;
-            color: #212529;
-        }
-
-        .main-content {
-            flex-grow: 1;
-            /* Permite que este área crezca y empuje el footer */
-            /* Ajustamos align-items a 'start' para que el formulario se vea bien en móvil */
-            /* si crece mucho, y centramos con justify-content */
-            display: flex;
-            align-items: start;
-            justify-content: center;
-        }
-
         /* 2. Estilo de la tarjeta de formulario (renombrada de .login-card) */
         .form-card {
             max-width: 550px;
@@ -45,71 +21,20 @@
             border-radius: 0.75rem;
             box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, .07);
         }
-
-        /* 3. Estilos de Header y Footer */
-        header.minimal-header {
-            background-color: #ffffffff;
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
-            padding: 1rem 0;
-            /* z-index para estar sobre el contenido */
-            position: relative;
-            z-index: 10;
-        }
-
-        footer.minimal-footer {
-            background-color: #ffffffff;
-            padding: 1.5rem 0;
-            border-top: 1px solid #e9ecef;
-        }
-
-        /* 4. Estilo "Botones Elegantes" */
-        .btn-elegant {
-            border-radius: 50px;
-            font-weight: 500;
-        }
-
-        /* 5. Icono de logo placeholder */
-        .logo-icon {
-            height: 90px;
-            /* Ajusta este valor al tamaño que desees */
-            width: 90px;
-            padding: 0;
-            margin: 0;
-        }
-
-        .logo {
-            height: 60px;
-            /* Ajusta este valor al tamaño que desees */
-            width: auto;
-        }
-
-        /* 6. Estilo específico para el logo del navbar */
-        .navbar-logo-text {
-            color: #212529;
-        }
-
-        .fondo {
-            background-image: url('img/restauLD.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-
-
-        }
     </style>
 </head>
 
 <body class="d-flex flex-column h-100 fondo">
     <header class="minimal-header">
-        <!-- CAMBIO CLAVE: container-fluid para full-width y padding responsivo -->
+        <!-- container-fluid para full-width y padding responsivo -->
         <div class="container-fluid px-3 px-md-5">
 
-            <!-- Título Centrado en Móvil (SM): Se muestra solo en SM y se oculta en MD y superiores -->
             <!-- Usamos la clase mb-3 para un espacio inferior -->
             <div class="d-md-none text-center mt-2 mb-3">
                 <h5 class="fw-bold mb-0">Restaurante La Despensa</h5>
             </div>
 
-            <!-- ESTRUCTURA FLEXBOX para ALINEACIÓN: Por defecto (sm) centramos la nav, 
+            <!-- Por defecto (sm) centramos la nav, 
                  en md (y superior) separamos logo y nav a extremos. -->
             <div class="d-flex justify-content-center justify-content-md-between align-items-center">
 
@@ -122,7 +47,7 @@
                     <h5 class="mb-0 fw-bold">Restaurante La Despensa</h5>
                 </a>
 
-                <!-- DERECHA: Botones de Navegación -->
+                <!-- Botones de Navegación -->
                 <!-- d-flex para poner los botones en línea, sin más clases de visibilidad aquí, 
                      ya que es el único elemento visible en SM. -->
                 <nav class="d-flex">
@@ -132,8 +57,11 @@
                     <a href="quienessomos.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-info-circle me-1"></i> Quiénes Somos
                     </a>
-                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-geo-alt me-1"></i> Ubicación
+                    </a>
+                    <a href="carta.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                        <i class="bi bi-book me-1"></i> Carta
                     </a>
                 </nav>
             </div>
@@ -159,7 +87,7 @@
                             <div class="row g-2 mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="dni" name="dni" placeholder="600123123"required>
+                                        <input type="text" class="form-control" id="dni" name="dni" placeholder="600123123" required>
                                         <label for="dni"><i class="bi bi-wallet me-2"></i>DNI/NIF</label>
                                     </div>
                                 </div>
@@ -239,13 +167,10 @@
         </div>
     </main>
 
-    <footer class="minimal-footer mt-auto">
-        <div class="container text-center">
-            <p class="text-muted small mb-0">&copy; 2025 Restaurante La Despensa. Todos los derechos estan reservados.</p>
-        </div>
-    </footer>
+    <?php
+    include("footer.php");
+    ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

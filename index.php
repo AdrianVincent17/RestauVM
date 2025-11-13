@@ -131,8 +131,11 @@ session_start();
                     <a href="quienessomos.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-info-circle me-1"></i> Quiénes Somos
                     </a>
-                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-geo-alt me-1"></i> Ubicación
+                    </a>
+                     <a href="carta.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                        <i class="bi bi-book me-1"></i> Carta
                     </a>
                 </nav>
             </div>

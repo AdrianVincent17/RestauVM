@@ -1,0 +1,218 @@
+ html, body {
+    height: 100%;
+    margin: 0;
+}
+ 
+ body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+     background-color: #f8f9fa;
+     /* Color de fondo claro como Clean Blog */
+     background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+ }
+
+ .wrapper {
+     display: flex;
+     flex: 1;
+ }
+
+ #sidebar {
+     min-width: 250px;
+     max-width: 250px;
+     background: #343a40;
+     /* Color oscuro para la barra lateral */
+     color: #fff;
+     transition: all 0.3s;
+     padding-top: 20px;
+     height: 100vh;
+     /* Altura completa de la ventana */
+     position: sticky;
+     /* Fijo al desplazarse */
+     top: 0;
+ }
+
+ #sidebar.active {
+     margin-left: -250px;
+ }
+
+ #content {
+     width: 100%;
+     padding: 20px;
+     min-height: 100vh;
+     transition: all 0.3s;
+ }
+
+ /* Estilos Clean Blog */
+ .page-heading {
+     font-size: 3rem;
+     font-weight: 700;
+     margin-bottom: 2rem;
+     color: #212529;
+ }
+
+ .subheading {
+     font-size: 1.5rem;
+     font-weight: 300;
+     margin-bottom: 3rem;
+     color: #6c757d;
+ }
+
+ .card {
+     border: none;
+     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+     margin-bottom: 1.5rem;
+ }
+
+ @media (max-width: 768px) {
+     #sidebar {
+         margin-left: -250px;
+         position: fixed;
+         height: 100%;
+         z-index: 1000;
+     }
+
+     #sidebar.active {
+         margin-left: 0;
+     }
+
+     #content {
+         width: 100%;
+     }
+
+     #sidebarCollapse {
+         display: block !important;
+     }
+ }
+
+ .sidebar-header {
+     padding-bottom: 20px;
+     text-align: center;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+     margin-bottom: 20px;
+ }
+
+ .sidebar-header h3 {
+    
+     color: #fff;
+     font-size: 1.5rem;
+ }
+
+ .sidebar-items .nav-link {
+     padding: 10px 15px;
+     color: #adb5bd;
+     font-weight: 500;
+     display: block;
+ }
+
+ .sidebar-items .nav-link:hover {
+     background: #495057;
+     color: #fff;
+     text-decoration: none;
+ }
+
+ .sidebar-items .nav-link.active {
+     background: #0dedfd;
+     /* Color primario de Bootstrap */
+     color: #fff;
+ }
+
+ .logo {
+     width: 60px;
+     padding: auto;
+ }
+
+ main {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+ }
+
+ .category {
+     background-color: rgba(255, 255, 255, 0.1);
+     border-radius: 10px;
+     padding: 1.5rem;
+     margin-bottom: 2rem;
+     width: 100%;
+     max-width: 700px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+ }
+
+ .titulocarta,
+ .titulocarta2 {
+     text-align: center;
+     margin-bottom: 1rem;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+ }
+
+ .menu-item {
+     display: flex;
+     justify-content: space-between;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+     padding: 0.75rem 0;
+ }
+
+ .menu-item:last-child {
+     border-bottom: none;
+ }
+
+ .menu-item span.price {
+     color: #117719ff;
+     font-weight: bold;
+ }
+
+
+ footer.minimal-footer {
+     background-color: #ffffff;
+     padding: 1.5rem 0;
+     border-top: 1px solid #e9ecef;
+     text-align: center;
+     color: #555;
+     width: 100%;
+     margin-top: auto;
+     /* asegura que se mantenga abajo */
+ }
+  
+
+  /* 4. Estilo "Botones Elegantes" */
+        .btn-elegant {
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        /* 5. Icono de logo placeholder */
+        .logo-icon {
+            height: 90px;
+            /* Ajusta este valor al tamaño que desees */
+            width: 90px;
+            padding: 0;
+            margin: 0;
+        }
+        /* 6. Estilo específico para el logo del navbar */
+        .navbar-logo-text {
+            color: #212529;
+        }
+
+        .fondo {
+            background-image: url('img/restauLD.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+        }
+
+        /* 3. Estilos de Header y Footer */
+        header.minimal-header {
+            background-color: #ffffffff;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
+            padding: 1rem 0;
+            /* z-index para estar sobre el contenido */
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-bloqueo { width: 120px; text-align: center; }
+
+

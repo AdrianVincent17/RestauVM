@@ -194,14 +194,6 @@ include("../conexion.php");
         include("../footer.php");
         ?>
     </div>
-
-
-
-    <script>
-        document.getElementById('sidebarCollapse').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-        });
-    </script>
 </body>
 
 </html>

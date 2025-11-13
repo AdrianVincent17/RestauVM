@@ -38,7 +38,7 @@ include("../conexion.php");
                         <div class="card text-center">
                             <div class="card-body">
                                 <h5 class="card-title text-primary">Mesas Ocupadas</h5>
-                                <p class="card-text display-4">8 / 20</p>
+                                <p class="card-text display-4">8 / 10</p>
                                 <p class="card-text text-muted">Mesas atendidas actualmente</p>
                             </div>
                         </div>
@@ -71,12 +71,6 @@ include("../conexion.php");
     include("../footer.php");
     ?>
     </div>
-    <script>
-        // JavaScript para colapsar la barra lateral en móvil
-        document.getElementById('sidebarCollapse').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-        });
-    </script>
 </body>
 
 </html>

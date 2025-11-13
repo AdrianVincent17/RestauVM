@@ -4,6 +4,7 @@ proteger(2);
 include("../conexion.php");
 
 if (isset($_POST['dni'])) {
+    
     $dni = $_POST['dni'];
 
     // Obtener estado actual

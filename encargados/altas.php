@@ -1,7 +1,7 @@
 <?php
-
+include("../seguridad.php");
+proteger(2);
 include("../conexion.php");
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

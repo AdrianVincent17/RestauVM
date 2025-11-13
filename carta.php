@@ -1,25 +1,22 @@
-<?php
-include("../seguridad.php");
-proteger(2);
-include("../conexion.php");
+<?php 
+
+include("conexion.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <?php include("../head.php"); ?>
+    <?php include("head.php"); ?>
+    <link rel="stylesheet" href="styles.css" type="text/css">
     <title>Carta - Restaurante La Despensa</title>
    
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <?php include("../nav.php"); ?>
+     ?>
 
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
-
-
         <main class="container my-5">
             <h1 class="mb-5">Carta - Restaurante La Despensa</h1>
 
@@ -75,6 +72,7 @@ include("../conexion.php");
                             echo "<span class='price'>" . $prod['precio'] . " €</span>";
                             echo "</div>";
                         }
+                        
                     } else {
                         echo "<p class='text-muted'>No hay productos disponibles en esta categoría.</p>";
                     }
@@ -84,11 +82,12 @@ include("../conexion.php");
             } else {
                 echo "<p>No hay categorías registradas.</p>";
             }
+            echo "<a href='index.php' class='btn btn-sm btn-primary'><i class='bi bi-caret-left me-2'></i>Volver</a>";
             ?>
         </main>
     </div>
 
-    <?php include("../footer.php"); ?>
+    <?php include("footer.php"); ?>
 </body>
 
 </html>
