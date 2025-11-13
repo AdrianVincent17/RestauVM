@@ -141,49 +141,44 @@ include("../conexion.php");
                             </tr>
                             <tr class="editable-form-row collapse" id="<?php echo $prod['idprod'] ?>;">
                                 <td colspan="5">
+                                   
+                                        <form action="editarproductos.php" method="POST">
+                                            <div class="row">
+                                                <div class="col-md-5 ms-5 me-5">
+                                                    <input type="text" class="text-center form-control" name="nombre" id="nombre"
+                                                        value="<?php echo $prod['nombre']; ?>" required>
+                                                </div>
+                                                <div class="col-md-2 ms-2 me-3">
+                                                    <select class="text-center form-select" id="cat" name="cat" required>
+                                                        <option value="" selected disabled>categoría</option>
+                                                        <?php
 
-                                    <form action="editarproductos.php" method="POST">
-                                        <div class="row">
-                                            <div class="col-md-5 ms-5 me-5">
-                                                <input type="text" class="text-center form-control" name="nombre" id="nombre"
-                                                    value="<?php echo $prod['nombre']; ?>" required>
-                                            </div>
-                                            <div class="col-md-2 ms-3">
-                                                <select class="text-center form-select" id="cat" name="cat" required>
+                                                        $consultacat = "SELECT * FROM categoria";
 
-                                                    <?php
-                                                    $consultacat = "SELECT * FROM categoria";
-                                                    $categorias = mysqli_query($conn, $consultacat);
-                                                    $row = mysqli_fetch_assoc($categorias);
-                                                    ?>
-                                                    <option value='<?php echo $cat['idcat']; ?>' selected><?php echo $row['nombre']; ?></option>;
+                                                        $categorias = mysqli_query($conn, $consultacat);
 
-
-                                                    <?php
-
-
-                                                    // Esto iteraría sobre las categorías reales si la consulta existiera
-                                                    if ($categorias && mysqli_num_rows($categorias) > 0) {  //si el numero de filas es mayor que 0...
-                                                        while ($cat = mysqli_fetch_assoc($categorias)) {
-                                                            echo "<option value='{$cat['idcat']}'>" . $cat['nombre'] . "</option>";
+                                                        // Esto iteraría sobre las categorías reales si la consulta existiera
+                                                        if ($categorias && mysqli_num_rows($categorias) > 0) {  //si el numero de filas es mayor que 0...
+                                                            while ($cat = mysqli_fetch_assoc($categorias)) {
+                                                                echo "<option value='{$cat['idcat']}'>" . $cat['nombre'] . "</option>";
+                                                            }
                                                         }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <input type="number" class="text-center form-control" name="stock" id="stock" value="<?php echo $prod['stock']; ?>" required>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <input type="text" class="text-center form-control" name="precio" id="precio" value="<?php echo $prod['precio']; ?>">
-                                            </div>
-                                            <div class="col-md-1 ms-5">
-                                                <input type="hidden" id="idprod" name="idprod" value="<?php echo $prod['idprod']; ?>">
-                                                <button type="submit" class="btn btn-md btn-success"><i class="bi bi-check"></i></button>
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <input type="number" class="text-center form-control" name="stock" id="stock" value="<?php echo $prod['stock']; ?>" required>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <input type="text" class="text-center form-control" name="precio" id="precio" value="<?php echo $prod['precio']; ?>">
+                                                </div>
+                                                <div class="col-md-1 ms-5">
+                                                    <input type="hidden" id="idprod" name="idprod" value="<?php echo $prod['idprod'];?>">
+                                                    <button type="submit" class="btn btn-md btn-success"><i class="bi bi-check"></i></button>
 
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
     </div>
 
 <?php
