@@ -14,7 +14,7 @@ include("conexion.php");
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-     ?>
+    
 
     <div class="wrapper">
         <main class="container my-5">

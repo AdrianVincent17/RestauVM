@@ -3,7 +3,19 @@
 $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 ?>
 
-<nav id="sidebar">
+<!-- Botón de colapso visible solo en móviles -->
+<div class="d-md-none text-end mb-3">
+    <button class="btn btn-info" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#sidebar"
+            aria-expanded="false" 
+            aria-controls="sidebar">
+        <i class="bi bi-list">Menu</i>
+    </button>
+</div>
+
+<nav id="sidebar" class="collapse d-md-block">
     <div class="sidebar-header">
         <h3>Gestión Restaurante</h3>
     </div>

@@ -172,11 +172,11 @@ include("../conexion.php");
                                                 <div class="col-md-1">
                                                     <input type="text" class="text-center form-control" name="precio" id="precio" value="<?php echo $prod['precio']; ?>">
                                                 </div>
-                                                <div class="col-md-1 ms-5">
-                                                    <input type="hidden" id="idprod" name="idprod" value="<?php echo $prod['idprod'];?>">
-                                                    <button type="submit" class="btn btn-md btn-success"><i class="bi bi-check"></i></button>
+                                                    <div class="col-md-1 ms-5">
+                                                        <input type="hidden" id="idprod" name="idprod" value="<?php echo $prod['idprod'];?>">
+                                                        <button type="submit" class="btn btn-md btn-success"><i class="bi bi-check"></i></button>
 
-                                                </div>
+                                                    </div>
                                             </div>
                                         </form>
     </div>
