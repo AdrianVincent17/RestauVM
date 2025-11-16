@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2025 a las 19:17:48
+-- Tiempo de generación: 16-11-2025 a las 05:23:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -35,6 +35,16 @@ CREATE TABLE `categoria` (
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`idcat`, `nombre`) VALUES
+(1, 'Entrantes'),
+(2, 'Platos principales'),
+(3, 'Postres'),
+(4, 'Bebidas');
+
 -- --------------------------------------------------------
 
 --
@@ -53,7 +63,7 @@ CREATE TABLE `mesa` (
 
 INSERT INTO `mesa` (`nmesa`, `estado`) VALUES
 (1, 0),
-(2, 0),
+(2, 1),
 (3, 0),
 (4, 0),
 (5, 0),
@@ -100,11 +110,78 @@ DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto` (
   `idprod` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `precio` int(11) NOT NULL,
+  `precio` decimal(6,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   `categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`idprod`, `nombre`, `precio`, `stock`, `estado`, `categoria`) VALUES
+(1, 'Ensalada murciana (tomate, cebolla, aceitunas y bacalao desmigado)', 7.50, 30, 0, 1),
+(2, 'Zarangollo murciano (revuelto de calabacín, cebolla y huevo)', 7.50, 42, 0, 1),
+(3, 'Pimientos asados con ventresca', 9.00, 33, 0, 1),
+(4, 'Ensalada de perdiz escabechada', 11.00, 30, 0, 1),
+(5, 'Pastel de carne murciano (hojaldre relleno de carne, chorizo y huevo)', 4.50, 47, 0, 1),
+(6, 'Michirones (habas secas guisadas con chorizo y panceta)', 6.50, 39, 0, 1),
+(7, 'Queso al pimentón de Yecla', 5.50, 44, 0, 1),
+(8, 'Croquetas de jamón ibérico', 7.00, 41, 0, 1),
+(9, 'Pan con tomate y aceite de la huerta', 3.50, 49, 0, 1),
+(10, 'Ensalada templada de alcachofas con jamón', 9.50, 28, 0, 1),
+(11, 'Tabla de embutidos murcianos (longaniza, morcón, salchicha seca)', 10.00, 37, 0, 1),
+(12, 'Revuelto de setas con ajos tiernos', 8.00, 43, 0, 1),
+(13, 'Calabacines rellenos de verduras', 8.50, 40, 0, 1),
+(14, 'Buñuelos de bacalao fresco', 5.70, 32, 0, 2),
+(15, 'Tostada de sobrasada con miel de azahar', 5.00, 45, 0, 1),
+(16, 'Arroz con conejo y caracoles al estilo murciano', 13.50, 33, 0, 2),
+(17, 'Arroz caldero del Mar Menor (con pescado y alioli)', 14.00, 40, 0, 2),
+(18, 'Guiso de trigo con legumbres y embutido', 12.00, 28, 0, 2),
+(19, 'Cordero segureño al horno con patatas', 15.50, 24, 0, 2),
+(20, 'Bacalao al ajo colorao', 13.00, 31, 0, 2),
+(21, 'Pollo al ajillo con vino blanco', 11.00, 44, 0, 2),
+(22, 'Pisto de la huerta con huevo a baja temperatura', 10.00, 39, 0, 2),
+(23, 'Conejo al tomillo', 14.00, 35, 0, 2),
+(24, 'Lomo a la murciana (con pimientos y tomate frito)', 11.50, 46, 0, 2),
+(25, 'Chuletas de cordero segureño con guarnición', 15.00, 38, 0, 2),
+(26, 'Gachas murcianas con tropezones', 10.00, 41, 0, 2),
+(27, 'Albóndigas de chato murciano con salsa casera', 12.50, 43, 0, 2),
+(28, 'Merluza en salsa verde con almejas', 13.50, 36, 0, 2),
+(29, 'Estofado de ternera con verduras de temporada', 12.00, 29, 0, 2),
+(30, 'Huevos rotos con jamón y patatas de la huerta', 9.50, 48, 0, 2),
+(31, 'Paparajotes murcianos (hojas de limón rebozadas en azúcar y canela)', 4.50, 37, 0, 3),
+(32, 'Arroz con leche de la abuela', 4.00, 40, 0, 3),
+(33, 'Natillas caseras con canela', 3.80, 45, 0, 3),
+(34, 'Tocino de cielo', 4.20, 41, 0, 3),
+(35, 'Tarta de limón murciano', 5.00, 33, 0, 3),
+(36, 'Flan de huevo al baño maría', 3.50, 48, 0, 3),
+(37, 'Helado de turrón artesanal', 4.50, 43, 0, 3),
+(38, 'Pan de Calatrava', 4.00, 28, 0, 3),
+(39, 'Torrijas con miel de romero', 4.50, 31, 0, 3),
+(40, 'Leche frita con azúcar y canela', 4.00, 34, 0, 3),
+(41, 'Tarta de queso con mermelada de higo', 5.50, 46, 0, 3),
+(42, 'Mousse de limón del Valle de Ricote', 4.80, 29, 0, 3),
+(43, 'Bizcocho borracho de Jumilla', 4.50, 42, 0, 3),
+(44, 'Peras al vino tinto', 4.50, 25, 0, 3),
+(45, 'Brownie de chocolate con nueces', 5.00, 37, 0, 3),
+(46, 'Vino tinto de Jumilla (copa)', 3.00, 40, 0, 4),
+(47, 'Vino blanco de Yecla (copa)', 3.00, 43, 0, 4),
+(48, 'Vino rosado de Bullas (copa)', 3.00, 35, 0, 4),
+(49, 'Botella vino tinto Jumilla', 12.00, 22, 0, 4),
+(50, 'Cerveza artesanal murciana', 3.50, 50, 0, 4),
+(51, 'Cerveza sin alcohol', 3.00, 45, 0, 4),
+(52, 'Agua mineral', 1.50, 46, 0, 4),
+(53, 'Refrescos variados', 2.20, 47, 0, 4),
+(54, 'Zumo natural de naranja', 2.80, 33, 0, 4),
+(55, 'Mosto de uva blanca', 2.50, 44, 0, 4),
+(56, 'Sangría casera', 4.50, 38, 0, 4),
+(57, 'Clara con limón', 2.80, 41, 0, 4),
+(58, 'Café solo', 1.50, 49, 0, 4),
+(59, 'Café bombón murciano (con leche condensada)', 2.00, 42, 0, 4),
+(60, 'Té de hierbabuena', 2.20, 39, 0, 4),
+(61, 'Chupito de hierbas Ruavieja ', 1.00, 25, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -117,8 +194,16 @@ CREATE TABLE `reserva` (
   `dni` varchar(9) NOT NULL,
   `nmesa` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `comensales` int(11) NOT NULL
+  `comensales` int(11) NOT NULL,
+  `comentarios` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`dni`, `nmesa`, `fecha`, `comensales`, `comentarios`) VALUES
+('12345678C', 2, '2025-11-16 04:06:10', 4, 'Tengo alergia a los mosquitos');
 
 -- --------------------------------------------------------
 
@@ -144,13 +229,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`dni`, `nombre`, `apellidos`, `rol`, `email`, `telefono`, `direccion`, `pass`, `estado`) VALUES
-('12345678A', 'Adrian', 'Vicente', 2, 'adrianvincent17@gmail.com', '685247480', 'albeniz,26', '1234', 0),
-('12345678B', 'Lucia', 'Valderde Marin', 0, 'Lucy1994@gmail.com', '687658912', 'C/Gutierrez Mellado, 14', '1234', 1),
-('12345678C', 'Zaraida', 'Aviles Saez', 1, 'sarasaez1993@gmail.com', '689283151', 'C/Cabo Salou, 41', '1234', 0),
-('12345678D', 'Alvaro', 'López Martínez', 0, 'Alefesa@ladespensa.com', '684978521', 'C/California, 35', '1234', 0),
-('12345678E', 'Adrian', 'Vicente López', 2, 'adrianvincent17@gmail.com', '685247480', 'C/Albeniz, 26', '1', 0),
-('12346578F', 'Adrian', 'Vicente', 0, 'av@ladespensa.com', '654789132', 'albeniz,26', '1234', 0),
-('12346578G', 'Adrian', 'Vicente', 2, 'adrianvincent17@gmail.com', '685247480', 'albeniz,26', '1', 0);
+('12345678A', 'Adrian', 'Vicente Lopez', 2, 'AV@ladepensa.com', '685247480', 'C/Albeniz,26', '1234', 0),
+('12345678B', 'Zaraida', 'Aviles Saez', 1, 'ZAS@ladespensa.com', '689235412', 'C/Cabo Salou,41', '1234', 0),
+('12345678C', 'Álvaro', 'Martinez Guiterrez', 0, 'AM@ladespensa.com', '685289523', '', '1234', 0);
 
 --
 -- Índices para tablas volcadas
@@ -213,7 +294,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idcat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
@@ -225,7 +306,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idprod` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idprod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- Restricciones para tablas volcadas
