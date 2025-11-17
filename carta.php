@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+session_start();
 include("conexion.php");
 ?>
 
@@ -10,13 +10,13 @@ include("conexion.php");
     <?php include("head.php"); ?>
     <link rel="stylesheet" href="styles.css" type="text/css">
     <title>Carta - Restaurante La Despensa</title>
-   
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    
-
     <div class="wrapper">
+
+
         <main class="container my-5">
             <h1 class="mb-5">Carta - Restaurante La Despensa</h1>
 
@@ -28,17 +28,17 @@ include("conexion.php");
                 while ($cat = mysqli_fetch_assoc($categorias)) {
                     echo "<section class='category mb-4'>";
 
-                    // Contenedor flex para título + filtro
+                    // justify-content-between empuja el título a la izq y el filtro a la der.
                     echo "<div class='d-flex justify-content-between align-items-center mb-3'>";
 
-                    // Título con emoji según categoría
                     if ($cat['nombre'] == 'Entrantes') echo "<h2>🍤 " . $cat['nombre'] . "</h2>";
                     if ($cat['nombre'] == 'Platos principales') echo "<h2>🍽️ " . $cat['nombre'] . "</h2>";
                     if ($cat['nombre'] == 'Postres') echo "<h2>🍰 " . $cat['nombre'] . "</h2>";
                     if ($cat['nombre'] == 'Bebidas') echo "<h2>🍷 " . $cat['nombre'] . "</h2>";
 
-                    // Formulario filtro
-                    echo "<form method='POST'>
+                    // Formulario filtro - Se quitan las clases w-100 y w-md-auto
+                    // formulario (y el select) solo ocupa su ancho natural.
+                    echo "<form method='POST'> 
                     <select name='filtro' class='form-select' onchange='this.form.submit()'>
                     <option selected disabled>Filtrar por...</option>
                     <option value='nombre'>Nombre</option>
@@ -66,23 +66,40 @@ include("conexion.php");
 
                     // Mostrar productos
                     if (mysqli_num_rows($productos) > 0) {
+
+                        // Contenedor para los items
+                        echo "<div class='list-group list-group-flush'>";
+
                         while ($prod = mysqli_fetch_assoc($productos)) {
-                            echo "<div class='menu-item'>";
+                            // Usamos d-flex justify-content-between para alinear nombre y precio
+                            // Añadimos padding vertical (py-2) para espaciar
+                            echo "<div class='list-group-item d-flex justify-content-between align-items-center p-2 bg-stripped'>";
                             echo "<span>" . $prod['nombre'] . "</span>";
-                            echo "<span class='price'>" . $prod['precio'] . " €</span>";
+                            // Añadimos fw-bold (negrita) al precio para destacarlo
+                            echo "<span class='price fw-bold fs-10px'>" . $prod['precio'] . " €</span>";
                             echo "</div>";
                         }
-                        
+
+                        echo "</div>"; // Fin del list-group
+
+
                     } else {
                         echo "<p class='text-muted'>No hay productos disponibles en esta categoría.</p>";
                     }
 
+
                     echo "</section>";
+                    // Añadimos un separador entre categorías para más claridad
+                    echo "<hr class='my-4'>";
                 }
             } else {
                 echo "<p>No hay categorías registradas.</p>";
             }
-            echo "<a href='index.php' class='btn btn-sm btn-primary'><i class='bi bi-caret-left me-2'></i>Volver</a>";
+
+            
+               echo "<a href='index.php' class='btn btn-primary'><i class='bi bi-arrow-left me-2'></i>Volver</a>"; 
+            
+
             ?>
         </main>
     </div>

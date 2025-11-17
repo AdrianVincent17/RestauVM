@@ -45,40 +45,40 @@ include("../conexion.php");
                                     <div class="card-body">
                                         <form action="altas.php" method="POST">
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="dni" class="form-label">DNI/NIF</label>
                                                     <input type="text" class="form-control" name="dni" id="dni"
                                                         placeholder="Ej: 12346578X" required>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="nombre" class="form-label">Nombre </label>
                                                     <input type="text" class="form-control" name="nombre" id="nombre"
                                                         placeholder="Ej: Juan Pérez" required>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="apellidos" class="form-label">Apellidos</label>
                                                     <input type="text" class="form-control" name="apellidos" id="apellidos"
                                                         placeholder="Ej: López Obrador">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="email" class="form-label">Correo Electrónico</label>
                                                     <input type="email" class="form-control" name="email" id="email"
                                                         placeholder="ejemplo@ladespensa.com" required>
                                                 </div>
 
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="inputName" class="form-label">Telefono</label>
                                                     <input type="tel" class="form-control" name="telefono" id="telefono"
                                                         placeholder="Ej: 658986134">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="direccion" class="form-label">Direccion</label>
                                                     <input type="adress" class="form-control" name="direccion" id="direccion"
                                                         placeholder="Ej: C/Gutierrez Mellado, 12">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="rol" class="form-label">Rol en el Restaurante</label>
                                                     <select class="form-select" id="rol" name="rol" required>
                                                         <option selected disabled>Selecciona un rol</option>
@@ -86,11 +86,11 @@ include("../conexion.php");
                                                         <option value="1">Camarero</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="pass" class="form-label">Contraseña</label>
                                                     <input type="password" class="form-control" name="pass" id="pass" required>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="pass2" class="form-label">Repetir Contraseña</label>
                                                     <input type="password" class="form-control" name="pass2" id="pass2" required>
                                                 </div>
@@ -169,7 +169,7 @@ include("../conexion.php");
                                                     echo "<td>
                                                     <form action='blockuser.php' method='POST' style='display:inline;'>
                                                     <input type='hidden' name='dni' value='{$fila['dni']}'>
-                                                    <button type='submit' class='btn-bloqueo btn btn{$relleno}-{$botonColor} btn-md'>{$botonTexto}</button>
+                                                    <button type-'submit' class='btn-bloqueo btn btn{$relleno}-{$botonColor} btn-md'>{$botonTexto}</button>
                                                     </form>
                                                     </td>";
                                                     echo "</tr>";

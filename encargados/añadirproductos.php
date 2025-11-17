@@ -8,10 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
-    $estado = $_POST['estado'];
+    $estado = 0; //siempre lo meteremos como disponible 
     $categoria = $_POST['cat'];
 
-    $consulta = "INSERT INTO producto(nombre,precio,stock,estado,categoria) VALUES('$nombre','$precio','$stock','$estado','$categoria')";
+    $consulta = "INSERT INTO producto(nombre,precio,stock,estado,categoria) VALUES('$nombre','$precio','$stock',$estado,'$categoria')";
 
 
     mysqli_query($conn, $consulta);

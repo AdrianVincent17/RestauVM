@@ -1,9 +1,19 @@
 <?php
 // Detecta el nombre del archivo actual sin importar la carpeta
 $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+
+// Definimos el enlace por defecto para "Pedidos".
+$pedidopendiente= "pedidos.php";
+
+//Comprobamos si existe un 'idped' en la URL actual.
+if (isset($_GET['idped'])) {
+    //Sí existe... Sobrescribimos la variable para que el enlace
+    //    apunte a este pedido específico.
+    $pedidopendiente = "pedidos.php?idped=" . (int)$_GET['idped'];
+}
+// --- FIN DE LA LÓGICA ---
 ?>
 
-<!-- Botón de colapso visible solo en móviles -->
 <div class="d-md-none text-end mb-3">
     <button class="btn btn-info" 
             type="button" 
@@ -32,16 +42,10 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
                Reservar Mesa
             </a>
         </li>
-         <li>
-            <a href="pedidos.php" 
+        <li>
+            <a href="<?php echo $pedidopendiente; ?>" 
                class="nav-link <?= ($pagina_actual == 'pedidos.php') ? 'active' : '' ?>">
                 Pedidos
-            </a>
-        </li>
-        <li>
-            <a href="carta.php" 
-               class="nav-link <?= ($pagina_actual == 'carta.php') ? 'active' : '' ?>">
-               Carta Restaurante
             </a>
         </li>
         <li>

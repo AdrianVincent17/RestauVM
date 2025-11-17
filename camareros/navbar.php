@@ -21,13 +21,6 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
                Gestión de mesas
             </a>
         </li>
-
-        <li>
-            <a href="carta.php" 
-               class="nav-link <?= ($pagina_actual == 'carta.php') ? 'active' : '' ?>">
-               Gestion de Pedidos
-            </a>
-        </li>
         <li>
             <a href="estadisticas.php" 
                class="nav-link <?= ($pagina_actual == 'estadisticas.php') ? 'active' : '' ?>">

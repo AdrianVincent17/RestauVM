@@ -5,6 +5,8 @@ include("../conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    //obtenemos todos los parametros de la tabla para poder hacer el insert
+    // y dejamos el estado por defecto en disponible 
     $dni = $_POST['dni'];
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];

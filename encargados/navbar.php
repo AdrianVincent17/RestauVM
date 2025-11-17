@@ -39,12 +39,6 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
             </a>
         </li>
         <li>
-            <a href="carta.php" 
-               class="nav-link <?php echo ($pagina_actual == 'carta.php') ? 'active' : ''; ?>">
-               Carta Restaurante
-            </a>
-        </li>
-        <li>
             <a href="estadisticas.php" 
                class="nav-link <?php echo ($pagina_actual == 'estadisticas.php') ? 'active' : ''; ?>">
                Estadísticas

@@ -169,10 +169,6 @@ $mesas = mysqli_query($conn, $consultamesa);
                                 <input type="number" class="form-control" id="reservaPersonas" name="personas" min="1" max="12" value="2" required>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="reservaPeticiones" class="form-label fw-medium">Peticiones especiales</label>
-                            <textarea class="form-control" id="reservaPeticiones" name="peticiones" rows="3" placeholder="Ej: Trona para bebé, alergias..."></textarea>
-                        </div>
                     </div>
 
                     <div class="modal-footer">
