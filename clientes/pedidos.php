@@ -186,6 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // REDIRECCIÓN (Importante: para limpiar el POST)
     // Redirigimos manteniendo el 'idped' y el 'idcat' actual y la vista actual.
+    
     $redirect_url = "Location: " . $_SERVER['PHP_SELF'] . "?idped=" . $idped;
     if ($filtro_idcat !== 0) {
         $redirect_url .= "&idcat=" . $filtro_idcat;
