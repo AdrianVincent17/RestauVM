@@ -27,6 +27,8 @@ include("../head.php");
                     <h1 class="page-heading">Gestión Camareros</h1>
                     <p class="subheading">Administra mesas y pedidos</p>
 
+                    
+
                     <div class="row">
                     <div class="col-md-4">
                         <div class="card text-center">

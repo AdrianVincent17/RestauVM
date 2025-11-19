@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2025 a las 05:23:01
+-- Tiempo de generación: 19-11-2025 a las 02:58:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -62,8 +62,8 @@ CREATE TABLE `mesa` (
 --
 
 INSERT INTO `mesa` (`nmesa`, `estado`) VALUES
-(1, 0),
-(2, 1),
+(1, 1),
+(2, 0),
 (3, 0),
 (4, 0),
 (5, 0),
@@ -83,9 +83,15 @@ CREATE TABLE `pedido` (
   `idped` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   `usuario` varchar(9) NOT NULL,
-  `comentario` varchar(255) NOT NULL,
   `nmesa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pedido`
+--
+
+INSERT INTO `pedido` (`idped`, `estado`, `usuario`, `nmesa`) VALUES
+(1, 0, '12345678C', 1);
 
 -- --------------------------------------------------------
 
@@ -95,10 +101,25 @@ CREATE TABLE `pedido` (
 
 DROP TABLE IF EXISTS `pedido_producto`;
 CREATE TABLE `pedido_producto` (
+  `idline` int(11) NOT NULL,
   `idped` int(11) NOT NULL,
   `idprod` int(11) NOT NULL,
-  `cant` int(11) NOT NULL
+  `cant` int(11) NOT NULL,
+  `comentario` varchar(255) DEFAULT NULL,
+  `servido` tinyint(1) NOT NULL COMMENT '0=pendiente 1=servido'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_producto`
+--
+
+INSERT INTO `pedido_producto` (`idline`, `idped`, `idprod`, `cant`, `comentario`, `servido`) VALUES
+(1, 1, 52, 1, NULL, 0),
+(2, 1, 52, 1, 'asdf', 0),
+(3, 1, 52, 1, 'sadfa', 0),
+(4, 1, 52, 1, 'sin cebolla', 0),
+(5, 1, 52, 1, 'ewrtw', 0),
+(6, 1, 49, 1, 'wwww', 0);
 
 -- --------------------------------------------------------
 
@@ -124,16 +145,16 @@ INSERT INTO `producto` (`idprod`, `nombre`, `precio`, `stock`, `estado`, `catego
 (1, 'Ensalada murciana (tomate, cebolla, aceitunas y bacalao desmigado)', 7.50, 30, 0, 1),
 (2, 'Zarangollo murciano (revuelto de calabacín, cebolla y huevo)', 7.50, 42, 0, 1),
 (3, 'Pimientos asados con ventresca', 9.00, 33, 0, 1),
-(4, 'Ensalada de perdiz escabechada', 11.00, 30, 0, 1),
+(4, 'Ensalada de perdiz escabechada', 11.00, 18, 0, 1),
 (5, 'Pastel de carne murciano (hojaldre relleno de carne, chorizo y huevo)', 4.50, 47, 0, 1),
 (6, 'Michirones (habas secas guisadas con chorizo y panceta)', 6.50, 39, 0, 1),
 (7, 'Queso al pimentón de Yecla', 5.50, 44, 0, 1),
-(8, 'Croquetas de jamón ibérico', 7.00, 41, 0, 1),
+(8, 'Croquetas de jamón ibérico', 7.00, 29, 0, 1),
 (9, 'Pan con tomate y aceite de la huerta', 3.50, 49, 0, 1),
 (10, 'Ensalada templada de alcachofas con jamón', 9.50, 28, 0, 1),
 (11, 'Tabla de embutidos murcianos (longaniza, morcón, salchicha seca)', 10.00, 37, 0, 1),
 (12, 'Revuelto de setas con ajos tiernos', 8.00, 43, 0, 1),
-(13, 'Calabacines rellenos de verduras', 8.50, 40, 0, 1),
+(13, 'Calabacines rellenos de verduras', 8.50, 35, 0, 1),
 (14, 'Buñuelos de bacalao fresco', 5.70, 32, 0, 2),
 (15, 'Tostada de sobrasada con miel de azahar', 5.00, 45, 0, 1),
 (16, 'Arroz con conejo y caracoles al estilo murciano', 13.50, 33, 0, 2),
@@ -169,17 +190,17 @@ INSERT INTO `producto` (`idprod`, `nombre`, `precio`, `stock`, `estado`, `catego
 (46, 'Vino tinto de Jumilla (copa)', 3.00, 40, 0, 4),
 (47, 'Vino blanco de Yecla (copa)', 3.00, 43, 0, 4),
 (48, 'Vino rosado de Bullas (copa)', 3.00, 35, 0, 4),
-(49, 'Botella vino tinto Jumilla', 12.00, 22, 0, 4),
+(49, 'Botella vino tinto Jumilla', 12.00, 11, 0, 4),
 (50, 'Cerveza artesanal murciana', 3.50, 50, 0, 4),
 (51, 'Cerveza sin alcohol', 3.00, 45, 0, 4),
-(52, 'Agua mineral', 1.50, 46, 0, 4),
+(52, 'Agua mineral', 1.50, 8, 0, 4),
 (53, 'Refrescos variados', 2.20, 47, 0, 4),
 (54, 'Zumo natural de naranja', 2.80, 33, 0, 4),
 (55, 'Mosto de uva blanca', 2.50, 44, 0, 4),
 (56, 'Sangría casera', 4.50, 38, 0, 4),
 (57, 'Clara con limón', 2.80, 41, 0, 4),
 (58, 'Café solo', 1.50, 49, 0, 4),
-(59, 'Café bombón murciano (con leche condensada)', 2.00, 42, 0, 4),
+(59, 'Café bombón murciano (con leche condensada)', 2.00, 33, 0, 4),
 (60, 'Té de hierbabuena', 2.20, 39, 0, 4),
 (61, 'Chupito de hierbas Ruavieja ', 1.00, 25, 0, 4);
 
@@ -194,16 +215,15 @@ CREATE TABLE `reserva` (
   `dni` varchar(9) NOT NULL,
   `nmesa` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `comensales` int(11) NOT NULL,
-  `comentarios` varchar(255) NOT NULL
+  `comensales` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `reserva`
 --
 
-INSERT INTO `reserva` (`dni`, `nmesa`, `fecha`, `comensales`, `comentarios`) VALUES
-('12345678C', 2, '2025-11-16 04:06:10', 4, 'Tengo alergia a los mosquitos');
+INSERT INTO `reserva` (`dni`, `nmesa`, `fecha`, `comensales`) VALUES
+('12345678C', 1, '2025-11-19 00:35:50', 3);
 
 -- --------------------------------------------------------
 
@@ -261,8 +281,8 @@ ALTER TABLE `pedido`
 -- Indices de la tabla `pedido_producto`
 --
 ALTER TABLE `pedido_producto`
-  ADD PRIMARY KEY (`idped`,`idprod`),
-  ADD KEY `idped` (`idped`,`idprod`),
+  ADD PRIMARY KEY (`idline`),
+  ADD KEY `idped` (`idped`),
   ADD KEY `idprod` (`idprod`);
 
 --
@@ -300,7 +320,13 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idped` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `pedido_producto`
+--
+ALTER TABLE `pedido_producto`
+  MODIFY `idline` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -323,8 +349,8 @@ ALTER TABLE `pedido`
 -- Filtros para la tabla `pedido_producto`
 --
 ALTER TABLE `pedido_producto`
-  ADD CONSTRAINT `pedido_producto_ibfk_1` FOREIGN KEY (`idped`) REFERENCES `pedido` (`idped`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pedido_producto_ibfk_2` FOREIGN KEY (`idprod`) REFERENCES `producto` (`idprod`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_pp_new_pedido` FOREIGN KEY (`idped`) REFERENCES `pedido` (`idped`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_pp_new_prod` FOREIGN KEY (`idprod`) REFERENCES `producto` (`idprod`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`

@@ -27,7 +27,7 @@ if (isset($_GET['idped'])) {
 
 <nav id="sidebar" class="collapse d-md-block">
     <div class="sidebar-header">
-        <h3>Gestión Restaurante</h3>
+        <h3>Gestión Cliente</h3>
     </div>
     <ul class="list-unstyled components sidebar-items">
         <li>
@@ -43,7 +43,7 @@ if (isset($_GET['idped'])) {
             </a>
         </li>
         <li>
-            <a href="<?php echo $pedidopendiente; ?>" 
+            <a href="<?php echo $pedidopendiente;?>" 
                class="nav-link <?= ($pagina_actual == 'pedidos.php') ? 'active' : '' ?>">
                 Pedidos
             </a>

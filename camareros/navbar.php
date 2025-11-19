@@ -1,11 +1,12 @@
 <?php
+
 // Detecta el nombre del archivo actual sin importar la carpeta
 $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 ?>
 
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h3>Gestión Restaurante</h3>
+        <h3>Gestión Camareros</h3>
     </div>
     <ul class="list-unstyled components sidebar-items">
         <li>
@@ -16,15 +17,22 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         </li>
 
         <li>
-            <a href="modperfil.php" 
-               class="nav-link <?= ($pagina_actual == 'modperfil.php') ? 'active' : '' ?>">
+            <a href="gestionarmesas.php" 
+               class="nav-link <?= ($pagina_actual == 'gestionarmesas.php') ? 'active' : '' ?>">
                Gestión de mesas
             </a>
         </li>
+
         <li>
-            <a href="estadisticas.php" 
-               class="nav-link <?= ($pagina_actual == 'estadisticas.php') ? 'active' : '' ?>">
+            <a href="carta.php" 
+               class="nav-link <?= ($pagina_actual == 'carta.php') ? 'active' : '' ?>">
                Carta de restaurante
+            </a>
+        </li>
+         <li>
+            <a href="cobrar.php" 
+               class="nav-link <?= ($pagina_actual == 'cobrar.php') ? 'active' : '' ?>">
+               Cobrar
             </a>
         </li>
     </ul>

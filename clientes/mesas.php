@@ -17,22 +17,20 @@ $mesas = mysqli_query($conn, $consultamesa);
     ?>
     <title>Restaurante - Reserva Mesa</title>
     <style>
-        .card {
+         .card {
+            width: 50%; /* Ocupa todo el ancho de su columna */
+            aspect-ratio: 0.5 / 0.5; /* Mantiene la forma cuadrada de la tarjeta */
+            display: flex; /* Asegura que los hijos se centren */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 250px;
-            height: 250px;
-            border-radius: 80px;
-            /* NOTA: He cambiado 'border: none;' por un borde sutil 
-              para que los colores de estado destaquen más.
-            */
+            border-radius: 25%; /* Borde más moderno que 80px */
             border: 3px solid transparent;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
-            margin-bottom: 1.5rem;
+            /* Quitamos margin-bottom de aquí ya que lo gestionará el 'g-4' del 'row' */
             transition: all 0.2s ease-in-out;
-            /* <-- Añadido para un efecto suave */
+            cursor: pointer; /* Añadido cursor para indicar interactividad */
         }
-
 
         /* ESTADO: DISPONIBLE */
         .mesa-disponible {
@@ -93,7 +91,7 @@ $mesas = mysqli_query($conn, $consultamesa);
             <div class="container-fluid">
 
 
-                <div class="row ms-5">
+                 <div class="row g-4 justify-content-center">
                     <?php
 
                     if ($mesas && mysqli_num_rows($mesas) > 0) {  //si el numero de filas es mayor que 0...
@@ -109,6 +107,7 @@ $mesas = mysqli_query($conn, $consultamesa);
                             $btn_clase = 'btn-primary'; // Clase base de Bootstrap
 
                             switch ($estadomesa) {
+
                                 case 0: // DISPONIBLE
                                     $clase_estado = 'mesa-disponible';
                                     $texto_btn = 'Reservar';
@@ -124,14 +123,15 @@ $mesas = mysqli_query($conn, $consultamesa);
                             // INICIO DEL ELEMENTO HTML DE LA MESA (DENTRO DEL WHILE)
                     ?>
 
-                            <div class="col-md-4">
+                            <div class="col-12 col-sm-6 col-md-4 m-0">
                                 <div class="card <?php echo $clase_estado; ?>">
-                                    <h5 class="card-title text-primary">Mesa Nº <?php echo $nummesa; ?></h5>
-                                    <p class="card-text display-4">
-                                        <button class="btn <?php echo $btn_clase; ?>" data-bs-toggle="modal" data-bs-target="#modalReserva" data-mesa-id='<?php echo $nummesa; ?>'>
+                                    <h4 class="card-title mb-4">Mesa Nº <?php echo $nummesa; ?></h4>
+                                      <button class="btn btn-md <?php echo $btn_clase; ?>" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#modalReserva" 
+                                                data-mesa-id='<?php echo $nummesa;?>'>
                                             <?php echo $texto_btn; ?>
                                         </button>
-                                    </p>
                                 </div>
                             </div>
 
@@ -141,6 +141,8 @@ $mesas = mysqli_query($conn, $consultamesa);
                     } else {
                         echo "<div class='alert alert warning' role='alert'>No se encontraron mesas en la base de datos</div";
                     }
+
+                    //cierre de la conexion
                     mysqli_close($conn);
                     ?>
                 </div>
@@ -166,7 +168,7 @@ $mesas = mysqli_query($conn, $consultamesa);
                         <div class="row g-2 mb-3">
                             <div class="col-sm-6">
                                 <label for="reservaPersonas" class="form-label fw-medium">Nº de Personas</label>
-                                <input type="number" class="form-control" id="reservaPersonas" name="personas" min="1" max="12" value="2" required>
+                                <input type="number" class="form-control" id="reservaPersonas" name="personas" min="1" max="12" value="1" required>
                             </div>
                         </div>
                     </div>
