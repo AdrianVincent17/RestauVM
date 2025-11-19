@@ -15,6 +15,7 @@ include("../conexion.php");
     <title>Restaurante - Panel de Control</title>
 
 
+
 </head>
 
 <body>
@@ -60,6 +61,7 @@ include("../conexion.php");
                                 <p class="card-text text-muted">Camareros en servicio</p>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
 
