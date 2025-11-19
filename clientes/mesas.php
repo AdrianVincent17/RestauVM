@@ -141,7 +141,6 @@ $mesas = mysqli_query($conn, $consultamesa);
                     } else {
                         echo "<div class='alert alert warning' role='alert'>No se encontraron mesas en la base de datos</div";
                     }
-
                     //cierre de la conexion
                     mysqli_close($conn);
                     ?>
@@ -187,6 +186,7 @@ $mesas = mysqli_query($conn, $consultamesa);
     include("../footer.php");
     ?>
     <script>
+        
         // Script para pasar la info de la mesa al modal
         var modalReserva = document.getElementById('modalReserva');
 

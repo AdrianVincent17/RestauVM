@@ -17,13 +17,7 @@ if (isset($_GET['idped'])) {
     
 }
 
-
-
-
-
 $mpdf = new \Mpdf\Mpdf([]);
-
-
 
 $html = "
 <h4>Titulo principal</h4>
