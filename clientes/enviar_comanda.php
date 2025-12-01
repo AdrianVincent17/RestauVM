@@ -33,8 +33,7 @@ try {
         $cant = (int)$item['cant'];
         $comentario = isset($item['comentario']) ? $item['comentario'] : '';
         // Escapar el comentario para evitar problemas con caracteres especiales
-        $comentario_esc = mysqli_real_escape_string($conn, $comentario);
-
+   
         $sql_insert = "INSERT INTO pedido_producto (idped, idprod, cant, comentario) VALUES ($idped, $idprod, $cant, '$comentario_esc')";
 
         if (!mysqli_query($conn, $sql_insert)) {

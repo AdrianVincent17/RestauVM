@@ -38,6 +38,12 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
                Productos
             </a>
         </li>
+         <li>
+            <a href="categorias.php" 
+               class="nav-link <?php echo ($pagina_actual == 'categorias.php') ? 'active' : ''; ?>">
+               Categorias
+            </a>
+        </li>
         <li>
             <a href="estadisticas.php" 
                class="nav-link <?php echo ($pagina_actual == 'estadisticas.php') ? 'active' : ''; ?>">

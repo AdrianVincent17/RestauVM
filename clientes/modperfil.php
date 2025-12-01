@@ -113,30 +113,6 @@ include("../conexion.php");
                                     </thead>
                                     <tbody>
                                         <?php
-
-                                            if(isset($_SESSION['dni'])){
-
-                                                $dnicliente=$_SESSION['dni'];
-
-                                                $consultausuario=mysqli_query($conn,"SELECT * FROM usuario WHERE dni='$dni'");
-
-                                                $consultapedido="SELECT * FROM pedido WHERE usuario='dni'";
-                                                $fechareserva=mysqli_query($conn,"SELECT fecha FROM reserva WHERE dni='$dni'");
-                                                $resultadopedido=mysqli_query($conn,$consultapedido);
-
-                                                if($resultadopedido&&mysqli_num_rows($resultadopedido)>0){
-                                                    while($rowp=mysqli_fetch_assoc($resultadopedido)){
-                                                        
-                                                        
-                                                    }
-
-                                                }else{
-
-                                                }
-                                                  
-
-                                                
-                                            }
                                             
                                         ?>
                                         <tr>

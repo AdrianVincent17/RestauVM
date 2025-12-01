@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } else {
         $consulta = "INSERT INTO usuario(dni,nombre,apellidos,rol,email,telefono,direccion,pass,estado) VALUES('$dni','$nombre','$apellidos','$rol','$email','$telefono','$direccion','$pass','$estado')";
-        
+
         mysqli_query($conn, $consulta);
         echo mysqli_error($conn);
         mysqli_close($conn);
@@ -29,5 +29,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
-
-?>

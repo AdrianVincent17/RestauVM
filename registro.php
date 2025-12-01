@@ -1,3 +1,39 @@
+<?php
+
+session_start();
+include('conexion.php');
+
+$mensaje='';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $dni = $_POST['dni'];
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $email = $_POST['email'];
+    $telefono = $_POST['telefono'];
+    $direccion = $_POST['direccion'];
+    $pass = $_POST['pass'];
+    $pass2 = $_POST['pass2'];
+    $rol = 0;
+    $estado = 0;
+
+    if ($pass != $pass2) {
+
+        $mensaje="Error, las contraseñas no coinciden";
+        
+    } else {
+        $consulta = "INSERT INTO usuario(dni,nombre,apellidos,rol,email,telefono,direccion,pass,estado) VALUES('$dni','$nombre','$apellidos','$rol','$email','$telefono','$direccion','$pass','$estado')";
+
+        mysqli_query($conn, $consulta);
+        echo mysqli_error($conn);
+        mysqli_close($conn);
+        header("Location:index.php");
+        exit();
+    }
+}
+
+?>
 <!doctype html>
 <html lang="es" class="h-100">
 
@@ -83,17 +119,17 @@
                             <p class="text-muted">Únete para gestionar tus reservas y pedidos.</p>
                         </div>
 
-                        <form action="altas.php" method="POST">
+                        <form action="registro.php" method="POST">
                             <div class="row g-2 mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="dni" name="dni" placeholder="600123123" required>
+                                        <input type="text" class="form-control" maxlength="9" id="dni" name="dni" placeholder="600123123" value="<?php if(isset($_POST['dni'])) echo $dni;?>" required>
                                         <label for="dni"><i class="bi bi-wallet me-2"></i>DNI/NIF</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="600123123">
+                                        <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="12" placeholder="600123123" value="<?php if(isset($_POST['telefono'])) echo $telefono;?>">
                                         <label for="telefono"><i class="bi bi-phone me-2"></i>Teléfono (Opcional)</label>
                                     </div>
                                 </div>
@@ -101,13 +137,13 @@
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php if(isset($_POST['nombre'])) echo $nombre;?>" required>
                                         <label for="nombre"><i class="bi bi-person me-2"></i>Nombre</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos">
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" value="<?php if(isset($_POST['apellidos'])) echo $apellidos;?>">
                                         <label for="apellidos"><i class="bi bi-person-add me-2"></i>Apellidos</label>
                                     </div>
                                 </div>
@@ -115,23 +151,22 @@
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" value="<?php if(isset($_POST['email'])) echo $email;?>" required>
                                         <label for="email"><i class="bi bi-envelope me-2"></i>Email</label>
                                     </div>
                                 </div>
 
 
-
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="c/huertano,12">
+                                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="c/huertano,12" value="<?php if(isset($_POST['direccion'])) echo $direccion;?>">
                                         <label for="direccion"><i class="bi bi-house me-2"></i>Direccion</label>
                                     </div>
 
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating ">
-                                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" required>
+                                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña"  required>
                                         <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
                                     </div>
                                 </div>
@@ -141,6 +176,18 @@
                                         <label for="pass2"><i class="bi bi-shield-check me-2"></i>Repetir Contraseña</label>
                                     </div>
                                 </div>
+
+                                <?php
+
+                                if(isset($mensaje)){
+                                    
+                                echo "<small class='text-danger'>" .$mensaje ."</small>";
+                                unset($mensaje);
+                                
+                                }
+                                ?>
+
+                           
 
                                 <div class="col-md-12">
                                     <div class="form-check mb-3">

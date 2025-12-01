@@ -82,7 +82,7 @@ if ($res_pedido_completo) {
         $items_completos[] = $item;
         $total_pedido_completo += $item['precio'] * $item['cantidad_total'];
     }
-    mysqli_free_result($res_pedido_completo);
+   
 }
 
 
@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     mysqli_data_seek($res_categorias, 0); // Resetear puntero
                                     while ($cat = mysqli_fetch_assoc($res_categorias)) {
                                         $categoria_id = (int)$cat['idcat'];
-                                        $categoria_nombre = htmlspecialchars($cat['nombre']);
+                                        $categoria_nombre = $cat['nombre'];
                                         $is_active = ($filtro_idcat === $categoria_id) ? 'btn-dark' : 'btn-outline-dark';
 
                                         // El enlace incluye el idped y el ID de la categoría (idcat)
@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         // Muestra el nombre de la categoría (usando el alias 'categoria_nombre') si cambia
                                         if ($prod['categoria_nombre'] !== $current_category) {
                                             $current_category = $prod['categoria_nombre'];
-                                            echo '<h5 class="mt-3 mb-2 p-2 bg-light rounded text-primary">' . htmlspecialchars($current_category) . '</h5>';
+                                            echo '<h5 class="mt-3 mb-2 p-2 bg-light rounded text-primary">' . $current_category . '</h5>';
                                         }
 
                                     ?>
@@ -379,7 +379,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                         <strong><?php echo $item['cant']; ?> x <?php echo $item['nombre']; ?></strong><br>
 
                                                         <?php if (!empty($item['comentario'])): ?>
-                                                            <small class="text-info fst-italic ps-2">↳ "<?php echo htmlspecialchars($item['comentario']); ?>"</small><br>
+                                                            <small class="text-info fst-italic ps-2">↳ "<?php echo $item['comentario']; ?>"</small><br>
                                                         <?php endif; ?>
 
                                                         <small class="text-muted ps-2"><?php echo number_format($subtotal, 2); ?> €</small>
@@ -387,7 +387,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                                                     <form action="" method="POST">
                                                         <input type="hidden" name="accion" value="quitar">
-                                                        <input type="hidden" name="item_key" value="<?php echo htmlspecialchars($item_key); ?>">
+                                                        <input type="hidden" name="item_key" value="<?php echo $item_key; ?>">
                                                         <!-- Se mantiene el filtro de vista al enviar el formulario -->
                                                         <input type="hidden" name="vista" value="<?php echo $vista_actual; ?>">
                                                         <button type="submit" class="btn btn-outline-danger btn-sm" title="Quitar producto">
