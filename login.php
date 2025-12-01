@@ -21,7 +21,7 @@ if (isset($_SESSION['rol'])) {
 
 // Procesamiento del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $dni  = trim($_POST['dni']);
+    $dni  = strtoupper(trim($_POST['dni']));
     $pass = trim($_POST['pass']);
 
 

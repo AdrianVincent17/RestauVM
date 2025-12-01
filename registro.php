@@ -5,9 +5,9 @@ include('conexion.php');
 
 $mensaje='';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $dni = $_POST['dni'];
+     $dni = strtoupper(trim($_POST['dni']));  //para que entre tanto la letra en mayuscula como quitar los espacios
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
     $email = $_POST['email'];
@@ -123,14 +123,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="row g-2 mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" maxlength="9" id="dni" name="dni" placeholder="600123123" value="<?php if(isset($_POST['dni'])) echo $dni;?>" required>
-                                        <label for="dni"><i class="bi bi-wallet me-2"></i>DNI/NIF</label>
+                                        <input type="text" class="form-control" maxlength="9" id="dni" name="dni" placeholder="12345678X" value="<?php if(isset($_POST['dni'])) echo $dni;?>" required>
+                                        <label for="dni"><i class="bi bi-wallet me-2"></i>DNI/NIF*</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="12" placeholder="600123123" value="<?php if(isset($_POST['telefono'])) echo $telefono;?>">
-                                        <label for="telefono"><i class="bi bi-phone me-2"></i>Teléfono (Opcional)</label>
+                                        <input type="text" class="form-control" id="telefono" name="telefono" minlength="9" maxlength="9" placeholder="600123123" inputmode="numeric" pattern="[0-9]*" value="<?php if(isset($_POST['telefono'])) echo $telefono;?>" required>
+                                        <label for="telefono"><i class="bi bi-phone me-2"></i>Teléfono*</label>
                                     </div>
                                 </div>
 
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php if(isset($_POST['nombre'])) echo $nombre;?>" required>
-                                        <label for="nombre"><i class="bi bi-person me-2"></i>Nombre</label>
+                                        <label for="nombre"><i class="bi bi-person me-2"></i>Nombre*</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" value="<?php if(isset($_POST['email'])) echo $email;?>" required>
-                                        <label for="email"><i class="bi bi-envelope me-2"></i>Email</label>
+                                        <label for="email"><i class="bi bi-envelope me-2"></i>Email*</label>
                                     </div>
                                 </div>
 
@@ -167,23 +167,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-md-12">
                                     <div class="form-floating ">
                                         <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña"  required>
-                                        <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
+                                        <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña*</label>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating">
                                         <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Repetir Contraseña" required>
-                                        <label for="pass2"><i class="bi bi-shield-check me-2"></i>Repetir Contraseña</label>
+                                        <label for="pass2"><i class="bi bi-shield-check me-2"></i>Repetir Contraseña*</label>
                                     </div>
                                 </div>
 
+                                <!-- mensaje de error para cuando fallan las contraseñas -->
                                 <?php
-
                                 if(isset($mensaje)){
                                     
                                 echo "<small class='text-danger'>" .$mensaje ."</small>";
                                 unset($mensaje);
-                                
                                 }
                                 ?>
 

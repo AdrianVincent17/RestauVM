@@ -3,7 +3,7 @@ session_start();
 
 function proteger($rolpermitido){
 
-    // Verificar si está logeado Y si el rol es 'usuario'
+    // Verificar si está logeado Y si el rol es uno de los roles permitidos que seran los del parametro
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] != $rolpermitido) {
     session_unset();
