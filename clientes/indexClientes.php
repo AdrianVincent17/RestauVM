@@ -80,12 +80,6 @@ include("../conexion.php");
     include("../footer.php");
     ?>
     </div>
-    <script>
-        // JavaScript para colapsar la barra lateral en móvil
-        document.getElementById('sidebarCollapse').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-        });
-    </script>
 </body>
 
 </html>

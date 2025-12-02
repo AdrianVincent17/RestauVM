@@ -43,7 +43,7 @@ include("../conexion.php");
                             <div class="card card-body">
                                 <div class="card mb-4">
                                     <div class="card-body">
-                                        <form action="altas.php" method="POST">
+                                        <form action="añadirusuario.php" method="POST">
                                             <div class="row">
                                                 <div class="col-12 col-md-6 col-lg-4 mb-3">
                                                     <label for="dni" class="form-label">DNI/NIF</label>
@@ -167,7 +167,7 @@ include("../conexion.php");
                                                     echo "<td>$rolTexto</td>";
 
                                                     echo "<td>
-                                                    <form action='blockuser.php' method='POST' style='display:inline;'>
+                                                    <form action='bloquearusuario.php' method='POST' style='display:inline;'>
                                                     <input type='hidden' name='dni' value='{$fila['dni']}'>
                                                     <button type-'submit' class='btn-bloqueo btn btn{$relleno}-{$botonColor} btn-md'>{$botonTexto}</button>
                                                     </form>

@@ -7,7 +7,7 @@ if (isset($_POST['dni'])) {
     
     $dni = $_POST['dni'];
 
-    // Obtener estado actual
+    // OBTENER ESTADO ACTUAL
     $consulta = "SELECT estado FROM usuario WHERE dni = '$dni'";
     $resultado = mysqli_query($conn, $consulta);
     $fila = mysqli_fetch_assoc($resultado);
@@ -19,7 +19,7 @@ if (isset($_POST['dni'])) {
     }
 }
 
-// Redirige de vuelta a la lista
+// REDIRIGE DE VUELTA A LA LISTA
 header("Location:modperfil.php");
 exit;
 ?>

@@ -1,5 +1,5 @@
 <?php
-// Se mantienen las includes originales.
+
 include("../seguridad.php");
 proteger(1);
 include("../conexion.php");

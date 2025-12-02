@@ -14,6 +14,7 @@ if (isset($_GET['idped'])) {
 // --- FIN DE LA LÓGICA ---
 ?>
 
+<!-- BOTÓN DE COLAPSO VISIBLE SOLO EN MÓVILES -->
 <div class="d-md-none text-end mb-3">
     <button class="btn btn-info" 
             type="button" 

@@ -15,49 +15,47 @@ include("../head.php");
         <?php
         include("../nav.php");
         ?>
-
         <div class="wrapper">
-            
-        <?php
-        include("navbar.php");
-        ?>
+            <?php
+            include("navbar.php");
+            ?>
 
             <div id="content">
                 <div class="container-fluid">
                     <h1 class="page-heading">Gestión Camareros</h1>
                     <p class="subheading">Administra mesas y pedidos</p>
 
-                    
+
 
                     <div class="row">
-                    <div class="col-md-4">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">Mesas Ocupadas</h5>
-                                <p class="card-text display-4">8 / 20</p>
-                                <p class="card-text text-muted">Mesas atendidas actualmente</p>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">Mesas Ocupadas</h5>
+                                    <p class="card-text display-4">8 / 20</p>
+                                    <p class="card-text text-muted">Mesas atendidas actualmente</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">Pedidos Pendientes</h5>
+                                    <p class="card-text display-4">5</p>
+                                    <p class="card-text text-muted">Enviados a cocina</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title text-warning">Personal Activo</h5>
+                                    <p class="card-text display-4">3</p>
+                                    <p class="card-text text-muted">Camareros en servicio</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5 class="card-title text-success">Pedidos Pendientes</h5>
-                                <p class="card-text display-4">5</p>
-                                <p class="card-text text-muted">Enviados a cocina</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5 class="card-title text-warning">Personal Activo</h5>
-                                <p class="card-text display-4">3</p>
-                                <p class="card-text text-muted">Camareros en servicio</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                     <div class="card">
                         <div class="card-header bg-secondary text-white">
@@ -114,16 +112,12 @@ include("../head.php");
                 </div>
             </div>
         </div>
+
         <?php
         include("../footer.php");
         ?>
     </div>
 
-    <script>
-        document.getElementById('sidebarCollapse').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-        });
-    </script>
 </body>
 
 </html>
