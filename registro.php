@@ -7,7 +7,7 @@ $mensaje='';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-     $dni = strtoupper(trim($_POST['dni']));  //para que entre tanto la letra en mayuscula como quitar los espacios
+    $dni = strtoupper(trim($_POST['dni']));  //para que entre tanto la letra en mayuscula como quitar los espacios
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
     $email = $_POST['email'];

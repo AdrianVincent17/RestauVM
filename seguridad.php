@@ -9,7 +9,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != $rolpermitido) {
     session_unset();
     session_destroy();
     header('Location:../index.php'); // Redirigir si no cumple el requisito
-    
     exit;
 }
 
