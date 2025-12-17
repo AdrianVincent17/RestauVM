@@ -38,9 +38,9 @@ try {
         $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
         $printer->text("RESTAURANTE LA DESPENSA\n");
         $printer->selectPrintMode();
-        $printer->text("Ctra. Alicante, 169 - Murcia\n");
-        $printer->text("Tel: 679579579\n");
-        $printer->text("CIF: B12345678\n");
+        $printer->text("Ctra. de la huerta, 27 - Molina de Segura\n");
+        $printer->text("Tel: 685974685\n");
+        $printer->text("CIF: C25647899\n");
         $printer->text(str_repeat("-", 35) . "\n");
 
         // Información de la factura
@@ -60,14 +60,14 @@ try {
                             p.nombre,
                             COUNT(*) AS cantidad,
                             p.precio,
-                            COUNT(*) * p.precio AS total
+                            pp.cant * p.precio AS total
                         FROM pedido_producto pp, producto p
                         WHERE pp.idprod = p.idprod
                         AND pp.idped = '$idped'
                         GROUP BY p.nombre, p.precio";
         $result = mysqli_query($conn, $consulta_pedido);
         while ($row = mysqli_fetch_array($result)) {
-            $printer->text(sprintf("%-20s %3s %10s\n", $row['nombre'], $row['cantidad'], number_format($row['total'], 2)));
+            $printer->text(sprintf("%-10s %3s %10s\n", $row['nombre'], $row['cantidad'], number_format($row['total'], 2)));
 
             $precio_final += $row['total'];
         }
@@ -103,7 +103,7 @@ try {
         $printer->cut();
         $printer->close();
 
-        header("LOCATION: ../servir_pedido.php?id=" . $mesa_id);
+        header("LOCATION: ../gestionarmesas.php");
         exit();
     }
 } catch (Exception $e) {

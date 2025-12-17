@@ -34,18 +34,7 @@ if (isset($_POST['generar_cuenta'])) {
 
     $idped = $_POST['idped'];
 
-     header("Location:servir_pedido.php?id=".$id_mesa ."&idp=".$idped);
-    exit();
-
-    // // Redirigimos a la página que genera el ticket
-    // header("Location:tickets/generar_ticket.php?idm=" . $id_mesa . "&idp=" . $idped);
-    // exit();
-}
-
-//  Cerrar la mesa (el cliente ya pagó)
-if (isset($_POST['cerrar_mesa'])) {
-
-    // Liberamos la mesa (estado = 0 significa libre)
+     // Liberamos la mesa (estado = 0 significa libre)
     $mesa_libre = "UPDATE mesa SET estado = 0 WHERE nmesa = $id_mesa";
 
     mysqli_query($conn, $mesa_libre);
@@ -62,9 +51,40 @@ if (isset($_POST['cerrar_mesa'])) {
     $_SESSION['cuenta_pedida_mesa_' . $id_mesa] = 0;
 
     // Volvemos a la página principal de mesas
-    header("Location: gestionarmesas.php");
+    // header("Location: gestionarmesas.php");
+    // exit();
+
+    //  header("Location:servir_pedido.php?id=".$id_mesa ."&idp=".$idped);
+    // exit();
+    
+    // Redirigimos a la página que genera el ticket
+    header("Location:tickets/generar_ticket.php?idm=" . $id_mesa . "&idp=" . $idped);
     exit();
 }
+
+// //  Cerrar la mesa (el cliente ya pagó)
+// if (isset($_POST['cerrar_mesa'])) {
+
+//     // Liberamos la mesa (estado = 0 significa libre)
+//     $mesa_libre = "UPDATE mesa SET estado = 0 WHERE nmesa = $id_mesa";
+
+//     mysqli_query($conn, $mesa_libre);
+
+//     // Marcamos la reserva como terminada
+//     $reserva_terminada = "UPDATE reserva SET estado = 1 WHERE nmesa = $id_mesa";
+//     mysqli_query($conn, $reserva_terminada);
+
+//     // Marcamos el pedido como pagado
+//     $pedi_pagado = "UPDATE pedido SET estado = 1 WHERE nmesa = $id_mesa AND estado = 0";
+//     mysqli_query($conn, $pedi_pagado);
+
+//     // Reiniciamos la variable de sesión
+//     $_SESSION['cuenta_pedida_mesa_' . $id_mesa] = 0;
+
+//     // Volvemos a la página principal de mesas
+//     header("Location: gestionarmesas.php");
+//     exit();
+// }
 
 // Buscamos si hay un pedido activo en esta mesa
 $consulta_pedido = "SELECT * FROM pedido WHERE nmesa = $id_mesa AND estado = 0";
@@ -211,7 +231,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
                                     <form method="POST">
                                         <input type="hidden" name="idped" value="<?php echo $pedido['idped']; ?>">
                                         <button type="submit" name="generar_cuenta" class="btn btn-outline-success btn-lg w-100">
-                                           GENERAR TICKET
+                                           GENERAR TICKET Y CERRAR MESA
                                         </button>
                                     </form>
                                 </div>
@@ -221,7 +241,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
 
                             // Ya se generó la cuenta, esperamos el pago
                         ?>
-                            <div class="card">
+                            <!-- <div class="card">
                                 <div class="card-header bg-danger text-white">
                                     <h4>Cerrar Mesa</h4>
                                 </div>
@@ -233,7 +253,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
                                         </button>
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
                         <?php
                         }
                         ?>

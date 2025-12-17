@@ -1,8 +1,12 @@
 <?php
-require_once 'vendor/autoload.php';
-include("../../seguridad.php");
-proteger(0);
+
+session_start();
 include("../../conexion.php");
+
+
+
+require_once 'vendor/autoload.php';
+
 
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
@@ -15,7 +19,8 @@ try {
         // Variables
         $idped = $_GET['idp'];
         $mesa_id = $_SESSION['idmesa'];
-
+        
+     
         // Configurar impresora - Usar conexión de red
         $ipImpresora = "192.168.36.170";  // Cambiar a la IP de tu impresora
         $puertoImpresora = 9100;         // Puerto por defecto para impresoras ESC/POS
@@ -51,7 +56,7 @@ try {
         $printer->text(str_repeat("=", 42) . "\n");
 
         // Recorremos carrito
-        foreach ($_SESSION['pedido'] as $indice => $producto) {
+        foreach ($_SESSION['carrito'] as $producto) {
             $printer->text(sprintf("%-20s %-20s\n", $producto['nombre'], $producto['comentario']));
         }
         $printer->text(str_repeat("-", 42) . "\n\n");
@@ -72,11 +77,11 @@ try {
         $printer->close();
 
         // Limpiamos el carrito
-        unset($_SESSION['pedido']);
+        unset($_SESSION['carrito']);
 
         // Redirigimos al pedido
-        header("LOCATION: ../pedidos.php?id='$idped'");
-        exit();
+        // header("LOCATION: ../pedidos.php?id='$idped'");
+        // exit();
     }
 } catch (Exception $e) {
     echo "Error al imprimir ticket: " . $e->getMessage();
