@@ -136,11 +136,11 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
                                                 if ($producto['servido'] == 0) {
                                                     $estado_texto = "PENDIENTE";
                                                     $infocolorin = "warning";
-                                                    $ya_servido = false;
+                                                    $esta_servido = false;
                                                 } else {
                                                     $estado_texto = "SERVIDO";
                                                     $infocolorin = "success";
-                                                    $ya_servido = true;
+                                                    $esta_servido = true;
                                                 }
                                         ?>
 
@@ -149,7 +149,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
                                                     <td><?php echo $nombre_producto['nombre'];?></td>
                                                     <td class=><?php echo $producto['comentario']; ?></td>
                                                     <td class='text-center'><?php echo  $producto['cant']; ?></td>
-                                                    <td><span class='btn btn-sm btn-<?php echo $infocolorin; ?> disabled' disabled><?php echo $estado_texto; ?></span></td>
+                                                    <td><span class='btn btn-sm btn-<?php echo $infocolorin; ?> disabled'><?php echo $estado_texto; ?></span></td>
                                                     <td>
 
                                                         <!-- Formulario para marcar como servido -->
@@ -157,11 +157,11 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
                                                             <input type='hidden' name='id_linea' value='<?php echo $producto['idline'];?>'>
                                                             <?php
 
-                                                            if (!$ya_servido) {
+                                                            if (!$esta_servido) {
 
                                                             ?>
 
-                                                                <button type='submit' name='marcar_servido' class='btn btn-sm btn-success'>SERVIR</button>
+                                                                <button type='submit' name='marcar_servido' class='btn btn-sm btn-outline-success'>SERVIR</button>
                                                             <?php
 
                                                             } else {

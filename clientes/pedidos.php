@@ -176,7 +176,7 @@ if (!$idped_activo) {
                                 $total_pedido = 0.00;
 
                                 // Inicia el div para el scroll del carrito
-                                echo '<div style="max-height: 25vh; overflow-y: auto;" class="mb-3">';
+                                echo '<div style="max-height: 15vh; overflow-y: auto;" class="mb-3">';
 
                                 if (!empty($_SESSION['carrito'])) {
                                     foreach ($_SESSION['carrito'] as $indice => $producto) {
