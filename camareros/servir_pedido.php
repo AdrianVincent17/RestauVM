@@ -8,7 +8,7 @@ $id_mesa = $_GET['id'];
 
 
 // Variable para controlar si ya se pidió la cuenta (0 = no, 1 = sí)
-if (!isset($_SESSION['cuenta_pedida_mesa_' . $id_mesa])) {
+if (!isset($_SESSION['cuenta_pedida_mesa_'.$id_mesa])) {
     $_SESSION['cuenta_pedida_mesa_' . $id_mesa] = 0;
 }
 
@@ -21,7 +21,7 @@ if (isset($_POST['marcar_servido'])) {
     mysqli_query($conn, $actualizar_servido);
 
     // Recargamos la página para ver los cambios
-    header("Location:servir_pedido.php?id=" . $id_mesa);
+    header("Location:servir_pedido.php?id=".$id_mesa);
     exit();
 }
 
@@ -29,12 +29,12 @@ if (isset($_POST['marcar_servido'])) {
 if (isset($_POST['generar_cuenta'])) {
 
     // Marcamos que ya se pidió la cuenta
-    $_SESSION['cuenta_pedida_mesa_' . $id_mesa] = 1;
+    $_SESSION['cuenta_pedida_mesa_'.$id_mesa] = 1;
 
 
     $idped = $_POST['idped'];
 
-     header("Location:servir_pedido.php?id=" . $id_mesa . "&idp=" . $idped);
+     header("Location:servir_pedido.php?id=".$id_mesa ."&idp=".$idped);
     exit();
 
     // // Redirigimos a la página que genera el ticket
@@ -79,7 +79,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
     <?php
     include("../head.php");
     ?>
-    <title>Mesa <?php echo $id_mesa; ?> - Restaurante</title>
+    <title>Mesa <?php echo $id_mesa;?> - Restaurante La Despensa</title>
 </head>
 
 <body>
@@ -92,7 +92,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
             include("navbar.php");
             ?>
             <div class="container-fluid">
-                <h1>Resumen del Pedido de la Mesa <?php echo $id_mesa;?></h1>
+                <h1 class="mt-5 mb-5">Resumen del Pedido de la Mesa <?php echo $id_mesa;?></h1>
                 <div class="row justify-content-center ">
                     <!--Lista de productos -->
                     <div class="col-md-8">
@@ -241,7 +241,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
                 </div>
 
                 <div class="mt-4">
-                    <a href="gestionarmesas.php" class="btn btn-outline-info rounded-5 text-white">← Volver a Mesas</a>
+                    <a href="gestionarmesas.php" class="btn btn-outline-info rounded-5 text-secondary">← VOLVER</a>
                 </div>
             </div>
 

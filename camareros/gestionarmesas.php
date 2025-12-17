@@ -149,7 +149,7 @@ include("../conexion.php");
                                     <?php
                                     } else {
                                     ?>
-                                    <a href="servir_pedido.php?id=' <?php echo $idmesa; ?>'" class="text-decoration-none text-center">
+                                    <a href="servir_pedido.php?id='<?php echo $idmesa;?>'" class="text-decoration-none text-center">
                                         <h4 class="card-title mb-4 text-danger">Mesa Nº <?php echo $idmesa; ?></h4>
                                         <small class="text-muted">Comensales: <?php echo $comensales;?></small><br>
                                         <button class="btn btn-md <?php echo $btn_clase; ?>">

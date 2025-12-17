@@ -40,7 +40,7 @@ if (!$idped_activo) {
 
 <head>
     <?php include("../head.php"); ?>
-    <title>Restaurante La Despensa - Mi pedido</title>
+    <title>Mi pedido - Restaurante La Despensa</title>
 </head>
 
 <body>
