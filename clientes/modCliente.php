@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     mysqli_query($conn, $consulta);
 
     // Actualizamos los datos en la sesión
+    
     $resultado = mysqli_query($conn, "SELECT * FROM usuario WHERE dni='$dni'");
     if ($resultado && mysqli_num_rows($resultado) > 0) {
         $row = mysqli_fetch_assoc($resultado);

@@ -3,13 +3,13 @@ include("../seguridad.php");
 proteger(0);
 include("../conexion.php");
 
-// Comprobamos que nos llegan datos
+// vemos si nos llegan los datos o no 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idprod'])) {
 
     $idprod = $_POST['idprod'];
     $cantidad = (int)$_POST['cantidad'];
 
-    // Creamos el carrito en la sesión si no existe
+    // creamos el carrito con una variable de sesion
     if (!isset($_SESSION['carrito'])) {
         $_SESSION['carrito'] = array();
     }
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idprod'])) {
     $result = mysqli_query($conn, $consulta_stock);
     $row = mysqli_fetch_assoc($result);
 
-        // Guardamos los datos del producto en un array
+        // guardaremos los productos en un array
         $lista = array(
             'id' => $_POST['idprod'],
             'nombre' => $_POST['nombre'],
@@ -30,18 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idprod'])) {
             'cantidad'=>$_POST['cantidad']
         );
 
-        // Añadimos el producto al final del array 
+        // vamos añadiendo los productos al array
         $_SESSION['carrito'][] = $lista;
 
-        // Restamos 1 al stock del producto del stock
+        // vamos restando la cantidad que pongamos al stock
         $consulta_restar_stock = "UPDATE producto SET stock=stock-$cantidad WHERE idprod='$idprod'";
         $result = mysqli_query($conn, $consulta_restar_stock);
     }
 
-    // Cerramos conexion
+  
     mysqli_close($conn);
 
 
-// Devolvemos al usuario a la carta
+// volvemos a la seccion pedidos
 header('Location: pedidos.php');
 exit();

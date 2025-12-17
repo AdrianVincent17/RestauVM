@@ -104,7 +104,6 @@ include("../conexion.php");
 
                     <?php
 
-
                     // Consulta para ver las meses que hay
                     $consulta_mesa = "SELECT * FROM mesa";
                     $result1 = mysqli_query($conn, $consulta_mesa);

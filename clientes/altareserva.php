@@ -1,5 +1,6 @@
 <?php
-// 1. Incluir archivos necesarios
+
+
 include("../seguridad.php");
 proteger(0); // Asegura que solo usuarios autorizados pueden acceder
 include("../conexion.php");
@@ -18,13 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Si encontramos alguna fila, el cliente ya tiene un pedido activo (reserva pendiente)
     if (mysqli_num_rows($resultado_verificar) > 0) {
         
-        // El cliente ya tiene una reserva/pedido activo.
+        // El cliente ya tiene una reserva/pedido activo redirigimos
         mysqli_close($conn);
-        header('Location:pedidos.php'); // Redirigir con mensaje de error
+        header('Location:pedidos.php'); 
         exit();
     }
-
-    
 
      // Cambiamos estado de la mesa a ocupada
     $consulta_mesa = "UPDATE mesa SET estado=1 WHERE nmesa=$idmesa";
@@ -35,16 +34,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_query($conn, $consulta_reserva);
 
     // Insertamos los datos del pedido
-    $consulta_pedido = "INSERT INTO pedido (usuario, nmesa, estado) VALUES ('$dni_cliente','$idmesa',0)";
-    $result = mysqli_query($conn, $consulta_pedido);
+    $insertar_pedido = "INSERT INTO pedido (usuario, nmesa, estado) VALUES ('$dni_cliente','$idmesa',0)";
+    $result = mysqli_query($conn, $insertar_pedido);
 
     // Guardamos el nº de mesa y los comensales en la sesión del cliente
     $_SESSION['idmesa'] = $idmesa;
     $_SESSION['comensales'] = $comensales;
 
-    // Guardamos el id del pedido en la sesión 
-    $consulta_idped = "SELECT * FROM pedido WHERE usuario='$dni_cliente' AND estado='0'";
-    $result = mysqli_query($conn, $consulta_idped);
+    // obtenemos el idpedido y lo guardamos en la session
+    $con_idpedido = "SELECT * FROM pedido WHERE usuario='$dni_cliente' AND estado='0'";
+    $result = mysqli_query($conn, $con_idpedido);
     $row = mysqli_fetch_array($result);
     $_SESSION['idped'] = $row['idped'];
 

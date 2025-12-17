@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2025 a las 00:19:44
+-- Tiempo de generación: 17-12-2025 a las 04:16:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -82,10 +82,19 @@ INSERT INTO `mesa` (`nmesa`, `estado`) VALUES
 DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE `pedido` (
   `idped` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL,
   `usuario` varchar(9) NOT NULL,
-  `nmesa` int(11) NOT NULL
+  `nmesa` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pedido`
+--
+
+INSERT INTO `pedido` (`idped`, `usuario`, `nmesa`, `estado`, `fecha`) VALUES
+(22, '12345678A', 8, 1, '2025-12-17 03:11:23'),
+(23, '12345678A', 5, 1, '2025-12-17 03:15:56');
 
 -- --------------------------------------------------------
 
@@ -102,6 +111,16 @@ CREATE TABLE `pedido_producto` (
   `comentario` varchar(255) DEFAULT NULL,
   `servido` tinyint(1) NOT NULL COMMENT '0=pendiente 1=servido'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_producto`
+--
+
+INSERT INTO `pedido_producto` (`idline`, `idped`, `idprod`, `cant`, `comentario`, `servido`) VALUES
+(71, 22, 10, 5, '', 1),
+(72, 22, 8, 3, 'afsdf', 1),
+(73, 23, 9, 12, '', 1),
+(74, 23, 8, 8, '', 1);
 
 -- --------------------------------------------------------
 
@@ -125,26 +144,26 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idprod`, `nombre`, `precio`, `stock`, `estado`, `categoria`, `imagen`) VALUES
-(1, 'Ensalada murciana (tomate, cebolla, aceitunas y huevo)', 12.50, 30, 0, 1, 'E1.png'),
-(2, 'Zarangollo murciano (revuelto de calabacín, cebolla)', 7.50, 40, 0, 1, 'E2.png'),
-(3, 'Pastel de carne murciano (hojaldre relleno de carne)', 0.00, 47, 0, 1, 'E3.png'),
-(4, 'Michirones (habas secas guisadas con chorizo y pan)', 6.50, 42, 0, 1, 'E4.png'),
-(5, 'Croquetas de jamón ibérico', 0.00, 29, 0, 1, 'E5.png'),
-(6, 'Arroz caldero del Mar Menor (con pescado y alioli)', 14.00, 40, 0, 2, 'PP1.png'),
-(7, 'Cordero segureño al horno con patatas', 15.50, 24, 0, 2, 'PP2.png'),
-(8, 'Bacalao al ajo colorao', 13.00, 31, 0, 2, 'PP3.png'),
-(9, 'Albóndigas de chato murciano con salsa casera', 12.50, 43, 0, 2, 'PP4.png'),
-(10, 'Huevos rotos con jamón y patatas de la huerta', 9.50, 48, 0, 2, 'PP5.png'),
-(11, 'Paparajotes murcianos (hojas de limón rebozadas en masa tipo churro)', 4.50, 37, 0, 3, 'P1.png'),
-(12, 'Arroz con leche de la abuela', 4.00, 40, 0, 3, 'P2.png'),
+(1, 'Ensalada murciana (tomate, cebolla, aceitunas y huevo)', 12.50, 0, 0, 1, 'E1.png'),
+(2, 'Zarangollo murciano (revuelto de calabacín, cebolla)', 7.50, 0, 0, 1, 'E2.png'),
+(3, 'Pastel de carne murciano (hojaldre relleno de carne)', 3.00, 0, 0, 1, 'E3.png'),
+(4, 'Michirones (habas secas guisadas con chorizo y pan)', 6.50, 0, 0, 1, 'E4.png'),
+(5, 'Croquetas de jamón ibérico', 5.00, 0, 0, 1, 'E5.png'),
+(6, 'Arroz caldero del Mar Menor (con pescado y alioli)', 14.00, 0, 0, 2, 'PP1.png'),
+(7, 'Cordero segureño al horno con patatas', 15.50, 0, 0, 2, 'PP2.png'),
+(8, 'Bacalao al ajo colorao', 13.00, 9, 0, 2, 'PP3.png'),
+(9, 'Albóndigas de chato murciano con salsa casera', 12.50, 22, 0, 2, 'PP4.png'),
+(10, 'Huevos rotos con jamón y patatas de la huerta', 9.50, 29, 0, 2, 'PP5.png'),
+(11, 'Paparajotes murcianos (hojas de limón rebozadas en masa tipo churro)', 4.50, 34, 0, 3, 'P1.png'),
+(12, 'Arroz con leche de la abuela', 4.00, 33, 0, 3, 'P2.png'),
 (13, 'Tocino de cielo', 4.20, 41, 0, 3, 'P3.png'),
 (14, 'Tarta de limón murciano', 5.00, 33, 0, 3, 'P4.png'),
-(15, 'Pan de Calatrava', 4.00, 28, 0, 3, 'P5.png'),
+(15, 'Pan de Calatrava', 4.00, 22, 0, 3, 'P5.png'),
 (16, 'Vino tinto de Jumilla (copa)', 3.00, 40, 0, 4, 'B1.png'),
-(17, 'Cerveza artesanal murciana', 3.50, 50, 0, 4, 'B2.png'),
-(18, 'Agua mineral', 1.50, 45, 0, 4, 'B3.png'),
+(17, 'Cerveza artesanal murciana', 3.50, 43, 0, 4, 'B2.png'),
+(18, 'Agua mineral', 1.50, 43, 0, 4, 'B3.png'),
 (19, 'Sangria casera', 4.50, 33, 0, 4, 'B4.png'),
-(20, 'Refrescos', 2.10, 38, 0, 4, 'B5.png');
+(20, 'Refrescos', 2.10, 31, 0, 4, 'B5.png');
 
 -- --------------------------------------------------------
 
@@ -157,8 +176,17 @@ CREATE TABLE `reserva` (
   `dni` varchar(9) NOT NULL,
   `nmesa` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `comensales` int(11) NOT NULL
+  `comensales` int(11) NOT NULL,
+  `estado` int(11) NOT NULL COMMENT '0=en uso 1=terminada'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`dni`, `nmesa`, `fecha`, `comensales`, `estado`) VALUES
+('12345678A', 5, '2025-12-17 03:15:56', 1, 1),
+('12345678A', 8, '2025-12-17 03:11:23', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -255,13 +283,13 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idped` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido_producto`
 --
 ALTER TABLE `pedido_producto`
-  MODIFY `idline` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idline` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

@@ -180,6 +180,7 @@ include("../conexion.php");
                                                         //aqui volvemos a hacer uso de la consulta de categorias para poder imprimir en el selected
                                                         //de manera que dejara como predefinido por defecto la categoria asignada a ese producto
                                                         mysqli_data_seek($categorias, 0); //esta linea seria como rebobinar o volver al principio de la lista
+                                                        
                                                         if ($categorias && mysqli_num_rows($categorias) > 0) {
                                                             while ($cat = mysqli_fetch_assoc($categorias)) {
                                                                 // Marcar la categoría actual del producto como seleccionada

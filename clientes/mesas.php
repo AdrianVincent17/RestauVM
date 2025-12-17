@@ -15,7 +15,7 @@ $mesas = mysqli_query($conn, $consultamesa);
     <?php
     include("../head.php");
     ?>
-    <title>Restaurante - Reserva Mesa</title>
+    <title>Restaurante La Despensa - Reserva Mesa</title>
     <style>
         .card {
             width: 50%;

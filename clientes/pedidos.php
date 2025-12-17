@@ -3,7 +3,7 @@ include("../seguridad.php");
 proteger(0);
 include("../conexion.php");
 
-$idmesa = 'N/A'; // Solución para el error de variable
+$idmesa = 'N/A'; 
 $idped_activo = false;
 
 if (isset($_SESSION['idped'])) {

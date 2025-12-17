@@ -34,18 +34,5 @@ $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
                Gestión de mesas
             </a>
         </li>
-
-        <li>
-            <a href="servir.php" 
-               class="nav-link <?= ($pagina_actual == 'servir.php') ? 'active' : '' ?>">
-               Servir Mesas
-            </a>
-        </li>
-         <li>
-            <a href="cobrar.php" 
-               class="nav-link <?= ($pagina_actual == 'cobrar.php') ? 'active' : '' ?>">
-               Cobrar Mesas
-            </a>
-        </li>
     </ul>
 </nav>
