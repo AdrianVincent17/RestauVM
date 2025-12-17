@@ -56,12 +56,12 @@ if (!$idped_activo) {
 
                     <div class="col-lg-7">
                         <div class="card shadow-sm">
-                            <div class="card-header bg-light">
+                            <div class="card-header ">
                                 <h4 class="mb-5">Menú</h4>
                                 <form method="GET" class="mb-4">
                                     <div class="input-group">
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar producto...">
-                                        <button class="btn btn-primary" type="submit">Buscar</button>
+                                        <button class="btn btn-outline-primary" type="submit">Buscar</button>
                                     </div>
                                 </form>
                             </div>
@@ -99,7 +99,7 @@ if (!$idped_activo) {
                                             // Si hay productos en la categoría (o que coinciden con la búsqueda)
 
                                             if (mysqli_num_rows($result_productos) > 0) {
-                                                echo "<h4 class='mt-4 mb-2 p-2 bg-info text-white rounded'>{$nombre_categoria}</h4>";
+                                                echo "<h4 class='mt-4 mb-2 p-2 bg-secondary text-white rounded'>{$nombre_categoria}</h4>";
 
                                                 // 5. Iterar sobre los productos
                                                 while ($producto = mysqli_fetch_assoc($result_productos)) {
@@ -146,7 +146,7 @@ if (!$idped_activo) {
                                                                 </div>
                                                                 <div class="d-flex gap-2">
                                                                     <input type="number" value="0" class="form-control form-control-sm" style="width: 70px;" disabled>
-                                                                    <button type="button" class="btn btn-danger btn-sm" disabled>Añadir</button>
+                                                                    <button type="button" class="btn btn-outline-danger btn-sm" disabled>Añadir</button>
                                                                 </div>
                                                             </div>
                                                         <?php } ?>
@@ -223,7 +223,7 @@ if (!$idped_activo) {
                                 </h3>
 
                                 <form action="enviar_carro.php" method="POST" class="d-grid">
-                                    <button class="btn btn-success btn-lg" <?php if (empty($_SESSION['carrito'])) echo 'disabled'; ?>>
+                                    <button class="btn btn-outline-success btn-lg" <?php if (empty($_SESSION['carrito'])) echo 'disabled'; ?>>
                                         <span>Enviar Pedido</span>
                                     </button>
                                 </form>

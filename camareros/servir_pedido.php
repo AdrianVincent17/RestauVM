@@ -134,11 +134,11 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
 
                                                 // Determinamos el estado del producto
                                                 if ($producto['servido'] == 0) {
-                                                    $estado_texto = "Pendiente";
+                                                    $estado_texto = "PENDIENTE";
                                                     $infocolorin = "warning";
                                                     $ya_servido = false;
                                                 } else {
-                                                    $estado_texto = "Servido";
+                                                    $estado_texto = "SERVIDO";
                                                     $infocolorin = "success";
                                                     $ya_servido = true;
                                                 }
@@ -149,7 +149,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
                                                     <td><?php echo $nombre_producto['nombre'];?></td>
                                                     <td class=><?php echo $producto['comentario']; ?></td>
                                                     <td class='text-center'><?php echo  $producto['cant']; ?></td>
-                                                    <td><span class='badge bg-<?php echo $infocolorin; ?>'><?php echo $estado_texto; ?></span></td>
+                                                    <td><span class='btn btn-sm btn-<?php echo $infocolorin; ?> disabled' disabled><?php echo $estado_texto; ?></span></td>
                                                     <td>
 
                                                         <!-- Formulario para marcar como servido -->
@@ -168,7 +168,7 @@ $pedido = mysqli_fetch_assoc($resultado_pedido);
 
                                                             ?>
 
-                                                                <button class='btn btn-sm btn-secondary' disabled>Ya servido</button>
+                                                                <button class='btn btn-sm btn-outline-secondary' disabled>SERVIDO</button>
                                                             <?php
                                                             }
                                                             ?>
