@@ -51,9 +51,9 @@ try {
         $printer->text(str_repeat("-", 35) . "\n\n");
 
         // Cabecera de la tabla
-        $printer->text(str_repeat("=", 35) . "\n");
-        $printer->text(sprintf("%-20s %3s %10s\n", "PRODUCTO", "UDS", "IMPORTE"));
-        $printer->text(str_repeat("=", 35) . "\n");
+        $printer->text(str_repeat("=", 42) . "\n");
+        $printer->text(sprintf("%-20s %3s %3s %10s\n","PRODUCTO", "UDS", "PRECIO", "IMPORTE"));
+        $printer->text(str_repeat("=", 42) . "\n");
 
         // Consulta pedido
         $consulta_pedido = "SELECT 
@@ -71,7 +71,7 @@ try {
             //asignamos un corte en el nombre del producto para poder tener una buena legibilidad en el ticket
             $nombre=substr($row['nombre'],0,17);
             
-            $printer->text(sprintf("%-20s %3s %10s\n", $nombre, $row['cantidad'], number_format($row['total'], 2)));
+            $printer->text(sprintf("%-20s %3s %10s\n", $nombre, $row['cantidad'],number_format($row['precio'],2), number_format($row['total'], 2)));
 
             $precio_final += $row['total'];
         }
