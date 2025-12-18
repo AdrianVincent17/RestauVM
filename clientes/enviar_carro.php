@@ -35,10 +35,10 @@ if (!empty($_SESSION['carrito'])) {
 
      unset($_SESSION['carrito']);
 
-       header('Location:pedidos.php');
-     exit();
-    //  header('Location: tickets/generar_ticket.php?idp=' . $idped);
+    //    header('Location:pedidos.php');
     //  exit();
+     header('Location: tickets/generar_ticket.php?idp=' . $idped);
+     exit();
 } else {
 
     // asegurammos entrada sin sesion o sin productos

@@ -73,6 +73,7 @@ try {
 
         if ($resultado_productos && mysqli_num_rows($resultado_productos) > 0) {
             while ($producto = mysqli_fetch_assoc($resultado_productos)) {
+                
                 $nombre     = substr($producto['nombre'], 0, 15);
                 $comentario = substr($producto['comentario'], 0, 15);
                 $cantidad   = (int)$producto['cant'];
