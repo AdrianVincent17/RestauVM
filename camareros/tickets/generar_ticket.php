@@ -58,16 +58,20 @@ try {
         // Consulta pedido
         $consulta_pedido = "SELECT 
                             p.nombre,
-                            COUNT(*) AS cantidad,
+                            SUM(pp.cant) AS cantidad,
                             p.precio,
-                            pp.cant * p.precio AS total
+                            SUM(pp.cant * p.precio) AS total
                         FROM pedido_producto pp, producto p
                         WHERE pp.idprod = p.idprod
                         AND pp.idped = '$idped'
                         GROUP BY p.nombre, p.precio";
         $result = mysqli_query($conn, $consulta_pedido);
         while ($row = mysqli_fetch_array($result)) {
-            $printer->text(sprintf("%-10s %3s %10s\n", $row['nombre'], $row['cantidad'], number_format($row['total'], 2)));
+
+            //asignamos un corte en el nombre del producto para poder tener una buena legibilidad en el ticket
+            $nombre=substr($row['nombre'],0,17);
+            
+            $printer->text(sprintf("%-20s %3s %10s\n", $nombre, $row['cantidad'], number_format($row['total'], 2)));
 
             $precio_final += $row['total'];
         }

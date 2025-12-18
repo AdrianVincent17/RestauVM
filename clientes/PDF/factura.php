@@ -89,9 +89,9 @@ $html = "
 
 $consulta_pedido = "SELECT 
                             p.nombre,
-                            COUNT(*) AS cantidad,
+                            SUM(pp.cant) AS cantidad,
                             p.precio,
-                            COUNT(*) * p.precio AS total
+                            SUM(pp.cant * p.precio) AS total
                         FROM pedido_producto pp
                         INNER JOIN producto p ON pp.idprod = p.idprod
                         WHERE pp.idped = $idped

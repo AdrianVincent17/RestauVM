@@ -3,86 +3,134 @@
 session_start();
 include("../../conexion.php");
 
-
-
 require_once 'vendor/autoload.php';
-
 
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
-use Mike42\Escpos\EscposImage;
-
 
 try {
 
     if (isset($_GET['idp'])) {
-        // Variables
-        $idped = $_GET['idp'];
-        $mesa_id = $_SESSION['idmesa'];
-        
-     
-        // Configurar impresora - Usar conexión de red
-        $ipImpresora = "192.168.36.170";  // Cambiar a la IP de tu impresora
-        $puertoImpresora = 9100;         // Puerto por defecto para impresoras ESC/POS
-        $connector = new NetworkPrintConnector($ipImpresora, $puertoImpresora);
-        $printer = new Printer($connector);
 
-        // Configuración inicial de la impresora
+        // ========================
+        // VARIABLES
+        // ========================
+        $idped   = $_GET['idp'];
+        $mesa_id = $_SESSION['idmesa'] ?? '---';
+
+        // ========================
+        // CONEXIÓN IMPRESORA
+        // ========================
+        $ipImpresora     = "192.168.36.170";
+        $puertoImpresora = 9100;
+
+        $connector = new NetworkPrintConnector($ipImpresora, $puertoImpresora);
+        $printer   = new Printer($connector);
+
+        // ========================
+        // CONFIGURACIÓN INICIAL
+        // ========================
         $printer->setPrintLeftMargin(0);
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->setTextSize(1, 1);
 
-        // Generar número de factura (año + mes + día + hora + minutos)
-        //$num_factura = date('YmdHi');
-
-        // Cabecera del ticket
-        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        // ========================
+        // CABECERA
+        // ========================
         $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
         $printer->text("RESTAURANTE LA DESPENSA\n");
         $printer->selectPrintMode();
         $printer->text("PEDIDO COCINA\n");
         $printer->text(str_repeat("-", 35) . "\n");
 
-        // Información de la factura
+        // ========================
+        // DATOS PEDIDO
+        // ========================
         $printer->setJustification(Printer::JUSTIFY_LEFT);
-        $printer->text("Pedido Nº: " . $idped . "\n");
-        $printer->text("Mesa: " . $mesa_id . " \n");
+        $printer->text("Pedido Nº: {$idped}\n");
+        $printer->text("Mesa: {$mesa_id}\n");
         $printer->text("Fecha: " . date('d/m/Y H:i') . "\n");
         $printer->text(str_repeat("-", 42) . "\n\n");
 
-        // Cabecera de la tabla
+        // ========================
+        // CABECERA TABLA
+        // ========================
         $printer->text(str_repeat("=", 42) . "\n");
         $printer->text(sprintf("%-20s %-20s\n", "PRODUCTO", "COMENTARIO"));
         $printer->text(str_repeat("=", 42) . "\n");
 
-        // Recorremos carrito
-        foreach ($_SESSION['carrito'] as $producto) {
-            $printer->text(sprintf("%-20s %-20s\n", $producto['nombre'], $producto['comentario']));
+         // ========================
+        // PRODUCTOS - ULTIMOS AÑADIDOS
+        // ========================
+        $sql_productos = "
+            SELECT p.nombre, pp.comentario, pp.cant
+            FROM pedido_producto pp
+            INNER JOIN producto p ON pp.idprod = p.idprod
+            WHERE pp.idped = $idped
+            ORDER BY pp.idline DESC
+        ";
+        $resultado_productos = mysqli_query($conn, $sql_productos);
+
+        if ($resultado_productos && mysqli_num_rows($resultado_productos) > 0) {
+            while ($producto = mysqli_fetch_assoc($resultado_productos)) {
+                $nombre     = substr($producto['nombre'], 0, 15);
+                $comentario = substr($producto['comentario'], 0, 15);
+                $cantidad   = (int)$producto['cant'];
+
+                // Cada unidad se imprime individualmente (opcional)
+                for ($i = 0; $i < $cantidad; $i++) {
+                    $printer->text(sprintf("%-20s %-20s\n", $nombre, $comentario));
+                }
+            }
+
+        // // ========================
+        // // PRODUCTOS
+        // // ========================
+        // if (!empty($_SESSION['carrito'])) {
+
+        //     foreach ($_SESSION['carrito'] as $producto) {
+
+        //         $nombre     = $producto['nombre'] ?? '';
+        //         $comentario = $producto['comentario'] ?? '';
+        //         $cantidad   = (int)($producto['cantidad'] ?? 1);
+
+        //         // Imprimimos una línea por unidad (ideal para cocina)
+        //         for ($i = 0; $i < $cantidad; $i++) {
+        //             $printer->text(sprintf(
+        //                 "%-20s %-20s\n",
+        //                 $nombre,
+        //                 $comentario
+        //             ));
+        //         }
+        //     }
+
+        } else {
+            $printer->text("NO HAY PRODUCTOS EN EL PEDIDO\n");
         }
+
         $printer->text(str_repeat("-", 42) . "\n\n");
 
-        // Cierro conexión
-        mysqli_close($conn);
-
-        // Pie del ticket
+        // ========================
+        // PIE DEL TICKET
+        // ========================
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text("\n");
-        $printer->text("\n");
         $printer->text("Conservar ticket hasta\n");
-        $printer->text("fin de servicio\n");
-        $printer->text("\n\n");
+        $printer->text("fin de servicio\n\n");
 
-        // Cortar ticket
+        // ========================
+        // CORTE Y CIERRE
+        // ========================
         $printer->cut();
         $printer->close();
 
-        // Limpiamos el carrito
+        // ========================
+        // LIMPIAR CARRITO 
+        // ========================
         unset($_SESSION['carrito']);
 
-        // Redirigimos al pedido
-        // header("LOCATION: ../pedidos.php?id='$idped'");
-        // exit();
+        mysqli_close($conn);
     }
+
 } catch (Exception $e) {
     echo "Error al imprimir ticket: " . $e->getMessage();
 }
