@@ -33,7 +33,7 @@ if (!empty($_SESSION['carrito'])) {
     }
     mysqli_close($conn);
 
-     unset($_SESSION['carrito']);
+    //  unset($_SESSION['carrito']);
 
     //    header('Location:pedidos.php');
     //  exit();
