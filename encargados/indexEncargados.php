@@ -66,7 +66,7 @@ $total_dinero = $datos_dinero['recaudacion_hoy'] ?? 0;
 
         <div id="content">
             <div class="container-fluid">
-                <h1 class="page-heading">Bienvenido al Panel de Control</h1>
+               <h1 class="page-heading">Panel Informativo</h1>
                 <p class="subheading">Visión general.</p>
 
                 <div class="row">
@@ -82,18 +82,18 @@ $total_dinero = $datos_dinero['recaudacion_hoy'] ?? 0;
                     <div class="col-md-4">
                         <div class="card text-center">
                             <div class="card-body">
-                                <h5 class="card-title text-success">Total Transaccioness</h5>
+                                <h5 class="card-title text-success">Total Transacciones</h5>
                                 <p class="card-text display-4"><?php echo $transacciones;?></p>
-                                <p class="card-text text-muted">Pedidos Terminados</p>
+                                <p class="card-text text-muted">Pedidos terminados</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card text-center">
                             <div class="card-body">
-                                <h5 class="card-title text-warning">Total Recaudacion</h5>
+                                <h5 class="card-title text-warning">Total Recaudación</h5>
                                 <p class="card-text display-4"><?php echo number_format($total_dinero, 2) . "€";?></p>
-                                <p class="card-text text-muted">Caja Total de hoy</p>
+                                <p class="card-text text-muted">Caja total de hoy</p>
                             </div>
                         </div>
                         

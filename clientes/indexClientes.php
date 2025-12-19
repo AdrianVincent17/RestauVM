@@ -28,7 +28,7 @@ include("../conexion.php");
 
         <div id="content">
             <div class="container-fluid">
-                <h1 class="page-heading">Bienvenido al Panel de Control</h1>
+                <h1 class="page-heading">Panel Informativo</h1>
                 <p class="subheading">Visión general.</p>
 
                 <?php
