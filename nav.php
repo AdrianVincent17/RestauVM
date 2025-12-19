@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-sm bg-light navbar-light w-100">
         <div class="container-fluid d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="">
                 <img src="../img/LaDespensalogo.png" alt="Logo" class="img-fluid" style="max-height: 50px;">
                 <span class="ms-2">Restaurante La Despensa</span>
             </a>
