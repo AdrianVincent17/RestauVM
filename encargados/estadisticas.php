@@ -4,9 +4,12 @@ include("../seguridad.php");
 proteger(2);
 include("../conexion.php");
 
-if (isset($_SESSION['fecha_inicio'])) {
-    $fecha_inicio = $_SESSION['fecha_inicio'];
-    $fecha_fin = $_SESSION['fecha_fin'];
+if (isset($_SESSION['fechainicial'])) {
+    $fechainicial = $_SESSION['fechainicial'];
+    $fechafinal = $_SESSION['fechafinal'];
+}else{
+    $fechainicial = '';
+    $fechafinal ='';
 }
 
 ?>
@@ -18,7 +21,7 @@ if (isset($_SESSION['fecha_inicio'])) {
     <?php
     include("../head.php");
     ?>
-    <title>Estadisticas - Restaurante La Despensar</title>
+    <title>Estadisticas - Restaurante La Despensa</title>
 
 </head>
 
@@ -35,14 +38,14 @@ if (isset($_SESSION['fecha_inicio'])) {
             <form action="logica_estadisticas.php" method="POST" class="row g-3 mb-4">
                 <div class="col-md-6">
                     <label for="fechainicial" class="form-label">Fecha Inicio</label>
-                    <input type="date" id="fechainicial" name="fechainicial" class="form-control" value="<?php echo $fecha_inicio; ?>" required />
+                    <input type="date" id="fechainicial" name="fechainicial" class="form-control" value="<?php echo $fechainicial; ?>" required />
                 </div>
                 <div class="col-md-6">
-                    <label for="fecha_fin" class="form-label">Fecha Fin</label>
-                    <input type="date" id="fechafinal" name="fechafinal" class="form-control" value="<?php echo $fecha_fin; ?>" required />
+                    <label for="fechafinal" class="form-label">Fecha Fin</label>
+                    <input type="date" id="fechafinal" name="fechafinal" class="form-control" value="<?php echo $fechafinal; ?>" required />
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-outline-success">Generar Informe</button>
+                    <button type="submit" class="btn btn-outline-success">Generar estadisticas</button>
                 </div>
             </form>
 
@@ -63,38 +66,33 @@ if (isset($_SESSION['fecha_inicio'])) {
 
                         if (isset($_SESSION['error'])) {
                             echo "<tr>";
-                            echo "<td colspan ='3' class='alert text-danger pb-0'>No hay informes de esas fechas..</td>";
+                            echo "<td colspan ='3' class='alert text-danger pb-0'>No hay estadisticass de esas fechas..</td>";
                             echo "</tr>";
                             unset($_SESSION['error']);
-
                         } else {
 
-                            if (isset($_SESSION['informe'])) {
+                            if (isset($_SESSION['estadisticas'])) {
 
                                 // Recorremos el informe
-                                foreach ($_SESSION['informe'] as $indice => $datos) {
+                                foreach ($_SESSION['estadisticas'] as $indice => $datos) {
                                     echo "<tr>";
                                     echo "<td>" . $datos['fecha'] . "</td>";
                                     echo "<td align='center'>" . $datos['comensales'] . "</td>";
                                     echo "<td align='center'>" . number_format($datos['ingresos'], 2) . " €</td>";
                                     echo "</tr>";
                                 }
-                                unset($_SESSION['informe']);
-                                unset($_SESSION['fecha_inicio']);
-                                unset($_SESSION['fecha_fin']);
+                                unset($_SESSION['estadisticas']);
+                                unset($_SESSION['fechainicial']);
+                                unset($_SESSION['fechafinal']);
                             }
                         }
                         ?>
                     </tbody>
                 </table>
             </div>
-
         </main>
     </div>
 
-
-
-    </main>
 
     <?php include '../footer.php'; ?>
 

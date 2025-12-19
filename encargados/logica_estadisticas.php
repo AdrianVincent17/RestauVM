@@ -7,9 +7,9 @@ include("../conexion.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Datos que vienen del post
 
-    $fechainicial = $_POST['fechafinal'];
+    $fechainicial = $_POST['fechainicial'];
     $fechafinal = $_POST['fechafinal'];
-    $Comprobar_fecha = 0;
+    $comprobar_fecha = 0;
 
     $estadisticas = [];
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $comensales = $fila3['totcomen'];
 
                 // ingresos 
-                $ingresos = "SELECT SUM(p.precio) AS total_ingresos
+                $ingresos = "SELECT SUM(p.precio*pp.cant) AS total_ingresos
                                 FROM pedido ped, pedido_producto pp, producto p
                                 WHERE ped.idped = pp.idped
                                 AND pp.idprod = p.idprod

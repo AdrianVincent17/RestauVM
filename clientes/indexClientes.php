@@ -51,7 +51,7 @@ include("../conexion.php");
                     }
 
                     // 3. Si existe, ejecutamos la consulta (usando casting a int por seguridad)
-                   
+
                     $consulta2 = "SELECT COUNT(idline) as total 
                  FROM pedido_producto 
                  WHERE idped = $idped AND servido = 1";
@@ -68,13 +68,17 @@ include("../conexion.php");
                     $pedidos_servidos = 0;
                 }
 
-                $consultamesas = "SELECT COUNT(*) AS total_mesas,
-                                            SUM(CASE WHEN estado = 1 THEN 1 ELSE 0 END) AS mesas_ocupadas
-                                     FROM mesa";
+
+                $consultamesas = "SELECT COUNT(nmesa) AS mesas_ocupadas FROM mesa WHERE estado=1";
                 $resmesas = mysqli_query($conn, $consultamesas);
                 $datosmesas = mysqli_fetch_assoc($resmesas);
-                $total_mesas = $datosmesas['total_mesas'];
                 $mesas_ocupadas = $datosmesas['mesas_ocupadas'];
+
+
+                $mesastot = "SELECT COUNT(nmesa) AS total_mesas FROM mesa";
+                $resmesastot = mysqli_query($conn, $mesastot);
+                $datosmesas2 = mysqli_fetch_assoc($resmesastot);
+                $total_mesas = $datosmesas2['total_mesas'];
 
 
 
