@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+include("../../seguridad.php");
+proteger(0);
 include("../../conexion.php");
 
 require_once 'vendor/autoload.php';
@@ -16,7 +17,7 @@ try {
         // VARIABLES
         // ========================
         $idped   = $_GET['idp'];
-        $mesa_id = $_SESSION['idmesa'] ?? '---';
+        $mesa_id = $_SESSION['idmesa'];
 
         // ========================
         // CONEXIÓN IMPRESORA
@@ -38,10 +39,11 @@ try {
         // CABECERA
         // ========================
         $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->text("RESTAURANTE LA DESPENSA\n");
         $printer->selectPrintMode();
         $printer->text("PEDIDO COCINA\n");
-        $printer->text(str_repeat("-", 35) . "\n");
+        $printer->text(str_repeat("-", 56) . "\n");
 
         // ========================
         // DATOS PEDIDO
@@ -50,63 +52,59 @@ try {
         $printer->text("Pedido Nº: {$idped}\n");
         $printer->text("Mesa: {$mesa_id}\n");
         $printer->text("Fecha: " . date('d/m/Y H:i') . "\n");
-        $printer->text(str_repeat("-", 42) . "\n\n");
+        $printer->text(str_repeat("-", 56) . "\n\n");
 
         // ========================
         // CABECERA TABLA
         // ========================
-        $printer->text(str_repeat("=", 42) . "\n");
-        $printer->text(sprintf("%-20s %3s %-20s\n", "PRODUCTO","CANTIDAD", "COMENTARIO"));
-        $printer->text(str_repeat("=", 42) . "\n");
+        $printer->text(str_repeat("=", 56) . "\n");
+        $printer->text(sprintf("%-30s %6s %19s\n", "PRODUCTO", "CANTIDAD", "COMENTARIO"));
+        $printer->text(str_repeat("=", 56) . "\n");
 
-        //  // ========================
-        // // PRODUCTOS - ULTIMOS AÑADIDOS
-        // // ========================
-        // $sql_productos = "
-        //     SELECT p.nombre, pp.comentario, pp.cant
-        //     FROM pedido_producto pp
-        //     INNER JOIN producto p ON pp.idprod = p.idprod
-        //     WHERE pp.idped = $idped
-        //     ORDER BY pp.idline DESC
-        // ";
-        // $resultado_productos = mysqli_query($conn, $sql_productos);
-
-        // if ($resultado_productos && mysqli_num_rows($resultado_productos) > 0) {
-        //     while ($producto = mysqli_fetch_assoc($resultado_productos)) {
-                
-        //         $nombre     = substr($producto['nombre'], 0, 15);
-        //         $comentario = substr($producto['comentario'], 0, 15);
-        //         $cantidad   = (int)$producto['cant'];
-
-        //         // Cada unidad se imprime individualmente (opcional)
-        //         for ($i = 0; $i < $cantidad; $i++) {
-        //             $printer->text(sprintf("%-20s %-20s\n", $nombre, $comentario));
-        //         }
-        //     }
-
+         // ========================
+        // PRODUCTOS - ULTIMOS AÑADIDOS
         // ========================
-        // PRODUCTOS
-        // ========================
-        if (!empty($_SESSION['carrito'])) {
+        $sql_productos = "
+            SELECT p.nombre, pp.comentario, pp.cant
+            FROM pedido_producto pp
+            INNER JOIN producto p ON pp.idprod = p.idprod
+            WHERE pp.idped = $idped AND pp.servido=0
+            ORDER BY pp.idline ASC
+        ";
+        $resultado_productos = mysqli_query($conn, $sql_productos);
 
-            foreach ($_SESSION['carrito'] as $producto) {
+        if ($resultado_productos && mysqli_num_rows($resultado_productos) > 0) {
+            while ($producto = mysqli_fetch_assoc($resultado_productos)) {
 
-              $nombre     = substr($producto['nombre'], 0, 15);
-                $comentario = substr($producto['comentario'], 0, 15) ?? '';
-                $cantidad   = (int)($producto['cantidadº']??'1');
+                $nombre     = substr($producto['nombre'], 0, 29);
+                $comentario = substr($producto['comentario'], 0, 15);
+                $cantidad   = (int)$producto['cant'] ?? 1;
 
-
-                // Imprimimos una línea por unidad (ideal para cocina)
-             
-                    $printer->text(sprintf("%-20s %-20s\n", $nombre,$cantidad,$comentario));
-                
+                    // Imprimimos una línea por unidad (ideal para cocina)
+                 $printer->text(sprintf("%-30s %6s %19s\n", $nombre, str_pad($cantidad, 6, ' ', STR_PAD_BOTH), $comentario));
             }
 
+        // // ========================
+        // // PRODUCTOS
+        // // ========================
+        // if (!empty($_SESSION['carrito'])) {
+
+        //     foreach ($_SESSION['carrito'] as $producto) {
+
+        //         $nombre     = substr($producto['nombre'], 0, 15);
+        //         $comentario = substr($producto['comentario'], 0, 15) ?? '';
+        //         $cantidad   = (int)($producto['cantidad'] ?? 1);
+
+
+        //         // Imprimimos una línea por unidad (ideal para cocina)
+
+        //         $printer->text(sprintf("%-25s %6s %20s\n", $nombre, str_pad($cantidad, 6, ' ', STR_PAD_BOTH), $comentario));
+        //     }
         } else {
             $printer->text("NO HAY PRODUCTOS EN EL PEDIDO\n");
         }
 
-        $printer->text(str_repeat("-", 42) . "\n\n");
+        $printer->text(str_repeat("-", 56) . "\n\n");
 
         // ========================
         // PIE DEL TICKET
@@ -125,13 +123,13 @@ try {
         // LIMPIAR CARRITO 
         // ========================
         unset($_SESSION['carrito']);
-            // Redirigimos al pedido
-         header("LOCATION: ../pedidos.php?id='$idped'");
-         exit();
+
+        // Redirigimos al pedido
+        header("LOCATION: ../pedidos.php?id='$idped'");
+        exit();
 
         mysqli_close($conn);
     }
-
 } catch (Exception $e) {
     echo "Error al imprimir ticket: " . $e->getMessage();
 }

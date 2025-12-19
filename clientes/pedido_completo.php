@@ -76,7 +76,7 @@ if (isset($_SESSION['idped'])) {
                                             $row2 = mysqli_fetch_assoc($result2);
                                             $nombre = $row2['nombre'];
                                             $precio = $row2['precio'];
-                                            $total += $precio;
+                                            $total += $precio*$cantidad;
 
                                             // Guardamos la variable del estado de cada producto, poniendole el estado en que se encuentra
                                             if ($row1['servido'] == 0) {

@@ -1,11 +1,15 @@
 /* === ESTRUCTURA GENERAL === */
-body {
+body,html {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     background-color: #f8f9fa;
     background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
     margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+
 }
 
 .wrapper {

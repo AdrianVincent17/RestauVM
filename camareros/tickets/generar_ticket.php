@@ -12,7 +12,7 @@ use Mike42\Escpos\EscposImage;
 try {
 
     if (isset($_GET['idp'])) {
-        
+
         // Variables
         $idped = $_GET['idp'];
         $mesa_id = $_GET['idm'];
@@ -41,19 +41,19 @@ try {
         $printer->text("Ctra. de la huerta, 27 - Molina de Segura\n");
         $printer->text("Tel: 685974685\n");
         $printer->text("CIF: C25647899\n");
-        $printer->text(str_repeat("-", 35) . "\n");
+        $printer->text(str_repeat("-", 58) . "\n");
 
         // Información de la factura
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->text("Factura Nº: " . $idped . "\n");
         $printer->text("Mesa: " . $mesa_id . " \n");
         $printer->text("Fecha: " . date('d/m/Y H:i') . "\n");
-        $printer->text(str_repeat("-", 35) . "\n\n");
+        $printer->text(str_repeat("-", 58) . "\n\n");
 
         // Cabecera de la tabla
-        $printer->text(str_repeat("=", 42) . "\n");
-        $printer->text(sprintf("%-20s %3s %3s %10s\n","PRODUCTO", "UDS", "PRECIO", "IMPORTE"));
-        $printer->text(str_repeat("=", 42) . "\n");
+        $printer->text(str_repeat("=", 58) . "\n");
+        $printer->text(sprintf("%-40s %3s %5s %5s\n", "PRODUCTO", "UDS", "PRECIO", "IMPORTE"));
+        $printer->text(str_repeat("=", 58) . "\n");
 
         // Consulta pedido
         $consulta_pedido = "SELECT 
@@ -68,10 +68,13 @@ try {
         $result = mysqli_query($conn, $consulta_pedido);
         while ($row = mysqli_fetch_array($result)) {
 
+            $cantidad = $row['cantidad'];
+            $precio = $row['precio'];
+
             //asignamos un corte en el nombre del producto para poder tener una buena legibilidad en el ticket
-            $nombre=substr($row['nombre'],0,17);
-            
-            $printer->text(sprintf("%-20s %3s %10s\n", $nombre, $row['cantidad'],number_format($row['precio'],2), number_format($row['total'], 2)));
+            $nombre = substr($row['nombre'], 0, 35);
+
+            $printer->text(sprintf("%-40s %3s %5s %5s\n", $nombre, str_pad($cantidad, 3, ' ', STR_PAD_BOTH), str_pad(number_format($precio, 2), 5, ' ', STR_PAD_BOTH), number_format($row['total'], 2)));
 
             $precio_final += $row['total'];
         }
@@ -80,17 +83,17 @@ try {
         mysqli_close($conn);
 
         // Calculamos iva y precio sin iva
-        $sinIVA = $precio_final / 100 * 79;
+        $sinIVA = $precio_final / 1.21;
         $iva = $precio_final - $sinIVA;
 
         // Totales
-        $printer->text(str_repeat("-", 35) . "\n");
+        $printer->text(str_repeat("-", 58) . "\n");
         $printer->setJustification(Printer::JUSTIFY_RIGHT);
-        $printer->text(sprintf("Base Imponible: %10.2f EUR\n", $sinIVA));
-        $printer->text(sprintf("IVA (21%%): %15.2f EUR\n", $iva));
-        $printer->text(str_repeat("=", 35) . "\n");
+        $printer->text(sprintf("%41s %13.2f EUR\n", "Base imponible: ", $sinIVA));
+        $printer->text(sprintf("%41s %13.2f EUR\n", "IVA (21%): ", $iva));
+        $printer->text(str_repeat("=", 58) . "\n");
         $printer->setEmphasis(true);
-        $printer->text(sprintf("TOTAL: %18.2f EUR\n", $precio_final));
+        $printer->text(sprintf("%41s %13.2f EUR\n", "TOTAL: ", $precio_final));
         $printer->setEmphasis(false);
 
         // Pie del ticket

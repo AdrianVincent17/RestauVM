@@ -44,7 +44,7 @@ include("conexion.php");
 
 
         <main class="container my-5">
-            <h1 class="mb-5">Carta - Restaurante La Despensa</h1>
+            <h1 class="mb-5 text-white">Carta - Restaurante La Despensa</h1>
 
             <?php
 
@@ -79,7 +79,9 @@ include("conexion.php");
 
                         while ($prod = mysqli_fetch_assoc($productos)) {
 
+                            
                             echo "<div class='list-group-item d-flex justify-content-between align-items-center p-3'>";
+                            echo "<img class='img-fluid' style='width: 60px; height: auto; object-fit: cover;' src='img/".$prod['imagen'] ."' alt='producto_".$prod['imagen'] ."'>";
                             echo "<span>" . $prod['nombre'] . "</span>";
 
                             echo "<span class='price fw-bold text-success'>" . $prod['precio'] . " €</span>";

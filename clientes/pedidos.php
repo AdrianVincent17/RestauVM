@@ -3,7 +3,8 @@ include("../seguridad.php");
 proteger(0);
 include("../conexion.php");
 
-$idmesa = 'N/A'; 
+$base_url = "http://localhost/restauVM/";
+$idmesa = 'N/A';
 $idped_activo = false;
 
 if (isset($_SESSION['idped'])) {
@@ -66,7 +67,7 @@ if (!$idped_activo) {
                                 </form>
                             </div>
                             <div class="card-body">
-                                <div style="max-height: 60vh; overflow-y: auto;">
+                                <div style="max-height: 60vh; overflow-y: auto; overflow-x:hidden">
 
                                     <?php
 
@@ -88,7 +89,7 @@ if (!$idped_activo) {
                                             $idcat = $categoria['idcat'];
                                             $nombre_categoria = $categoria['nombre'];
 
-                                            $consulta_productos = "SELECT idprod, nombre, precio, stock FROM producto WHERE categoria = '$idcat' AND estado = 0";
+                                            $consulta_productos = "SELECT idprod, nombre, precio, stock, imagen FROM producto WHERE categoria = '$idcat' AND estado = 0";
                                             if ($busqueda != '') {
                                                 $consulta_productos .= " AND nombre LIKE '%$busqueda%'";
                                             }
@@ -101,56 +102,68 @@ if (!$idped_activo) {
                                             if (mysqli_num_rows($result_productos) > 0) {
                                                 echo "<h4 class='mt-4 mb-2 p-2 bg-secondary text-white rounded'>{$nombre_categoria}</h4>";
 
-                                                // 5. Iterar sobre los productos
+                                                // 5. Iterar sobre los productosa
                                                 while ($producto = mysqli_fetch_assoc($result_productos)) {
                                                     $idprod = $producto['idprod'];
                                                     $nombre_producto = $producto['nombre'];
                                                     $precio_producto = number_format($producto['precio'], 2); // Formatear precio a 2 decimales
                                                     $stock_producto = (int)$producto['stock'];
+                                                    $imagen = $producto['imagen'];
 
 
                                     ?>
-                                                    <div class="mb-3 p-2 border rounded">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div>
-                                                                <h5 class="mb-0"><?php echo $nombre_producto; ?></h5>
-                                                                <small><?php echo $precio_producto; ?>€</small>
+                                                    <div class="row">
+
+
+                                                        <div class="mb-3 p-2 border rounded d-flex justify-content-between">
+                                                            <div class="col-1 d-flex">
+                                                                <img class='img-fluid float-start' style='width: auto; height: auto; object-fit: cover;' src="<?php echo $base_url . "img/" . $imagen; ?>" alt="producto_<?php echo $imagen; ?> ">
                                                             </div>
-                                                            <?php if ($stock_producto <= 0) { ?>
-                                                                <span class="badge bg-danger align-self-center">Agotado</span>
-                                                            <?php } ?>
+                                                            <div class="col-8 col-lg-11 ">
+                                                                <div class="">
+                                                                    <div>
+                                                                        <h5 class="mb-0"><?php echo $nombre_producto; ?></h5>
+                                                                        <small><?php echo $precio_producto; ?>€</small>
+                                                                    </div>
+                                                                    <?php if ($stock_producto <= 0) { ?>
+                                                                        <span class="badge bg-danger align-self-center">Agotado</span>
+                                                                    <?php } ?>
+                                                                </div>
+
+                                                                <?php if (($stock_producto > 0) && isset($idped)) { // Mostrar formulario solo si hay stock y el pedido existe 
+                                                                ?>
+                                                                    <form action="añadir_carro.php" method="POST" class="d-flex flex-wrap gap-2 mt-2">
+                                                                        <input type="hidden" name="idped" value="<?php echo $idped; ?>">
+                                                                        <input type="hidden" name="idprod" value="<?php echo $idprod; ?>">
+                                                                        <input type="hidden" name="nombre" value="<?php echo $nombre_producto; ?>">
+                                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+
+                                                                        <div class="flex-grow-1" style="min-width: 150px;">
+                                                                            <input type="text" name="comentario" class="form-control form-control-sm" placeholder="Ej: Sin cebolla, poco hecho..." maxlength="250">
+                                                                        </div>
+
+                                                                        <div class="d-flex gap-2">
+                                                                            <input type="number" name="cantidad" value="1" min="1" max="<?php echo $stock_producto; ?>" class="form-control form-control-sm" style="width: 70px;">
+                                                                            <button type="submit" class="btn btn-primary btn-sm me-3 ">Añadir</button>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } else { // Bloque que se muestra si NO hay stock disponible o no hay pedido activo 
+                                                                ?>
+                                                                    <div class="d-flex flex-wrap gap-2 mt-2">
+                                                                        <div class="flex-grow-1" style="min-width: 150px;">
+                                                                            <input type="text" class="form-control form-control-sm" placeholder="Ej: Sin cebolla, poco hecho..." disabled>
+                                                                        </div>
+                                                                        <div class="d-flex gap-2">
+                                                                            <input type="number" value="0" class="form-control form-control-sm" style="width: 70px;" disabled>
+                                                                            <button type="button" class="btn btn-outline-danger btn-sm me-3 " disabled>Agotado</button>
+                                                                        </div>
+                                                                    </div>
+                                                                <?php } ?>
+                                                            </div>
                                                         </div>
-
-                                                        <?php if (($stock_producto > 0) && isset($idped)) { // Mostrar formulario solo si hay stock y el pedido existe 
-                                                        ?>
-                                                            <form action="añadir_carro.php" method="POST" class="d-flex flex-wrap gap-2 mt-2">
-                                                                <input type="hidden" name="idped" value="<?php echo $idped; ?>">
-                                                                <input type="hidden" name="idprod" value="<?php echo $idprod; ?>">
-                                                                <input type="hidden" name="nombre" value="<?php echo $nombre_producto; ?>">
-                                                                <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-
-                                                                <div class="flex-grow-1" style="min-width: 150px;">
-                                                                    <input type="text" name="comentario" class="form-control form-control-sm" placeholder="Ej: Sin cebolla, poco hecho..." maxlength="250">
-                                                                </div>
-
-                                                                <div class="d-flex gap-2">
-                                                                    <input type="number" name="cantidad" value="1" min="1" max="<?php echo $stock_producto; ?>" class="form-control form-control-sm" style="width: 70px;">
-                                                                    <button type="submit" class="btn btn-primary btn-sm">Añadir</button>
-                                                                </div>
-                                                            </form>
-                                                        <?php } else { // Bloque que se muestra si NO hay stock disponible o no hay pedido activo 
-                                                        ?>
-                                                            <div class="d-flex flex-wrap gap-2 mt-2">
-                                                                <div class="flex-grow-1" style="min-width: 150px;">
-                                                                    <input type="text" class="form-control form-control-sm" placeholder="Ej: Sin cebolla, poco hecho..." disabled>
-                                                                </div>
-                                                                <div class="d-flex gap-2">
-                                                                    <input type="number" value="0" class="form-control form-control-sm" style="width: 70px;" disabled>
-                                                                    <button type="button" class="btn btn-outline-danger btn-sm" disabled>Añadir</button>
-                                                                </div>
-                                                            </div>
-                                                        <?php } ?>
                                                     </div>
+
+
                                     <?php
                                                 }
                                             }
@@ -188,7 +201,7 @@ if (!$idped_activo) {
                                 ?>
                                         <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
                                             <div>
-                                                <strong><?php echo $producto['cantidad']; ?>  x  <?php echo $producto['nombre']; ?></strong>
+                                                <strong><?php echo $producto['cantidad']; ?> x <?php echo $producto['nombre']; ?></strong>
 
                                                 <?php if (!empty($producto['comentario'])) { ?>
                                                     <br><small class="text-muted"><span class="fs-5">↳</span> <?php echo $producto['comentario']; ?></small>
@@ -210,7 +223,7 @@ if (!$idped_activo) {
                                 <?php
                                     }
                                 } else {
-                                    echo "<p class='text-center text-muted'>El carrito está vacío.</p>";
+                                    echo "<p class='text-center text-muted'><i class='bi bi-cart'></i><br>El carrito está vacío</p>";
                                 }
 
                                 echo '</div>'; // Cierre del div de scroll del carrito

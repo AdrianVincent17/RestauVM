@@ -1,22 +1,25 @@
-<div class="d-flex flex-column w-100">
-    <nav class="navbar navbar-expand-sm bg-light navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="quienessomos.php" class="logo">
-                <img src="../img/LaDespensalogo.png" alt="LaDespensalogo" class="img-fluid logo">
-                <span class="mt-5" >Restaurante La Despensa</span>
+
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light w-100">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../img/LaDespensalogo.png" alt="Logo" class="img-fluid" style="max-height: 50px;">
+                <span class="ms-2">Restaurante La Despensa</span>
             </a>
-            
-            <ul class="navbar-nav mt-3">
-                <li class="nav-item mt-2 me-2 xs-d-none">
-                    <p>Bienvenido/a, <?php echo $_SESSION['nombre']; ?></p>
+
+            <ul class="navbar-nav d-flex flex-row align-items-center">
+                <li class="nav-item me-3 d-none d-lg-block">
+                    <p class="mb-0">Bienvenido/a, <?php echo $_SESSION['nombre']; ?></p>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-md btn-outline-danger" href="../logout.php">Cerrar Sesion</a>
+                    <a class="btn btn-outline-danger" href="../logout.php">Cerrar Sesión</a>
                 </li>
             </ul>
+
         </div>
     </nav>
-
+</div>
 
 
 

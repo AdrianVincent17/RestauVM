@@ -145,12 +145,15 @@ include("../conexion.php");
                                                 //ahora hacemos otra consulta para sacar la fecha del pedido
                                                 $fecha = $row['fecha'];
 
+                                                
+
                                                 //Ahora conseguimos el nombre del producto
                                                 //mediante una consulta 
-                                                $consulta_pedido_producto = "SELECT SUM(p.precio) AS total FROM pedido_producto pp, producto p WHERE pp.idprod = p.idprod AND pp.idped =$idped";
+                                                $consulta_pedido_producto = "SELECT SUM(p.precio*pp.cant) AS total FROM pedido_producto pp, producto p WHERE pp.idprod = p.idprod AND pp.idped =$idped";
                                                 $res2 = mysqli_query($conn, $consulta_pedido_producto);
                                                 while ($row2 = mysqli_fetch_assoc($res2)) {
                                                     $total = $row2['total'];
+                                                   
                                                 }
 
                                         ?>
