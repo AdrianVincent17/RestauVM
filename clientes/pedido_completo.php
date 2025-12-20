@@ -45,7 +45,7 @@ if (isset($_SESSION['idped'])) {
                         <div class="table-responsive">
                             <table class="table text-center table-striped table-hover">
                                 <thead>
-                                    <tr>
+                                    <tr class='text-center'>
                                         <th>Producto</th>
                                         <th>Cantidad</th>
                                         <th>Comentario</th>
@@ -86,7 +86,7 @@ if (isset($_SESSION['idped'])) {
                                                 $estado = 'Servido';
                                                 $color = 'success';
                                             }
-                                            echo "<tr>";
+                                            echo "<tr class='text-center'>";
                                             echo "<td>" . ($nombre) . "</td>";
                                             echo "<td>" . ($cantidad) . "</td>";
                                             echo "<td>" . ($row1['comentario']) . "</td>";

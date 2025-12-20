@@ -82,14 +82,14 @@ try {
         // Cierro conexión
         mysqli_close($conn);
 
-        // Calculamos iva y precio sin iva
-        $sinIVA = $precio_final / 1.21;
-        $iva = $precio_final - $sinIVA;
+        // calculammos la Base imponible y el iva
+        $baseimponible = $precio_final / 1.21;
+        $iva = $baseimponible*0.21;
 
         // Totales
         $printer->text(str_repeat("-", 58) . "\n");
         $printer->setJustification(Printer::JUSTIFY_RIGHT);
-        $printer->text(sprintf("%41s %13.2f EUR\n", "Base imponible: ", $sinIVA));
+        $printer->text(sprintf("%41s %13.2f EUR\n", "Base imponible: ", $baseimponible));
         $printer->text(sprintf("%41s %13.2f EUR\n", "IVA (21%): ", $iva));
         $printer->text(str_repeat("=", 58) . "\n");
         $printer->setEmphasis(true);

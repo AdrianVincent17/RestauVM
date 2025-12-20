@@ -114,7 +114,7 @@ include("../conexion.php");
                                 <div class="table-responsive me-2">
                                     <table class="table table-striped table-hover">
                                         <thead>
-                                            <tr>
+                                            <tr class='text-center'>
                                                 <th>dni</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
@@ -158,7 +158,7 @@ include("../conexion.php");
                                                         $relleno = ""; // botón relleno
                                                     }
 
-                                                    echo "<tr>";
+                                                    echo "<tr class='text-center'>";
                                                     echo "<td>{$fila['dni']}</td>";
                                                     echo "<td>{$fila['nombre']}</td>";
                                                     echo "<td>{$fila['apellidos']}</td>";

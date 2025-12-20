@@ -67,7 +67,7 @@ $html = "
             font-family: Arial, sans-serif;
         }
     </style>
-    <p align='center'><img src='" . $url_base . "img/logopdf.png' alt='Logo' width='70px'></p>
+    <p align='center'><img src='" . $url_base . "img/LaDespensalogo.png' alt='Logo' width='70px'></p>
     <h1 align='center'>RESTAURANTE LA DESPENSA</h1>
     <br>
     <p align='right'><b>Fecha y hora:</b> " . $fecha . "</p>
@@ -120,14 +120,17 @@ if (mysqli_num_rows($result2) == 0) {
 // Cerramos la conexión
 mysqli_close($conn);
 
+$baseimponible=$precio_final/1.21;
+$iva=$baseimponible*0.21;
+
 // Cerramos la tabla y añadimos el total con el iba y el total
 $html .= "
         </tbody>
     </table>
     <hr>
+    <p align='right'><b>Base Imponible: " . number_format($baseimponible, 2) . " €</b></p>
+    <p align='right'><b>IVA(21%): " . number_format($iva, 2) . " €</b></p>
     <p align='right'><b>Total: " . number_format($precio_final, 2) . " €</b></p>
-    <p align='right'><b>IVA(21%): " . number_format($precio_final * (0.21), 2) . " €</b></p>
-    <p align='right'><b>Total: " . number_format($precio_final * 1.21, 2) . " €</b></p>
     <br>
     <p align='center'><b>¡Gracias por su visita!</b></p>
     ";

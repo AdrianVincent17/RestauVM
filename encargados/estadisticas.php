@@ -65,7 +65,7 @@ if (isset($_SESSION['fechainicial'])) {
                         // Mostramos mensaje de que no hay datos si no los hay en esas fechas
 
                         if (isset($_SESSION['error'])) {
-                            echo "<tr>";
+                            echo "<tr class='text-center'>";
                             echo "<td colspan ='3' class='alert text-danger pb-0'>No hay estadisticass de esas fechas..</td>";
                             echo "</tr>";
                             unset($_SESSION['error']);
@@ -75,7 +75,7 @@ if (isset($_SESSION['fechainicial'])) {
 
                                 // Recorremos el informe
                                 foreach ($_SESSION['estadisticas'] as $indice => $datos) {
-                                    echo "<tr>";
+                                    echo "<tr class='text-center'>";
                                     echo "<td>" . $datos['fecha'] . "</td>";
                                     echo "<td align='center'>" . $datos['comensales'] . "</td>";
                                     echo "<td align='center'>" . number_format($datos['ingresos'], 2) . " €</td>";

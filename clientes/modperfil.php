@@ -103,7 +103,7 @@ include("../conexion.php");
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr class='text-center'>
                                             <th>Pedido Nº</th>
                                             <th>Cliente</th>
                                             <th>Apellidos</th>
@@ -158,7 +158,7 @@ include("../conexion.php");
 
                                         ?>
 
-                                                <tr>
+                                                <tr class='text-center'>
                                                     <td> <?php echo $idped; ?> </td>
                                                     <td> <?php echo $nombre; ?> </td>
                                                     <td> <?php echo $apellidos; ?> </td>
