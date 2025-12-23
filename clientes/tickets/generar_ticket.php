@@ -6,6 +6,13 @@ include("../../conexion.php");
 
 require_once 'vendor/autoload.php';
 
+if (isset($_SESSION['nombre'])) {
+    $nombre_cliente = $_SESSION['nombre'];
+}
+if(isset($_SESSION['apellidos'])) {
+    $apellidos_cliente = $_SESSION['apellidos'];
+}
+
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 
@@ -51,6 +58,7 @@ try {
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->text("Pedido Nº: {$idped}\n");
         $printer->text("Mesa: {$mesa_id}\n");
+        $printer->text("Cliente: {$nombre_cliente} {$apellidos_cliente}\n");
         $printer->text("Fecha: " . date('d/m/Y H:i') . "\n");
         $printer->text(str_repeat("-", 56) . "\n\n");
 
@@ -61,7 +69,7 @@ try {
         $printer->text(sprintf("%-30s %6s %19s\n", "PRODUCTO", "CANTIDAD", "COMENTARIO"));
         $printer->text(str_repeat("=", 56) . "\n");
 
-         // ========================
+        // ========================
         // PRODUCTOS - ULTIMOS AÑADIDOS
         // ========================
         $sql_productos = "
@@ -71,6 +79,9 @@ try {
             WHERE pp.idped = $idped AND pp.servido=0
             ORDER BY pp.idline ASC
         ";
+
+
+
         $resultado_productos = mysqli_query($conn, $sql_productos);
 
         if ($resultado_productos && mysqli_num_rows($resultado_productos) > 0) {
@@ -80,26 +91,26 @@ try {
                 $comentario = substr($producto['comentario'], 0, 15);
                 $cantidad   = (int)$producto['cant'] ?? 1;
 
-                    // Imprimimos una línea por unidad (ideal para cocina)
-                 $printer->text(sprintf("%-30s %6s %19s\n", $nombre, str_pad($cantidad, 6, ' ', STR_PAD_BOTH), $comentario));
+                // Imprimimos una línea por unidad (ideal para cocina)
+                $printer->text(sprintf("%-30s %6s %19s\n", $nombre, str_pad($cantidad, 6, ' ', STR_PAD_BOTH), $comentario));
             }
 
-        // // ========================
-        // // PRODUCTOS
-        // // ========================
-        // if (!empty($_SESSION['carrito'])) {
+            // // ========================
+            // // PRODUCTOS
+            // // ========================
+            // if (!empty($_SESSION['carrito'])) {
 
-        //     foreach ($_SESSION['carrito'] as $producto) {
+            //     foreach ($_SESSION['carrito'] as $producto) {
 
-        //         $nombre     = substr($producto['nombre'], 0, 15);
-        //         $comentario = substr($producto['comentario'], 0, 15) ?? '';
-        //         $cantidad   = (int)($producto['cantidad'] ?? 1);
+            //         $nombre     = substr($producto['nombre'], 0, 15);
+            //         $comentario = substr($producto['comentario'], 0, 15) ?? '';
+            //         $cantidad   = (int)($producto['cantidad'] ?? 1);
 
 
-        //         // Imprimimos una línea por unidad (ideal para cocina)
+            //         // Imprimimos una línea por unidad (ideal para cocina)
 
-        //         $printer->text(sprintf("%-25s %6s %20s\n", $nombre, str_pad($cantidad, 6, ' ', STR_PAD_BOTH), $comentario));
-        //     }
+            //         $printer->text(sprintf("%-25s %6s %20s\n", $nombre, str_pad($cantidad, 6, ' ', STR_PAD_BOTH), $comentario));
+            //     }
         } else {
             $printer->text("NO HAY PRODUCTOS EN EL PEDIDO\n");
         }

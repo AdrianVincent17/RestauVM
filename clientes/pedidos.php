@@ -223,7 +223,7 @@ if (!$idped_activo) {
                                 <?php
                                     }
                                 } else {
-                                    echo "<p class='text-center text-muted'><i class='bi bi-cart'></i><br>El carrito está vacío</p>";
+                                    echo "<p class='text-center text-muted'><i class='bi bi-cart display-6'></i><br>El carrito está vacío</p>";
                                 }
 
                                 echo '</div>'; // Cierre del div de scroll del carrito

@@ -31,11 +31,11 @@ if (isset($_POST['generar_cuenta'])) {
     mysqli_query($conn, "UPDATE pedido SET estado = 1 WHERE nmesa = $id_mesa AND estado = 0");
 
 
-    header("Location:servir_pedido.php?id=".$id_mesa."&idp=".$idped);
-    exit();
-
-    // header("Location:tickets/generar_ticket.php?idm=" . $id_mesa . "&idp=" . $idped);
+    // header("Location:servir_pedido.php?id=".$id_mesa."&idp=".$idped);
     // exit();
+
+    header("Location:tickets/generar_ticket.php?idm=" . $id_mesa . "&idp=" . $idped);
+    exit();
 }
 
 // Buscamos si hay un pedido activo en esta mesa

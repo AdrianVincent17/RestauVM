@@ -4,6 +4,12 @@ include("../../seguridad.php");
 proteger(1);
 include("../../conexion.php");
 
+if (isset($_SESSION['nombre'])) {
+    $nombre_camarero = $_SESSION['nombre'];
+}else {
+    $nombre_camarero = "El mejor";
+}
+
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\EscposImage;
@@ -47,6 +53,7 @@ try {
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->text("Factura Nº: " . $idped . "\n");
         $printer->text("Mesa: " . $mesa_id . " \n");
+        $printer->text("Le atendio: " . $nombre_camarero . " \n");
         $printer->text("Fecha: " . date('d/m/Y H:i') . "\n");
         $printer->text(str_repeat("-", 58) . "\n\n");
 
@@ -84,7 +91,7 @@ try {
 
         // calculammos la Base imponible y el iva
         $baseimponible = $precio_final / 1.21;
-        $iva = $baseimponible*0.21;
+        $iva = $baseimponible * 0.21;
 
         // Totales
         $printer->text(str_repeat("-", 58) . "\n");
