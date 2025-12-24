@@ -13,7 +13,7 @@ include("../conexion.php");
     <?php
     include("../head.php");
     ?>
-    <title>Restaurante La Despensa - Gestión de Mesas Ocupadas</title>
+    <title>Gestión de Mesas Ocupadas - Restaurante La Despensa</title>
      <style>
         .card {
             width: 50%;

@@ -12,7 +12,7 @@ include("../conexion.php");
 
     include("../head.php");
     ?>
-    <title>Restaurante La Despensa - Gestión de Usuarios</title>
+    <title>Gestión de Usuarios - Restaurante La Despensa</title>
 </head>
 
 <body>

@@ -23,7 +23,7 @@ if (isset($_SESSION['idped'])) {
 
 <head>
     <?php include("../head.php"); ?>
-    <title>Restaurante La Despensa - Resumen Pedido</title>
+    <title>Resumen Pedido - Restaurante La Despensa</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
