@@ -2,11 +2,11 @@
 <html lang="es">
 
 
-<title>Restaurante La Despensa - Política de privacidad</title>
+
 
 
 <head>
-    <title>Restaurante La Despensa - Política de privacidad</title>
+    <title>Política de privacidad - Restaurante La Despensa</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registro - Restaurante La Despensa</title>
@@ -71,8 +71,11 @@
                     <a href="quienessomos.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-info-circle me-1"></i> Quiénes Somos
                     </a>
-                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-geo-alt me-1"></i> Ubicación
+                    </a>
+                    <a href="carta.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                        <i class="bi bi-book me-1"></i> Carta
                     </a>
                 </nav>
             </div>
@@ -152,12 +155,9 @@
             Correo electrónico: <a href="mailto:info@ladespensa.com">info@ladespensa.com</a>
         </address>
     </section>
-
     <?php
     include("footer.php");
     ?>
-
-
 </body>
 
 </html>

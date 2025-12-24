@@ -165,12 +165,10 @@ main {
 /* === FOOTER === */
 footer.minimal-footer {
     background-color: #ffffff;
-    padding: 1.5rem 0;
     border-top: 1px solid #e9ecef;
     text-align: center;
     color: #555;
     width: 100%;
-    margin-top: auto;
 }
 
 /* === BOTONES === */

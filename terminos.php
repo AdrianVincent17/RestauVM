@@ -33,7 +33,7 @@
     </style>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
     <header class="minimal-header">
         <div class="container-fluid px-3 px-md-5">
             <div class="d-md-none text-center mt-2 mb-3">
@@ -51,8 +51,11 @@
                     <a href="quienessomos.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-info-circle me-1"></i> Quiénes Somos
                     </a>
-                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                    <a href="ubicacion.php" class="btn btn-sm btn-outline-secondary btn-elegant me-2">
                         <i class="bi bi-geo-alt me-1"></i> Ubicación
+                    </a>
+                     <a href="carta.php" class="btn btn-sm btn-outline-secondary btn-elegant">
+                        <i class="bi bi-book me-1"></i> Carta
                     </a>
                 </nav>
             </div>
@@ -115,9 +118,10 @@
             Calle de la Huerta, 27 – Molina de Segura, Murcia, España<br>
             Correo electrónico: <a href="mailto:info@ladespensa.com">info@ladespensa.com</a>
         </address>
+         
     </section>
 
-    <?php
+  <?php
     include("footer.php");
     ?>
 </body>

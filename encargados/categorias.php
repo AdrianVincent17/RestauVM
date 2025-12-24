@@ -27,6 +27,7 @@ include("../conexion.php");
         <?php include("navbar.php"); ?>
 
         <main class="container my-5">
+             <h1 class="mb-4">Gestión de las categorías</h1>
 
             <div class="mb-2">
                 <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#usuario" aria-expanded="false" aria-controls="usuario">
@@ -55,7 +56,7 @@ include("../conexion.php");
                 </div>
             </div>
 
-            <h1 class="mb-4">Gestión de las categorías</h1>
+           
 
             <div class="table-responsive">
                 <table class="table table-hover table-striped">

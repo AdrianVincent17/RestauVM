@@ -10,7 +10,7 @@ session_start();
     include("head.php");
     ?>
 
-    <title>Restaurante La Despensa - Acceso Personal</title>
+    <title>Ubicación - Restaurante La Despensa</title>
     
     <style>
         /* * 1. Configuración de página completa (Sticky Footer) */

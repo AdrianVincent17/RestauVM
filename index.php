@@ -10,7 +10,7 @@ session_start();
     include("head.php");
     ?>
 
-    <title>Restaurante La Despensa - Acceso Personal</title>
+    <title>Acceso Usuarios - Restaurante La Despensa</title>
 
 
 

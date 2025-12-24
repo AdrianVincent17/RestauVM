@@ -47,7 +47,7 @@ $total_dinero = $datos_dinero['recaudacion_hoy'] ?? 0;
     <?php
     include("../head.php");
     ?>
-    <title>Restaurante - Panel de Control</title>
+    <title>Panel de Control - Restaurante La Despensa</title>
 
 
 
