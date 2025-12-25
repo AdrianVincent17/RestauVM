@@ -1,4 +1,5 @@
 <?php
+
 // Detecta el nombre del archivo actual sin importar la carpeta
 $pagina_actual = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
@@ -12,7 +13,6 @@ if (isset($_SESSION['idped'])) {
     $pedidopendiente = "pedidos.php?idped=" . (int)$_SESSION['idped'];
 }
 ?>
-
 <!-- BOTÓN DE COLAPSO VISIBLE SOLO EN MÓVILES -->
 <div class="d-md-none text-end mb-3">
     <button class="btn btn-info"
@@ -24,7 +24,6 @@ if (isset($_SESSION['idped'])) {
         <i class="bi bi-list">Menu</i>
     </button>
 </div>
-
 <nav id="sidebar" class="collapse d-md-block">
     <div class="sidebar-header">
         <h3>Gestión Cliente</h3>
@@ -38,7 +37,7 @@ if (isset($_SESSION['idped'])) {
         </li>
         <?php
         //Solo mostrar el enlace "Reservar Mesa" si NO hay un pedido activo en la sesión
-        if (!isset($_SESSION['idped'])) :
+        if (!isset($_SESSION['idped'])){ 
         ?>
             <li>
                 <a href="mesas.php"
@@ -46,7 +45,7 @@ if (isset($_SESSION['idped'])) {
                     Reservar Mesa
                 </a>
             </li>
-        <?php endif; ?>
+        <?php } ?>
         <li>
             <a href="<?php echo $pedidopendiente; ?>"
                 class="nav-link <?= ($pagina_actual == 'pedidos.php') ? 'active' : '' ?>">

@@ -91,7 +91,7 @@ $mesas = mysqli_query($conn, $consultamesa);
         <?php include("navbar.php"); ?>
         <div id="content">
             <div class="container-fluid">
-                <div class="row g-4 justify-content-center">
+                <div class="row g-4 justify-content-center mt-2">
                     <?php
                     if ($mesas && mysqli_num_rows($mesas) > 0) {
                         while ($datosmesas = mysqli_fetch_assoc($mesas)) {

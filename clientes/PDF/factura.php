@@ -7,7 +7,7 @@ require_once('vendor/autoload.php');
 $mpdf = new \Mpdf\Mpdf([
     'use_image_persistance' => true
 ]);
-$mpdf->SetTitle('Restaurante La Despensa - Factura');
+$mpdf->SetTitle('Factura - Restaurante La Despensa');
 
 // Conectamos a la base de datos
 include("../../conexion.php");
@@ -24,15 +24,7 @@ $precio_final = 0;
 $consulta_fecha = "SELECT * FROM pedido WHERE idped = $idped";
 $result1 = mysqli_query($conn, $consulta_fecha);
 
-if (!$result1) {
-    die("Error en consulta de pedido: " . mysqli_error($conn));
-}
-
 $row1 = mysqli_fetch_array($result1);
-
-if (!$row1) {
-    die("No se encontró el pedido con ID: " . $idped);
-}
 
 $fecha = $row1['fecha'];
 
@@ -40,15 +32,7 @@ $fecha = $row1['fecha'];
 $consulta_cliente = "SELECT * FROM usuario WHERE dni = '$dni'";
 $result3 = mysqli_query($conn, $consulta_cliente);
 
-if (!$result3) {
-    die("Error en consulta de usuario: " . mysqli_error($conn));
-}
-
 $row3 = mysqli_fetch_array($result3);
-
-if (!$row3) {
-    die("No se encontró el usuario con DNI: " . $dni);
-}
 
 $nombre = $row3['nombre'];
 $apellidos = $row3['apellidos'];

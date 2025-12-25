@@ -109,11 +109,11 @@ if ($pedido) {
                                                 <td>
                                                     <form method='POST' style='display:inline;'>
                                                         <input type='hidden' name='id_linea' value='<?php echo $producto['idline'];?>'>
-                                                        <?php if (!$esta_servido): ?>
+                                                        <?php if (!$esta_servido) {?>
                                                             <button type='submit' name='marcar_servido' class='btn btn-sm btn-outline-success'>SERVIR</button>
-                                                        <?php else: ?>
+                                                        <?php }else{ ?>
                                                             <button class='btn btn-sm btn-outline-secondary' disabled>SERVIDO</button>
-                                                        <?php endif; ?>
+                                                        <?php } ?>
                                                     </form>
                                                 </td>
                                             </tr>

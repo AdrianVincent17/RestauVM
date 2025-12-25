@@ -53,8 +53,14 @@ if (!$idped_activo) {
 
                 <h1 class="page-heading">Pedido para la Mesa Nº <?php echo $idmesa; ?></h1>
                 <p class="subheading">Añada los productos a su pedido.</p>
+                <?php if (isset($_GET['error'])){ ?>
+                    <div class="alert alert-danger alert-dismissible fade show mt-3 mb-4" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <strong>¡Error de Stock!</strong> No hay suficientes unidades disponibles del producto seleccionado.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
                 <div class="row g-4">
-
                     <div class="col-lg-7">
                         <div class="card shadow-sm">
                             <div class="card-header ">
