@@ -37,8 +37,8 @@ include("../conexion.php");
                 $pedidos_servidos_hoy = 0;
 
                 $consulta_hoy = "SELECT COUNT(pp.idline) as total_pendientes 
-                 FROM pedido p
-                 INNER JOIN pedido_producto pp ON p.idped = pp.idped
+                 FROM pedido_producto pp
+                 INNER JOIN pedido p ON p.idped = pp.idped
                  WHERE DATE(p.fecha) = CURDATE() 
                  AND pp.servido = 0";
 
@@ -47,7 +47,11 @@ include("../conexion.php");
                 // Contamos cuántos hay en total para mostrar un aviso
                 $fila = mysqli_fetch_assoc($resultado);
 
-                $pedidos_pendientes_hoy=$fila['total_pendientes']??0;
+                if($fila['total_pendientes']>0){
+                    $pedidos_pendientes_hoy=$fila['total_pendientes'];
+                } else {
+                    $pedidos_pendientes_hoy=0;
+                }   
 
 
                 $consulta_hoy2 = "SELECT COUNT(pp.idline) as total_servidos 
@@ -61,7 +65,11 @@ include("../conexion.php");
                 // Contamos cuántos hay en total para mostrar un aviso
                 $fila2 = mysqli_fetch_assoc($resultado2);
 
-                $pedidos_servidos_hoy=$fila2['total_servidos']??0;
+            if($fila2['total_servidos']>0){
+                $pedidos_servidos_hoy=$fila2['total_servidos'];
+            }else {
+                $pedidos_servidos_hoy=0;
+            }
 
 
 

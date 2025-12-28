@@ -107,7 +107,7 @@ try {
             //         $cantidad   = (int)($producto['cantidad'] ?? 1);
 
 
-            //         // Imprimimos una línea por unidad (ideal para cocina)
+                   // Imprimimos una línea por unidad (ideal para cocina)
 
             //         $printer->text(sprintf("%-25s %6s %20s\n", $nombre, str_pad($cantidad, 6, ' ', STR_PAD_BOTH), $comentario));
             //     }
