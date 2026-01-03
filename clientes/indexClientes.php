@@ -36,7 +36,7 @@ include("../conexion.php");
                 if (isset($_SESSION['idped'])) {
                     $idped = $_SESSION['idped'];
 
-                    // 3. Si existe, ejecutamos la consulta (usando casting a int por seguridad)
+                    // Si existe, ejecutamos la consulta (usando casting a int por seguridad)
                     $idped = (int)$idped;
                     $consulta = "SELECT COUNT(idline) as total 
                  FROM pedido_producto 
@@ -50,7 +50,7 @@ include("../conexion.php");
                         $pedidos_pendientes = 0;
                     }
 
-                    // 3. Si existe, ejecutamos la consulta (usando casting a int por seguridad)
+               
 
                     $consulta2 = "SELECT COUNT(idline) as total 
                  FROM pedido_producto 

@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         mysqli_close($conn);
         header("Location:productos.php");
         exit();
+        
     } else if($producto['estado'] === '0') {
         $consulta = "UPDATE producto SET estado='1' WHERE idprod='$id'";
         mysqli_query($conn, $consulta);

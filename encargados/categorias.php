@@ -13,8 +13,6 @@ include("../conexion.php");
     <style>
         .editable-form-row>td {
             padding: 0;
-            /* Quitamos el padding para que el form interno lo maneje */
-            /* Ocultar el colapsable si Bootstrap no lo hace por defecto */
             transition: height 0.3s ease-in-out;
         }
     </style>

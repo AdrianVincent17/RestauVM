@@ -98,32 +98,26 @@ session_start();
 <body class="d-flex flex-column h-100 fondo">
 
     <header class="minimal-header">
-        <!-- CAMBIO CLAVE: container-fluid para full-width y padding responsivo -->
+      
         <div class="container-fluid px-3 px-md-5">
 
-            <!-- Título Centrado en Móvil (SM): Se muestra solo en SM y se oculta en MD y superiores -->
-            <!-- Usamos la clase mb-3 para un espacio inferior -->
+       
             <div class="d-md-none text-center mt-2 mb-3">
                 <h5 class="fw-bold mb-0">Restaurante La Despensa</h5>
             </div>
 
-            <!-- ESTRUCTURA FLEXBOX para ALINEACIÓN: Por defecto (sm) centramos la nav, 
-                 en md (y superior) separamos logo y nav a extremos. -->
+       
             <div class="d-flex justify-content-center justify-content-md-between align-items-center">
 
-                <!-- IZQUIERDA: Logo (IMAGEN) y Nombre -->
-                <!-- d-none oculta por defecto, d-md-flex lo muestra en MD y superiores y lo pone en línea -->
                 <a href="index.php" class="text-decoration-none navbar-logo-text d-none d-md-flex align-items-center">
-                    <!-- Placeholder de Imagen: Reemplaza la URL 'src' por tu imagen real. -->
+        
                     <img src="img/LaDespensalogo.png" alt="Logo La Despensa"
                         class="me-2 header-logo-img">
 
                     <h5 class="mb-0 fw-bold">Restaurante La Despensa</h5>
                 </a>
 
-                <!-- DERECHA: Botones de Navegación -->
-                <!-- d-flex para poner los botones en línea, sin más clases de visibilidad aquí, 
-                     ya que es el único elemento visible en SM. -->
+             
                 <nav class="d-flex">
                     <a href="registro.php" class="btn btn-sm btn-primary btn-elegant me-2">
                         <i class="bi bi-person-plus-fill me-1"></i> Registrarse
@@ -151,11 +145,11 @@ session_start();
 
                     <div class="login-card mx-auto">
                         <div class="text-center mb-4">
-                            <!-- Icono de la tarjeta de login -->
+                          
                             <img class="logo-icon img-fluid" src="img/La despensa.jpg" alt="ladespensa">
 
                             <h2 class="h3 mt-3 mb-1 fw-semibold">Bienvenido/a</h2>
-                            <!-- Nombre del restaurante actualizado -->
+                        
                             <p class="text-muted">Accede al panel de gestión de La Despensa</p>
                         </div>
 
@@ -173,6 +167,8 @@ session_start();
                                 <label for="pass"><i class="bi bi-lock me-2"></i>Contraseña</label>
 
                                 <?php
+
+                                // Mostrar mensaje de error si existe
                                 if (isset($_SESSION['error_login'])) {
                                     echo "<p class='text-danger'>" . $_SESSION['error_login'] . '</p>';
                                     unset($_SESSION['error_login']);

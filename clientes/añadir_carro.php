@@ -4,10 +4,26 @@ proteger(0);
 include("../conexion.php");
 
 // vemos si nos llegan los datos o no 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idprod'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $idprod = $_POST['idprod'];
     $cantidad = (int)$_POST['cantidad'];
+
+    // --- Validamos el estado del pedido antes de añadir nada al carrito y evitar restar nada al stock ---
+    if (isset($_SESSION['idped'])) {
+        $idped = $_SESSION['idped'];
+        $chequeo_pedido = mysqli_query($conn, "SELECT estado FROM pedido WHERE idped = '$idped'");
+        $row_pedido = mysqli_fetch_assoc($chequeo_pedido);
+
+        if ($row_pedido && $row_pedido['estado'] == '1') {
+
+            // Si el pedido está cerrado, limpiamos sesión y volvemos a mesas
+            unset($_SESSION['idped']);
+            mysqli_close($conn);
+            header('Location: mesas.php'); 
+            exit();
+        }
+    }
 
     // comprobamos el stock disponible
     $consulta_stock = "SELECT * FROM producto WHERE idprod='$idprod'";
@@ -16,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idprod'])) {
     $row = mysqli_fetch_assoc($result);
     $stock_disponible = (int)$row['stock'];
 
-    // 2. Verificación previa
+    // Verificación previa
     if ($stock_disponible >= $cantidad) {
 
         // Inicializar carrito
@@ -35,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idprod'])) {
 
         $_SESSION['carrito'][] = $lista;
 
-        // Descontar automáticamente (Sprint 2)
+        // Descontar automáticamente
         $consulta_restar_stock = "UPDATE producto SET stock = stock - $cantidad WHERE idprod = '$idprod'";
         mysqli_query($conn, $consulta_restar_stock);
      
@@ -45,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idprod'])) {
         exit();
     } else {
         mysqli_close($conn);
-        // 3. Mostrar advertencia si no hay stock (Sprint 2)
+        // Mostrar advertencia si no hay stock
         header('Location: pedidos.php?error=1');
         exit();
     }

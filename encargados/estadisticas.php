@@ -68,7 +68,7 @@ if (isset($_SESSION['fechainicial'])) {
                             echo "<tr class='text-center'>";
                             echo "<td colspan ='3' class='alert text-danger pb-0'>No hay estadisticass de esas fechas..</td>";
                             echo "</tr>";
-                            unset($_SESSION['error']);
+                            unset($_SESSION['error']);  
                         } else {
 
                             if (isset($_SESSION['estadisticas'])) {

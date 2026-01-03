@@ -13,8 +13,6 @@ include("../conexion.php");
     <style>
         .editable-form-row>td {
             padding: 0;
-            /* Quitamos el padding para que el form interno lo maneje */
-            /* Ocultar el colapsable si Bootstrap no lo hace por defecto */
             transition: height 0.3s ease-in-out;
         }
     </style>
@@ -132,11 +130,7 @@ include("../conexion.php");
                                 echo "<td>" . $prod['stock'] . "</td>";
                                 echo "<td>" . number_format($prod['precio'], 2) . "</td>";  //esta fila con el number format lo que hace es poner dos digitos al numero
                                 echo "<td>";
-
-                                // Mobile-First para botones:
-                                // d-flex flex-column (apilado en móvil)
-                                // flex-sm-row (en fila desde 'sm' hacia arriba)
-                                // gap-2 (espacio entre botones)
+                                
                                 echo '<div class="d-flex flex-column flex-sm-row gap-2">';
 
                                 // --- LÓGICA DE BOTONES ---
@@ -156,7 +150,7 @@ include("../conexion.php");
                         ?>
                                 <a data-bs-toggle="collapse" data-bs-target="#<?php echo $prod['idprod'] ?>;" aria-expanded="false" aria-controls="<?php echo $prod['idprod']; ?>" href='editarproducto.php?idprod="<?php echo $prod['idprod'] ?>;"' class="btn btn-sm btn-primary">Editar</a>
                                 <?php
-                                echo '</div>'; // Cierre del div flex
+                                echo '</div>'; // Cierre del div 
                                 echo "</td>";
                                 echo "</tr>";
                                 // Fila colapsable para edición

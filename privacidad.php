@@ -39,31 +39,25 @@
 
 <body>
    <header class="minimal-header">
-        <!-- container-fluid para full-width y padding responsivo -->
+     
         <div class="container-fluid px-3 px-md-5">
 
-            <!-- Título Centrado en Móvil (SM): Se muestra solo en SM y se oculta en MD y superiores -->
-            <!-- Usamos la clase mb-3 para un espacio inferior -->
+        
             <div class="d-md-none text-center mt-2 mb-3">
                 <h5 class="fw-bold mb-0">Restaurante La Despensa</h5>
             </div>
 
-            <!-- ESTRUCTURA FLEXBOX para ALINEACIÓN: Por defecto (sm) centramos la nav, 
-                 en md (y superior) separamos logo y nav a extremos. -->
+       
             <div class="d-flex justify-content-center justify-content-md-between align-items-center">
 
-                <!-- IZQUIERDA: Logo (IMAGEN) y Nombre -->
-                <!-- d-none oculta por defecto, d-md-flex lo muestra en MD y superiores y lo pone en línea -->
                 <a href="index.php" class="text-decoration-none navbar-logo-text d-none d-md-flex align-items-center">
-                    <!-- Placeholder de Imagen: Reemplaza la URL 'src' por tu imagen real. -->
+                
                     <img src="img/LaDespensalogo.png" alt="Logo La Despensa"
                         class="me-2 logo">
                     <h5 class="mb-0 fw-bold">Restaurante La Despensa</h5>
                 </a>
 
-                <!-- DERECHA: Botones de Navegación -->
-                <!-- d-flex para poner los botones en línea, sin más clases de visibilidad aquí, 
-                     ya que es el único elemento visible en SM. -->
+            
                 <nav class="d-flex">
                     <a href="index.php" class="btn btn-sm btn-primary btn-elegant me-2">
                         <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión

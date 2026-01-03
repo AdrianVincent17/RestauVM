@@ -19,13 +19,12 @@ if (isset($_SESSION['rol'])) {
     }
 }
 
-// Procesamiento del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dni  = strtoupper(trim($_POST['dni']));
     $pass = trim($_POST['pass']);
 
 
-    // Consulta simple: buscar usuario con dni y pass (texto plano)
+    //buscar usuario con dni y pass
     $consulta = "SELECT * FROM usuario WHERE dni = '$dni' AND pass = '$pass' LIMIT 1";
     $result = mysqli_query($conn, $consulta);
 

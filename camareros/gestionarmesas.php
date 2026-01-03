@@ -17,22 +17,16 @@ include("../conexion.php");
      <style>
         .card {
             width: 50%;
-            /* Ocupa todo el ancho de su columna */
             aspect-ratio: 0.5 / 0.5;
-            /* Mantiene la forma cuadrada de la tarjeta */
             display: flex;
-            /* Asegura que los hijos se centren */
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border-radius: 25%;
-            /* Borde más moderno que 80px */
             border: 3px solid transparent;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
-            /* Quitamos margin-bottom de aquí ya que lo gestionará el 'g-4' del 'row' */
             transition: all 0.2s ease-in-out;
             cursor: pointer;
-            /* Añadido cursor para indicar interactividad */
         }
 
         /* ESTADO: DISPONIBLE */
