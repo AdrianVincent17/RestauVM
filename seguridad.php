@@ -4,7 +4,7 @@ session_start();
 
 function proteger($rolpermitido){
 
-    //hacemos una unica llamada a la conexion
+    //hacemos una unica llamada a la conexion para poder utilizar la variable $conn
     include_once('conexion.php'); 
     
 

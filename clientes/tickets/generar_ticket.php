@@ -16,7 +16,7 @@ if(isset($_SESSION['apellidos'])) {
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 
-try {
+
 
     if (isset($_GET['idp'])) {
 
@@ -141,6 +141,4 @@ try {
 
         mysqli_close($conn);
     }
-} catch (Exception $e) {
-    echo "Error al imprimir ticket: " . $e->getMessage();
-}
+
