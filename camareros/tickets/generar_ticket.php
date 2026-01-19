@@ -15,8 +15,6 @@ use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\EscposImage;
 
 
-try {
-
     if (isset($_GET['idp'])) {
 
         // Variables
@@ -120,6 +118,4 @@ try {
         header("LOCATION: ../gestionarmesas.php");
         exit();
     }
-} catch (Exception $e) {
-    echo "Error al imprimir ticket: " . $e->getMessage();
-}
+
