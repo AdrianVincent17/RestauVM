@@ -2,6 +2,25 @@
 include("../seguridad.php");
 proteger(1);
 include("../conexion.php");
+
+
+if (isset($_SESSION['dni'])) {
+    $dni = $_SESSION['dni'];
+
+    // Consultamos el estado actual del camarero
+    $query = "SELECT estado FROM usuario WHERE dni = '$dni' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $user = mysqli_fetch_assoc($result);
+
+    $estado= $user['estado'];   
+    // Si el estado es 'bloqueado' o 'inactivo'
+    if ($estado === 1) {
+        session_destroy(); // Destruimos la sesión
+        header("Location: ../login.php");
+        exit();
+    }
+}
+
 ?>
 
 <!doctype html>
